@@ -1,8 +1,17 @@
-export default function Home() {
+import { About, Contacts, Home, Loader, Navbar, Projects, Skills } from '@/components';
+
+export default function Portfolio() {
   return (
-    <main>
-      <div>My new portfolio</div>
-      <button>click</button>Hello World
-    </main>
+    <>
+      <Loader />
+      <Navbar />
+      <main>
+        <Home />
+        <About />
+        <Skills />
+        <Projects />
+        <Contacts />
+      </main>
+    </>
   );
 }
