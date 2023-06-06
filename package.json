@@ -16,7 +16,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "prettier --write . --ignore-unknown"
   },
   "dependencies": {
     "gsap": "^3.11.5",
@@ -29,12 +29,13 @@
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",
-    "eslint": "8.42.0",
+    "eslint": "^8.42.0",
     "eslint-config-next": "13.4.4",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
-    "prettier": "2.8.8",
+    "prettier": "^2.8.8",
     "typescript": "5.1.3"
   }
 }
