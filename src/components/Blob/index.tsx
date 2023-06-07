@@ -21,7 +21,9 @@ export default function Blog() {
 
   return (
     <>
-      <div ref={blobRef} id="blob"></div>
+      <div className="blob-wrapper">
+        <div ref={blobRef} id="blob"></div>
+      </div>
       <span id="blur"></span>
     </>
   );

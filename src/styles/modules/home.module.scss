@@ -1,0 +1,41 @@
+.home {
+  position: relative;
+  height: 100dvh;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  padding-bottom: calc(10vh * 0.75);
+
+  .home_container {
+    margin: auto;
+    width: 80%;
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1;
+
+    .word {
+      overflow: hidden;
+
+      span {
+        display: block;
+        transform-origin: top left;
+        transform: translateY(110%) rotate(10deg);
+      }
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        font-weight: 800;
+        font-size: 10rem;
+        color: $white;
+      }
+
+      &:last-child {
+        font-weight: 500;
+        font-size: 4em;
+        color: aquamarine;
+        text-align: end;
+        margin-right: 1em;
+      }
+    }
+  }
+}

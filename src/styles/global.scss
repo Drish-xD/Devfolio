@@ -14,7 +14,7 @@ body {
   height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+  overflow: auto;
   color: white;
 }
 
@@ -51,24 +51,37 @@ li {
   }
 }
 
-#blob {
-  height: 28vmax;
-  aspect-ratio: 1;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  border-radius: 50%;
-  background: linear-gradient(to right, aquamarine, mediumpurple);
-  animation: rotate 20s infinite;
-  opacity: 0.8;
+.blob-wrapper {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: -4;
+
+  #blob {
+    display: block;
+    height: 28vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+    animation: rotate 20s infinite;
+    opacity: 0.8;
+  }
 }
 
 #blur {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: -2;
   backdrop-filter: blur(12vmax);
 }
@@ -76,3 +89,6 @@ li {
 // Module Imports
 
 @import './modules/loader.module';
+@import './modules/about.module.scss';
+@import './modules/home.module.scss';
+@import './modules/navbar.module.scss';
