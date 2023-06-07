@@ -23,19 +23,20 @@ export default function Loader() {
       delay: 0.5,
       stagger: {
         amount: 2,
-        from: 'end',
+        // from: 'right',
         grid: [7, 7],
         yoyo: true,
         repeat: 3
       }
-    })
-      // Loader FadeOut Animation
-      .to('.loader', {
-        opacity: 0,
-        ease: 'none',
-        delay: -1.5,
-        duration: 2
-      });
+    });
+
+    // Loader FadeOut Animation
+    tl.to('.loader', {
+      opacity: 0,
+      ease: 'none',
+      delay: -1.5,
+      duration: 2
+    });
 
     tl.to('.loader', {
       autoAlpha: 0,
@@ -47,7 +48,6 @@ export default function Loader() {
       delay: -0.75
     });
   }, [tl]);
-
   return (
     <section className="loader">
       <div className="loader-overlay"></div>

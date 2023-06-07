@@ -1,0 +1,39 @@
+.loader {
+  inset: 0;
+  position: fixed;
+  background: $black;
+  padding: 4vh 0;
+  z-index: 50;
+
+  .loader-overlay {
+    inset: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 51;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    color: $white;
+    font-size: clamp(0.8em, 0.8vw, 2em);
+    font-family: 'Modius', sans-serif;
+
+    span {
+      display: flex;
+      width: 2em;
+      position: relative;
+      transform: rotate(-3deg);
+
+      &::before {
+        display: block;
+        content: '';
+        padding-top: 100%;
+      }
+    }
+  }
+}

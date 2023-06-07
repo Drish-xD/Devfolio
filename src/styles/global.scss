@@ -9,11 +9,13 @@
 }
 
 body {
+  background-color: $black;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: auto;
+  overflow: hidden;
+  color: white;
 }
 
 // Custom Scrollbar
@@ -22,7 +24,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #00000000;
+  background-color: transparent;
 }
 
 a {
@@ -33,3 +35,44 @@ a {
 li {
   list-style: none;
 }
+
+// Background blob Effect
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  50% {
+    scale: 1 1.5;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+#blob {
+  height: 28vmax;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: linear-gradient(to right, aquamarine, mediumpurple);
+  animation: rotate 20s infinite;
+  opacity: 0.8;
+  z-index: -4;
+}
+
+#blur {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -2;
+  backdrop-filter: blur(12vmax);
+}
+
+// Module Imports
+
+@import 'modules/loader.module';
