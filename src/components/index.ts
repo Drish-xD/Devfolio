@@ -1,4 +1,5 @@
 export { default as About } from './About';
+export { default as Blob } from './Blob';
 export { default as Contacts } from './Contacts';
 export { default as Home } from './Home';
 export { default as Loader } from './Loader';
