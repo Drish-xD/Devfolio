@@ -19,7 +19,7 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "paths": {
       "@/components": ["components"],
       "@/styles/*": ["styles/*"],

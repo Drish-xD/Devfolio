@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
 interface MousePosition {
-  x: number;
-  y: number;
+  x: number | undefined;
+  y: number | undefined;
 }
 
 const useMousePosition = (): MousePosition => {
   const [mousePosition, setMousePosition] = useState<MousePosition>({
-    x: 0,
-    y: 0
+    x: undefined,
+    y: undefined
   });
 
   useEffect(() => {
