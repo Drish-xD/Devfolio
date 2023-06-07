@@ -1,5 +1,5 @@
 // Import Variables and Fonts
-@import '@/styles/variable';
+@import '@styles/variable';
 
 // Global CSS
 * {
@@ -75,4 +75,4 @@ li {
 
 // Module Imports
 
-@import 'modules/loader.module';
+@import './modules/loader.module';

@@ -1,7 +1,7 @@
 'use client';
 
-import useMousePosition from '@/hooks/useMousePosition';
-import gsap from 'gsap';
+import useMousePosition from '@hooks/useMousePosition';
+import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 
 export default function Blog() {

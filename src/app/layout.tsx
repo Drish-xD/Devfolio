@@ -1,5 +1,5 @@
-import { Blob } from '@/components';
-import '@/styles/global.scss';
+import { Blob } from '@components';
+import '@styles/global.scss';
 import { ReactNode } from 'react';
 
 export const metadata = {

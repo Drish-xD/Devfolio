@@ -1,6 +1,6 @@
 'use client';
 
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 import { Fragment, useEffect } from 'react';
 
 export default function Loader() {
