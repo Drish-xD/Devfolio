@@ -1,45 +1,19 @@
 header {
   position: relative;
-  user-select: none;
   z-index: 40;
+  user-select: none;
 
   .menu-close,
   .menu-open {
     position: absolute;
     top: 2rem;
-    right: 4rem;
-    width: 4rem;
-    height: 4rem;
-    background-color: whitesmoke;
-    border-radius: 100%;
-    box-shadow: 0 0 4rem rgba(0 0 0 / 35%);
-    transition: transform ease 0.4s;
+    right: 6rem;
+    padding: 0.2rem;
+    font: 400 1rem 'JetBrain';
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.1);
-    }
-
-    &:active {
-      transform: scale(0.9);
-    }
-
-    svg {
-      scale: 0.5;
-      fill: $vineyard;
-      opacity: 0;
-      transition: opacity ease 0.4s;
-    }
-
-    &:hover svg {
-      opacity: 1;
-    }
-  }
-
-  .menu-close {
-    svg {
-      transform: translate(5%, -30%);
-      fill: $DarkCyan;
+      text-decoration: underline;
     }
   }
 
@@ -48,16 +22,16 @@ header {
     top: -100%;
     width: 100%;
     height: 100vh;
-    background: rgba($black, 90%);
-    text-align: center;
-    padding: 15vh 0;
-    backdrop-filter: blur(12vmax);
+    background: rgba($black, 10%);
+    backdrop-filter: blur(2vmax);
 
     .menu {
+      height: 100%;
+      gap: 1em;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 1em;
 
       h2 {
         overflow: hidden;
@@ -67,12 +41,11 @@ header {
           a {
             text-transform: capitalize;
             font-family: 'JetBrain';
-            font-size: 4em;
-            color: $darkGrey;
+            font-size: 3.5em;
+            color: $white;
 
             &:hover {
-              font-size: 4.5em;
-              font-family: 'OffBit';
+              text-decoration: underline;
             }
           }
         }

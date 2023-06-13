@@ -22,28 +22,33 @@
         overflow: hidden;
         span {
           margin-right: 1em;
-          font: 10em 'Offbit';
+          font: 15em 'Offbit';
         }
       }
 
       &.three {
-        align-items: flex-end;
-        gap: 1rem;
         span {
+          margin-left: -1.5rem;
+          margin-block: auto;
           font-size: 1.5rem;
-          margin-bottom: 1rem;
+          transform: rotate(-90deg);
         }
         p {
+          margin-left: 1rem;
+          display: flex;
+          place-items: center;
           font-size: 1rem;
-          margin-bottom: 1rem;
+          font-weight: 300;
           text-transform: uppercase;
         }
       }
 
       h1 {
+        margin-left: -1rem;
         color: $white;
-        font-size: 9em;
-        line-height: 1;
+        font-size: 10em;
+        line-height: 1.2;
+        word-spacing: -0.2em;
       }
 
       &.mobile {

@@ -14,13 +14,14 @@
   }
 
   .grid {
+    opacity: 0;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     height: 100%;
     width: 100%;
     place-items: center;
     color: $white;
-    font-size: clamp(0.8em, 0.8vw, 2em);
+    font-size: 1rem;
     font-family: 'JetBrain', monospace;
 
     span {
