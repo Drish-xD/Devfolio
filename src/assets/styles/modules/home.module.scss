@@ -14,7 +14,6 @@
     .line-wrap {
       width: 100%;
       display: flex;
-      font-family: 'JetBrain';
 
       &.one {
         align-items: center;
@@ -22,7 +21,7 @@
         overflow: hidden;
         span {
           margin-right: 1em;
-          font: 15em 'Offbit';
+          font: 15em $Offbit;
         }
       }
 

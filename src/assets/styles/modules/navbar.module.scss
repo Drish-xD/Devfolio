@@ -9,7 +9,7 @@ header {
     top: 2rem;
     right: 6rem;
     padding: 0.2rem;
-    font: 400 1rem 'JetBrain';
+    font-size: 1rem;
     cursor: pointer;
 
     &:hover {
@@ -40,7 +40,6 @@ header {
           transform: translateY(110%) rotate(3deg);
           a {
             text-transform: capitalize;
-            font-family: 'JetBrain';
             font-size: 3.5em;
             color: $white;
 

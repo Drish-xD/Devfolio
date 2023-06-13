@@ -1,28 +1,6 @@
 // colors
 $black: #000000ff;
-$poppy: #d64045ff;
-$butterscotch: #eea243ff;
-$celadon: #b9e3c6ff;
 $white: #f1fffaff;
-$vineyard: #ef3d59;
-$DancingDaisy: #efc958;
-$DarkCyan: #4ab19d;
-$darkGrey: #344e5c;
-$SoftOrange: #e17a47;
 
-@font-face {
-  font-family: 'OffBit';
-  src: url('../fonts/OffBit-Reg.woff2') format('woff2'),
-    url('../fonts/OffBit-Reg.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'JetBrain';
-  src: url('../fonts/JetBrainsMono.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+$JetBrain: var(--font-jetbrain);
+$Offbit: var(--font-offbit);
