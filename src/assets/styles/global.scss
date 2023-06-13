@@ -9,13 +9,13 @@
 }
 
 body {
-  background-color: $black;
   width: 100%;
   height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: auto;
   color: white;
+  background: $black;
 }
 
 // Custom Scrollbar
@@ -58,7 +58,7 @@ li {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -4;
+  z-index: -12;
 
   #blob {
     display: block;
@@ -82,7 +82,7 @@ li {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -2;
+  z-index: -10;
   backdrop-filter: blur(12vmax);
 }
 

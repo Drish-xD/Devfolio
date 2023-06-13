@@ -66,13 +66,13 @@ header {
           transform: translateY(110%) rotate(3deg);
           a {
             text-transform: capitalize;
-            font-family: 'HND';
+            font-family: 'JetBrain';
             font-size: 4em;
             color: $darkGrey;
 
             &:hover {
               font-size: 4.5em;
-              font-family: 'Mondwest';
+              font-family: 'OffBit';
             }
           }
         }

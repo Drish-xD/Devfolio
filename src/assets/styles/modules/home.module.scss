@@ -1,0 +1,54 @@
+.home {
+  position: relative;
+  height: 100dvh;
+  padding-bottom: calc(10vh * 0.75);
+
+  .home_container {
+    margin: auto;
+    width: 65%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+
+    .line-wrap {
+      width: 100%;
+      display: flex;
+      font-family: 'JetBrain';
+
+      &.one {
+        align-items: center;
+        display: flex;
+        overflow: hidden;
+        span {
+          margin-right: 1em;
+          font: 10em 'Offbit';
+        }
+      }
+
+      &.three {
+        align-items: flex-end;
+        gap: 1rem;
+        span {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+        p {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          text-transform: uppercase;
+        }
+      }
+
+      h1 {
+        color: $white;
+        font-size: 9em;
+        line-height: 1;
+      }
+
+      &.mobile {
+        display: none;
+      }
+    }
+  }
+}

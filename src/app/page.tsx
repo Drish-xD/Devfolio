@@ -1,9 +1,9 @@
-import { About, Contacts, Home, Navbar, Projects, Skills } from '@components';
+import { About, Contacts, Home, Loader, Navbar, Projects, Skills } from '@components';
 
 export default function Portfolio() {
   return (
     <>
-      {/* <Loader /> */}
+      <Loader />
       <Navbar />
       <main>
         <Home />

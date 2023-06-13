@@ -14,8 +14,8 @@ export default function Blog() {
     gsap.to(blobRef.current, {
       left: mousePosition.x,
       top: mousePosition.y,
-      duration: 3,
-      ease: 'power2.out'
+      duration: 1,
+      ease: 'power1.out'
     });
   }, [mousePosition]);
 

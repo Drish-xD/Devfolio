@@ -22,7 +22,9 @@
     "baseUrl": "src",
     "paths": {
       "@components": ["components"],
-      "@styles/*": ["styles/*"],
+      "@styles/*": ["assets/styles/*"],
+      "@fonts/*": ["assets/fonts/*"],
+      "@images/*": ["assets/images/*"],
       "@hooks/*": ["hooks/*"]
     }
   },
