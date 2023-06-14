@@ -1,11 +1,14 @@
 'use client';
 
+import useTextReveal from '@hooks/useTextReveal';
 import { gsap } from 'gsap';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
 export default function Navbar() {
   const links = ['home', 'about', 'skills', 'projects', 'contacts'];
+
+  const textReveal = useTextReveal();
 
   const tl_2 = gsap.timeline({ paused: true });
 
@@ -38,18 +41,24 @@ export default function Navbar() {
 
   return (
     <header>
-      <div className="menu-open" onClick={() => tl_2.reversed(!tl_2.reversed())}>
-        Menu
+      <div className="fixed-header">
+        <div className="spade">♠</div>
+        <div className="menu-open" onClick={() => tl_2.reversed(!tl_2.reversed())}>
+          Menu
+        </div>
       </div>
 
       <div className="nav-container">
-        <div className="menu-close" onClick={() => tl_2.reversed(!tl_2.reversed())}>
-          Close
+        <div className="fixed-header">
+          <span></span>
+          <div className="menu-close" onClick={() => tl_2.reversed(!tl_2.reversed())}>
+            Close
+          </div>
         </div>
         <nav className="menu">
           {links.map((link) => (
             <h2 key={link}>
-              <span>
+              <span onMouseOver={textReveal}>
                 <Link href={`/#${link}`} onClick={() => tl_2.reversed(!tl_2.reversed())}>
                   {link}
                 </Link>

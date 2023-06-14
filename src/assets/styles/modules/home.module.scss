@@ -1,7 +1,5 @@
 .home {
-  position: relative;
-  height: 100dvh;
-  padding-bottom: calc(10vh * 0.75);
+  width: 100%;
 
   .home_container {
     margin: auto;
@@ -29,7 +27,8 @@
         span {
           margin-left: -1.5rem;
           margin-block: auto;
-          font-size: 1.5rem;
+          font-size: 2rem;
+          font-weight: 700;
           transform: rotate(-90deg);
         }
         p {
@@ -43,15 +42,74 @@
       }
 
       h1 {
-        margin-left: -1rem;
         color: $white;
-        font-size: 10em;
+        font-size: clamp(5em, 10vw, 10em);
         line-height: 1.2;
         word-spacing: -0.2em;
       }
 
       &.mobile {
         display: none;
+
+        span {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1477px) {
+  .home_container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .home_container {
+    .line-wrap {
+      &.one {
+        span {
+          font-size: 9em;
+        }
+      }
+
+      // h1 {
+      //   font-size: 7em;
+      // }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home_container {
+    width: 85%;
+
+    .line-wrap {
+      &.one {
+        span {
+          font-size: 8em;
+        }
+      }
+
+      &.three {
+        h1,
+        span {
+          display: none;
+        }
+
+        p {
+          font-size: 0.8rem;
+          width: 70%;
+        }
+      }
+
+      // h1 {
+      //   font-size: 5em;
+      // }
+
+      &.mobile {
+        display: block;
       }
     }
   }

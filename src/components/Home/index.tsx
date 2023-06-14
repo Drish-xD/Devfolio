@@ -5,7 +5,7 @@ export default function Home() {
     <section className="home" id="home">
       <div className="home_container">
         <div className="line-wrap one">
-          <span>♠</span>
+          <span></span>
           <h1>I Design</h1>
         </div>
         <div className="line-wrap two">
@@ -19,8 +19,8 @@ export default function Home() {
           <span>that</span>
           <h1>Captivate</h1>
           <p className="intro-line">
-            Hi, I'm a front-end developer, blending artistry & technology to deliver stunning online
-            journeys.
+            Hi, I&rsquo;m a front-end developer, blending artistry & technology to deliver stunning
+            online journeys.
           </p>
         </div>
       </div>

@@ -87,9 +87,34 @@ li {
   backdrop-filter: blur(8vmax);
 }
 
+// section and headers
+
+section {
+  width: 70%;
+  margin: 8em auto;
+
+  .section-header {
+    display: inline-flex;
+    align-items: flex-end;
+    margin-top: 8em;
+
+    h2 {
+      letter-spacing: 1rem;
+      font-size: 15em;
+      font-family: $Offbit;
+      line-height: 0.8;
+    }
+    span {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
 // Module Imports
 
 @import './modules/loader.module';
 @import './modules/about.module.scss';
 @import './modules/home.module.scss';
 @import './modules/navbar.module.scss';
+@import './modules/skills.module.scss';
