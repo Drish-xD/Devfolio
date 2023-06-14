@@ -1,9 +1,9 @@
 export default function Skills() {
   return (
-    <section id="skills">
+    <section className="global-section" id="skills">
       <div className="section-header">
         <h2>Skills</h2>
-        <span>(02)</span>
+        <span>(03)</span>
       </div>
       <div className="skill-container"></div>
     </section>

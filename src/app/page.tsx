@@ -7,9 +7,9 @@ export default function Portfolio() {
       <Navbar />
       <main>
         <Home />
-        <About />
-        <Skills />
         <Projects />
+        <Skills />
+        <About />
         <Contacts />
       </main>
     </>

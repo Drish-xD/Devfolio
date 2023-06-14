@@ -2,7 +2,7 @@
 
 export default function Home() {
   return (
-    <section className="home" id="home">
+    <section id="home">
       <div className="home_container">
         <div className="line-wrap one">
           <span></span>

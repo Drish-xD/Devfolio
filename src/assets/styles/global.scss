@@ -89,7 +89,7 @@ li {
 
 // section and headers
 
-section {
+.global-section {
   width: 70%;
   margin: 8em auto;
 
@@ -108,6 +108,31 @@ section {
       font-size: 1.2rem;
       margin-bottom: 2rem;
     }
+  }
+}
+
+// text hover animation
+
+.hover-animation {
+  position: relative;
+  transition: color 0.3s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 -1rem;
+    z-index: -1;
+    opacity: 0;
+    border-radius: 0.5rem;
+    transition: opacity 0.3s;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    background: $white;
+  }
+  &:hover {
+    color: $black !important;
   }
 }
 

@@ -21,7 +21,9 @@
     width: 100%;
     place-items: center;
     color: $white;
-    font-size: 1rem;
+    font-weight: 900;
+    font-size: 1.2rem;
+    font-stretch: wider;
 
     span {
       display: flex;

@@ -1,9 +1,9 @@
 export default function About() {
   return (
-    <section id="about">
+    <section className="global-section" id="about">
       <div className="section-header">
         <h2>About</h2>
-        <span>(01)</span>
+        <span>(04)</span>
       </div>
 
       <div className="about-container">
