@@ -73,6 +73,7 @@ li {
     background: linear-gradient(to right, aquamarine, mediumpurple);
     animation: rotate 20s infinite;
     opacity: 0.8;
+    z-index: -5;
   }
 }
 
@@ -84,7 +85,7 @@ li {
   bottom: 0;
   left: 0;
   z-index: -10;
-  backdrop-filter: blur(8vmax);
+  backdrop-filter: blur(12vmax);
 }
 
 // section and headers
@@ -139,7 +140,8 @@ li {
 // Module Imports
 
 @import './modules/loader.module';
-@import './modules/about.module.scss';
-@import './modules/home.module.scss';
-@import './modules/navbar.module.scss';
-@import './modules/skills.module.scss';
+@import './modules/projects.module';
+@import './modules/about.module';
+@import './modules/home.module';
+@import './modules/navbar.module';
+@import './modules/skills.module';

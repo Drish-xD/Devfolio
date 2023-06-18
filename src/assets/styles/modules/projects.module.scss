@@ -1,0 +1,35 @@
+.projects-container {
+  width: 100%;
+  margin-top: 7rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  .half_container {
+    width: 50%;
+    object-fit: contain;
+
+    &.right {
+      margin-top: 7rem;
+    }
+
+    &.left .project-card {
+      aspect-ratio: 1;
+    }
+
+    .project-card {
+      width: 90%;
+      position: relative;
+      aspect-ratio: 3 / 4;
+      border: 0.25rem solid rgba(255, 255, 255, 0.15);
+      border-radius: 1rem;
+      margin-top: 5rem;
+      cursor: pointer;
+      overflow: hidden;
+
+      > img {
+        object-fit: cover;
+        border-radius: inherit;
+      }
+    }
+  }
+}
