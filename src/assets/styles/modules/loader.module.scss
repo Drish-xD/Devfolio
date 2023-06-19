@@ -2,7 +2,6 @@
   inset: 0;
   position: fixed;
   background: $black;
-  padding: 4vh 0;
   z-index: 50;
 
   .loader-overlay {
@@ -15,18 +14,18 @@
 
   .grid {
     opacity: 0;
+    visibility: hidden;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     height: 100%;
-    width: 100%;
     place-items: center;
     color: $white;
     font-weight: 900;
     font-size: 1.2rem;
-    font-stretch: wider;
 
     span {
       display: flex;
+      justify-content: center;
       width: 2em;
       position: relative;
       transform: rotate(-3deg);
