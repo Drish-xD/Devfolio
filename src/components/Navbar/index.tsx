@@ -5,7 +5,7 @@ import useTextAnimation from '@hooks/useTextAnimation';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const { toggleMenu } = useNavbarAnimation();
+  const { closeMenu, openMenu } = useNavbarAnimation();
   useTextAnimation('.hover-animation');
 
   const links = ['home', 'about', 'skills', 'projects', 'contacts'];
@@ -14,7 +14,7 @@ export default function Navbar() {
     <header>
       <div className="fixed-header">
         <div className="spade">♠</div>
-        <div className="hover-animation menu-open" data-value="Menu" onClick={toggleMenu}>
+        <div className="hover-animation menu-open" data-value="Menu" onClick={openMenu}>
           Menu
         </div>
       </div>
@@ -22,7 +22,7 @@ export default function Navbar() {
       <div className="nav-container">
         <div className="fixed-header">
           <span></span>
-          <div data-value="Close" className="hover-animation menu-close" onClick={toggleMenu}>
+          <div data-value="Close" className="hover-animation menu-close" onClick={closeMenu}>
             Close
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function Navbar() {
                   className="hover-animation"
                   data-value={link}
                   href={`/#${link}`}
-                  onClick={toggleMenu}
+                  onClick={closeMenu}
                 >
                   {link}
                 </Link>

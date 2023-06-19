@@ -28,7 +28,6 @@ export const useProjectAnimation = (duration: number) => {
               end: 'top center',
               toggleActions: 'restart none none reset',
               scrub: true,
-              markers: true,
               onEnter: () => gsap.to(project, { opacity: 1 }),
               onLeaveBack: () => gsap.to(project, { opacity: 0 })
             }

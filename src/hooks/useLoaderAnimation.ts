@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 import { useEffect } from 'react';
 
 const useLoaderAnimation = () => {
-  const tl = gsap.timeline();
+  const loader_tl = gsap.timeline();
 
   useEffect(() => {
     // Overlay Fade Animation
@@ -11,10 +11,15 @@ const useLoaderAnimation = () => {
       duration: 1.5
     });
 
+    gsap.to('body', {
+      overflow: 'hidden'
+    });
+
     // Wave Letter Animation
-    tl.to('.grid', {
-      autoAlpha: 1
-    })
+    loader_tl
+      .to('.grid', {
+        autoAlpha: 1
+      })
       .from('.grid span', {
         opacity: 1,
         duration: 0.75,
@@ -33,22 +38,16 @@ const useLoaderAnimation = () => {
       })
       // Loader FadeOut Animation
       .to('.loader', {
-        opacity: 0,
+        autoAlpha: 0,
         ease: 'none',
-        delay: -1.5,
+        delay: -1.2,
         duration: 2
       })
-
-      .to('.loader', {
-        autoAlpha: 0,
-        duration: 0.25
-      })
-
-      .from('body', {
-        overflow: 'hidden',
-        delay: -0.75
+      .to('body', {
+        overflow: '',
+        delay: -1
       });
-  }, [tl]);
+  }, []);
 };
 
 export default useLoaderAnimation;
