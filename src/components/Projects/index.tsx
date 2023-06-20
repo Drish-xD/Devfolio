@@ -6,8 +6,7 @@ import { projectsJson } from '@lib/data';
 import Card from './Card';
 
 export default function Projects() {
-  const leftProjectsRef = useProjectAnimation(2);
-  const rightProjectsRef = useProjectAnimation(5);
+  const projectsRef = useProjectAnimation();
 
   return (
     <section className="global-section" id="projects">
@@ -21,7 +20,7 @@ export default function Projects() {
             <Card
               key={project.id}
               {...project}
-              ref={(ref: HTMLDivElement) => (leftProjectsRef.current[index] = ref)}
+              ref={(ref: HTMLDivElement) => (projectsRef.current[index] = ref)}
             />
           ))}
         </div>
@@ -32,7 +31,7 @@ export default function Projects() {
               key={project.id}
               {...project}
               ref={(ref: HTMLDivElement) =>
-                (rightProjectsRef.current[index + projectsJson.left.length] = ref)
+                (projectsRef.current[index + projectsJson.left.length] = ref)
               }
             />
           ))}

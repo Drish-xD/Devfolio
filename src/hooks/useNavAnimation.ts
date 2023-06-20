@@ -5,13 +5,10 @@ const useNavbarAnimation = (): {
   openMenu: () => void;
   closeMenu: () => void;
 } => {
-  const tl_2 = gsap.timeline({ paused: true });
+  const nav_tl = gsap.timeline({ paused: true });
 
   useEffect(() => {
-    tl_2
-      .to('body', {
-        overflow: 'hidden'
-      })
+    nav_tl
       .to('.nav-container', {
         top: 0,
         ease: 'Expo.easeInOut',
@@ -26,14 +23,14 @@ const useNavbarAnimation = (): {
           each: 0.1
         }
       });
-  }, []);
+  }, [nav_tl]);
 
   const closeMenu = () => {
-    tl_2.timeScale(1.5).reverse();
+    nav_tl.timeScale(1.5).reverse();
   };
 
   const openMenu = () => {
-    tl_2.timeScale(1).play();
+    nav_tl.timeScale(1).play();
   };
 
   return { closeMenu, openMenu };

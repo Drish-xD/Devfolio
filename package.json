@@ -19,6 +19,7 @@
     "**/*": "prettier --write . --ignore-unknown"
   },
   "dependencies": {
+    "@studio-freight/react-lenis": "^0.0.21",
     "gsap": "^3.11.5",
     "next": "^13.4.5",
     "react": "18.2.0",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/gsap": "^3.0.0",
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",

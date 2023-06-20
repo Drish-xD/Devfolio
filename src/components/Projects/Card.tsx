@@ -20,7 +20,12 @@ const Card: ForwardRefRenderFunction<HTMLDivElement, ProjectProps> = ({ ...proje
   return (
     <div ref={ref} className="project-card" id={`card_${id}`}>
       <Noise id={id} />
-      <Image src={image} alt="project-thumbnail" fill style={{ filter: `url(#noise_${id})` }} />
+      <Image
+        src={`https://raw.githubusercontent.com/Drish-xD/${image}`}
+        alt="project-thumbnail"
+        fill
+        style={{ filter: `url(#noise_${id})` }}
+      />
       <div className="card-info">
         <h3>{name}</h3>
         <p>{desc}</p>

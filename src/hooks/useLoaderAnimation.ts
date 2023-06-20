@@ -11,15 +11,12 @@ const useLoaderAnimation = () => {
       duration: 1.5
     });
 
-    gsap.to('body', {
-      overflow: 'hidden'
+    gsap.to('.grid', {
+      autoAlpha: 1
     });
 
     // Wave Letter Animation
     loader_tl
-      .to('.grid', {
-        autoAlpha: 1
-      })
       .from('.grid span', {
         opacity: 1,
         duration: 0.75,
@@ -43,11 +40,10 @@ const useLoaderAnimation = () => {
         delay: -1.2,
         duration: 2
       })
-      .to('body', {
-        overflow: '',
-        delay: -1
+      .to('.loader', {
+        display: 'none'
       });
-  }, []);
+  }, [loader_tl]);
 };
 
 export default useLoaderAnimation;
