@@ -1,3 +1,4 @@
+import { useLenis } from '@studio-freight/react-lenis';
 import { gsap } from 'gsap';
 import { useEffect } from 'react';
 
@@ -6,6 +7,7 @@ const useNavbarAnimation = (): {
   closeMenu: () => void;
 } => {
   const nav_tl = gsap.timeline({ paused: true });
+  const lenis = useLenis();
 
   useEffect(() => {
     nav_tl
@@ -27,10 +29,12 @@ const useNavbarAnimation = (): {
 
   const closeMenu = () => {
     nav_tl.timeScale(1.5).reverse();
+    lenis.start();
   };
 
   const openMenu = () => {
     nav_tl.timeScale(1).play();
+    lenis.stop();
   };
 
   return { closeMenu, openMenu };

@@ -17,6 +17,9 @@ const useLoaderAnimation = () => {
 
     // Wave Letter Animation
     loader_tl
+      .to('.grid', {
+        autoAlpha: 1
+      })
       .from('.grid span', {
         opacity: 1,
         duration: 0.75,
