@@ -14,7 +14,7 @@ interface ProjectProps {
 }
 
 const Card: ForwardRefRenderFunction<HTMLDivElement, ProjectProps> = ({ ...projects }, ref) => {
-  const { id, name, desc, github, live, tags, image } = projects;
+  const { id, name, desc, tags, image } = projects;
 
   return (
     <div className="project-card" ref={ref}>
