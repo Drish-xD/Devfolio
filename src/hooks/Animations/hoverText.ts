@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useTextAnimation = (selector: string) => {
+const hoverTextAnime = (selector: string) => {
   useEffect(() => {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -43,4 +43,4 @@ const useTextAnimation = (selector: string) => {
   }, [selector]);
 };
 
-export default useTextAnimation;
+export default hoverTextAnime;

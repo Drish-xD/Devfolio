@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const useProjectAnimation = () => {
+const CardsAnime = () => {
   const projectsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
@@ -12,26 +12,29 @@ export const useProjectAnimation = () => {
 
     const animateProjects = (projects: HTMLDivElement[]) => {
       projects.forEach((project) => {
-        gsap.fromTo(
-          project,
-          { y: 200 },
-          {
-            y: 0,
-            duration: 1,
-            stagger: 0.1,
-            ease: 'Power4.inOut',
-            scrollTrigger: {
-              trigger: project,
-              start: 'top bottom',
-              end: 'top center-=100',
-              scrub: true
+        gsap.context(() => {
+          gsap.fromTo(
+            project,
+            { y: '80%' },
+            {
+              y: 0,
+              duration: 1,
+              stagger: 0.1,
+              ease: 'Power4.inOut',
+              scrollTrigger: {
+                trigger: project,
+                start: 'top bottom',
+                end: 'top center-=100',
+                scrub: true
+              }
             }
-          }
-        );
+          );
+        }, project);
 
         projects.forEach((project: HTMLDivElement) => {
-          project.addEventListener('mouseenter', () => {
-            gsap.to(project, {
+          const cardImage = project.querySelector('.card-image');
+          cardImage!.addEventListener('mouseenter', () => {
+            gsap.to(cardImage, {
               scale: 0.95,
               duration: 0.8,
               ease: 'power3.out'
@@ -43,8 +46,8 @@ export const useProjectAnimation = () => {
             });
           });
 
-          project.addEventListener('mouseleave', () => {
-            gsap.to(project, {
+          cardImage!.addEventListener('mouseleave', () => {
+            gsap.to(cardImage, {
               scale: 1,
               duration: 0.8,
               ease: 'power3.out'
@@ -64,3 +67,5 @@ export const useProjectAnimation = () => {
 
   return projectsRef;
 };
+
+export default CardsAnime;
