@@ -3,6 +3,7 @@
   position: fixed;
   background: $black;
   z-index: 50;
+  user-select: none;
 
   .loader-overlay {
     inset: 0;

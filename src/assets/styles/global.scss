@@ -13,8 +13,6 @@ body {
   height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overscroll-behavior: none;
-  overflow: hidden;
   color: white;
   background: $black;
   font-family: $JetBrain, monospace;
@@ -51,10 +49,7 @@ li {
 .blob-wrapper {
   pointer-events: none;
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: -12;
 
   #blob {
@@ -69,19 +64,16 @@ li {
     background: linear-gradient(to right, aquamarine, mediumpurple);
     animation: rotate 20s infinite;
     opacity: 0.8;
-    z-index: -5;
+    z-index: -11;
   }
-}
 
-#blur {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -10;
-  backdrop-filter: blur(12vmax);
+  #blur {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    backdrop-filter: blur(12vmax);
+  }
 }
 
 // section and headers
@@ -92,18 +84,19 @@ li {
 
   .section-header {
     display: inline-flex;
-    align-items: flex-end;
+    align-items: baseline;
     margin-top: 8em;
+    line-height: 0.9;
+    overflow: hidden;
 
     h2 {
       letter-spacing: 1rem;
       font-size: 15em;
       font-family: $Offbit;
-      line-height: 0.8;
     }
     span {
       font-size: 1.2rem;
-      margin-bottom: 2rem;
+      overflow: inherit;
     }
   }
 }
@@ -141,3 +134,4 @@ li {
 @import './modules/home.module';
 @import './modules/navbar.module';
 @import './modules/skills.module';
+@import './modules/contacts.module';

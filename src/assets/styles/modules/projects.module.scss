@@ -2,7 +2,8 @@
   width: 100%;
   margin-top: 2rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 10rem;
 
   .half_container {
     width: 50%;
@@ -12,23 +13,62 @@
       margin-top: 7rem;
     }
 
-    &.left .project-card {
+    &.left .project-card .card-image {
       aspect-ratio: 1;
     }
 
     .project-card {
-      width: 90%;
-      position: relative;
-      aspect-ratio: 3 / 4;
-      border: 0.25rem solid rgba(255, 255, 255, 0.15);
-      border-radius: 1rem;
-      margin-top: 5rem;
-      cursor: pointer;
-      overflow: hidden;
+      width: 100%;
 
-      > img {
-        object-fit: cover;
-        border-radius: inherit;
+      .card-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: 1rem;
+        transform-origin: bottom;
+        overflow: hidden;
+
+        img {
+          border-radius: inherit;
+          object-fit: cover;
+        }
+
+        .tags {
+          z-index: 1;
+          position: absolute;
+          inset: auto 0 0 0;
+          margin: 1rem;
+          display: flex;
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+
+          span {
+            padding: 0.2rem 0.5rem;
+            background-color: rgba($black, 15%);
+            backdrop-filter: blur(1rem);
+            font-size: 0.8rem;
+            border-radius: 0.4rem;
+          }
+        }
+      }
+
+      .card-info {
+        padding: 1rem;
+        text-align: center;
+
+        h3 {
+          margin-bottom: 0.5rem;
+          font-size: 1.8rem;
+          font-weight: bold;
+          font-style: italic;
+        }
+
+        p {
+          margin-bottom: 0.5rem;
+          font-size: 1rem;
+          font-weight: 200;
+        }
       }
     }
   }

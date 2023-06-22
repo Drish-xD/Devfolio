@@ -1,19 +1,16 @@
 'use client';
 
-import { useProjectAnimation } from '@hooks/useProjectsAnimation';
 import { projectsJson } from '@lib/data';
+import { useCardsAnimation } from '@myhooks';
 
 import Card from './Card';
 
 export default function Projects() {
-  const projectsRef = useProjectAnimation();
+  const projectsRef = useCardsAnimation();
 
   return (
     <section className="global-section" id="projects">
-      <div className="section-header">
-        <h2>Projects</h2>
-        <span>(02)</span>
-      </div>
+      <div className="section-header">Projects(02)</div>
       <div className="projects-container">
         <div className="half_container left">
           {projectsJson.left.map((project, index) => (

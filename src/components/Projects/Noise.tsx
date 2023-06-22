@@ -1,6 +1,6 @@
 export default function Noise({ id }: { id: number }) {
   return (
-    <svg>
+    <svg style={{ display: 'none' }}>
       <defs>
         <filter id={`noise_${id}`}>
           <feTurbulence baseFrequency="0.7,0.8" seed="0" type="fractalNoise" result="static">

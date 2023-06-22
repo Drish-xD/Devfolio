@@ -1,15 +1,15 @@
 'use client';
 
-import useMousePosition from '@hooks/useMousePosition';
+import { useMousePosition } from '@myhooks';
 import { gsap } from 'gsap';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
-export default function Blog() {
+export default function Blob() {
   // mouse Position hook and ref
   const mousePosition = useMousePosition();
   const blobRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // gsap animation for blob
     gsap.to(blobRef.current, {
       left: mousePosition.x,
@@ -23,8 +23,8 @@ export default function Blog() {
     <>
       <div className="blob-wrapper">
         <div ref={blobRef} id="blob"></div>
+        <span id="blur"></span>
       </div>
-      <span id="blur"></span>
     </>
   );
 }

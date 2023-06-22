@@ -1,16 +1,14 @@
 'use client';
 
-import useLoaderAnimation from '@hooks/useLoaderAnimation';
+import { useLoaderAnimation } from '@myhooks';
 import { Fragment } from 'react';
 
 export default function Loader() {
-  useLoaderAnimation();
+  const loaderRef = useLoaderAnimation();
 
   return (
-    <section className="loader">
-      <div className="loader-overlay"></div>
+    <section className="loader" ref={loaderRef}>
       <div className="grid">
-        {/* Repeat the word 7 times */}
         {[...Array(7)].map((_, i) => (
           <Fragment key={i}>
             <span>B</span>

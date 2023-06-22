@@ -1,12 +1,10 @@
 'use client';
 
-import useNavbarAnimation from '@hooks/useNavAnimation';
-import useTextAnimation from '@hooks/useTextAnimation';
+import { useNavAnimation } from '@myhooks';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const { closeMenu, openMenu } = useNavbarAnimation();
-  useTextAnimation('.hover-animation');
+  const { navbarRef, closeMenu, openMenu } = useNavAnimation();
 
   const links = ['home', 'about', 'skills', 'projects', 'contacts'];
 
@@ -19,7 +17,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="nav-container">
+      <div className="nav-container" ref={navbarRef}>
         <div className="fixed-header">
           <span></span>
           <div data-value="Close" className="hover-animation menu-close" onClick={closeMenu}>

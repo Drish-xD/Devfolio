@@ -1,15 +1,16 @@
 export default function About() {
   return (
     <section className="global-section" id="about">
-      <div className="section-header">
-        <h2>About</h2>
-        <span>(04)</span>
-      </div>
+      <div className="section-header">About(04)</div>
 
       <div className="about-container">
-        <h4>
-          <span>Hi I&rsquo;m Drish.</span> Let&rsquo;s build something together.
-        </h4>
+        <h3>
+          Hi, I&rsquo;m{' '}
+          <span data-value="Drish." className="hover-animation">
+            Drish.
+          </span>
+        </h3>
+        <h4>Let&rsquo;s build something together.</h4>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis sapiente illo ab
           eveniet? Alias voluptas est minima officia illum eos, ad minus mollitia ipsa natus.
