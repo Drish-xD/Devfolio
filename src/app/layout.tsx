@@ -1,6 +1,7 @@
 import { jetBrain, offBit } from '@fonts/font';
 import { nextImport } from '@lib/nextImport';
 import '@styles/global.scss';
+import { Analytics } from '@vercel/analytics/react';
 import { ReactNode } from 'react';
 
 const Blob = nextImport('Blob');
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Blob />
         <Navbar />
         {children}
+        <Analytics />
       </body>
     </html>
   );

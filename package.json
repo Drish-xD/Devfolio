@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.21",
+    "@vercel/analytics": "^1.0.1",
     "gsap": "^3.11.5",
     "next": "^13.4.5",
     "react": "18.2.0",
