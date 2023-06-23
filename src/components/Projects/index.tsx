@@ -1,5 +1,6 @@
 'use client';
 
+import { SectionHeader } from '@components';
 import { projectsJson } from '@lib/data';
 import { useCardsAnimation } from '@myhooks';
 
@@ -10,7 +11,7 @@ export default function Projects() {
 
   return (
     <section className="global-section" id="projects">
-      <div className="section-header">Projects(02)</div>
+      <SectionHeader text="Projects" num={2} />
       <div className="projects-container">
         <div className="half_container left">
           {projectsJson.left.map((project, index) => (

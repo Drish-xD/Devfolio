@@ -1,7 +1,9 @@
+import { SectionHeader } from '@components';
+
 export default function Contacts() {
   return (
     <section className="global-section" id="contact">
-      <div className="section-header">Contact(05)</div>
+      <SectionHeader text="Contact" num={5} />
       <div className="contact-container"></div>
     </section>
   );

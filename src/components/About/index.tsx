@@ -1,8 +1,9 @@
+import { SectionHeader } from '@components';
+
 export default function About() {
   return (
     <section className="global-section" id="about">
-      <div className="section-header">About(04)</div>
-
+      <SectionHeader text="About" num={4} />
       <div className="about-container">
         <h3>
           Hi, I&rsquo;m{' '}

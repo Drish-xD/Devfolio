@@ -1,8 +1,9 @@
 export { default as About } from './About';
-export { default as Blob } from './Blob';
 export { default as Contacts } from './Contacts';
 export { default as Home } from './Home';
 export { default as Loader } from './Loader';
 export { default as Navbar } from './Navbar';
 export { default as Projects } from './Projects';
 export { default as Skills } from './Skills';
+export { default as Blob } from './common/Blob';
+export { default as SectionHeader } from './common/SectionHeader';
