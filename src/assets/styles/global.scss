@@ -106,23 +106,25 @@ li {
 .hover-animation {
   position: relative;
   transition: color 0.3s;
+  padding: 0 1rem;
 
   &::before {
     content: '';
     position: absolute;
-    inset: 0 -1rem;
+    inset: 0;
+    width: 0;
     z-index: -1;
-    opacity: 0;
     border-radius: 0.5rem;
-    transition: opacity 0.3s;
+    transition: width 0.3s;
   }
 
-  &:hover::before {
-    opacity: 1;
-    background: $white;
-  }
   &:hover {
     color: $black !important;
+
+    &::before {
+      width: 100%;
+      background: $white;
+    }
   }
 }
 
