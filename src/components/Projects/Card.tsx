@@ -1,12 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ForwardRefRenderFunction, forwardRef } from 'react';
-
-import Noise from './Noise';
 
 interface ProjectProps {
   id: number;
   name: string;
-  desc: string;
   image: string;
   github: string;
   live: string;
@@ -14,32 +12,37 @@ interface ProjectProps {
 }
 
 const Card: ForwardRefRenderFunction<HTMLDivElement, ProjectProps> = ({ ...projects }, ref) => {
-  const { id, name, desc, tags, image } = projects;
+  const { name, tags, image, github } = projects;
 
   return (
-    <div className="project-card" ref={ref}>
-      <div className="card-image" id={`card_${id}`}>
-        <Noise id={id} />
-        <Image
-          src={`https://raw.githubusercontent.com/Drish-xD/${image}`}
-          alt="project-thumbnail"
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          style={{ filter: `url(#noise_${id})` }}
-        />
+    <article className="project-card" ref={ref}>
+      <Image
+        src={`https://raw.githubusercontent.com/Drish-xD/${image}`}
+        alt="project-thumbnail"
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+      <div className="card-cover">
+        <span />
+      </div>
+      <div className="card-info">
+        <h3>
+          {Array.from(name).map((letter: string, i: number) => (
+            <span className="letter" key={i}>
+              {letter}
+            </span>
+          ))}
+        </h3>
         <div className="tags">
           {tags.map((tag, i) => (
             <span key={i}>{tag}</span>
           ))}
         </div>
       </div>
-      <div className="card-info">
-        <h3>{name}</h3>
-        <p>{desc}</p>
-        {/* <Link href={github}>Github</Link>
-        {live && <Link href={live}>Demo</Link>} */}
-      </div>
-    </div>
+      <Link href={github} className="link">
+        ↗
+      </Link>
+    </article>
   );
 };
 

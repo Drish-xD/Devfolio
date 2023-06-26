@@ -13,56 +13,110 @@ const CardsAnime = () => {
     const animateProjects = (projects: HTMLDivElement[]) => {
       projects.forEach((project) => {
         gsap.context(() => {
-          gsap.fromTo(
-            project,
-            { y: '80%' },
-            {
-              y: 0,
-              duration: 1,
-              stagger: 0.1,
-              ease: 'Power4.inOut',
-              scrollTrigger: {
-                trigger: project,
-                start: 'top bottom',
-                end: 'top center-=100',
-                scrub: true
-              }
+          const tl = gsap.timeline({
+            paused: true,
+            delay: 0.1,
+            scrollTrigger: {
+              trigger: project,
+              start: 'top bottom',
+              end: 'top center-=100',
+              toggleActions: 'restart none none reset'
             }
+          });
+          tl.fromTo(
+            project,
+            {
+              scale: 0.8
+            },
+            {
+              scale: 1,
+              duration: 0.5,
+              ease: 'Power4.inOut'
+            }
+          ).fromTo(
+            project.querySelector('.card-cover span'),
+            {
+              x: 0
+            },
+            {
+              x: '-100%',
+              duration: 0.75,
+              ease: 'power3.in'
+            },
+            0
           );
         }, project);
-
-        projects.forEach((project: HTMLDivElement) => {
-          const cardImage = project.querySelector('.card-image');
-          cardImage!.addEventListener('mouseenter', () => {
-            gsap.to(cardImage, {
-              scale: 0.95,
-              duration: 0.8,
-              ease: 'power3.out'
-            });
-            gsap.to(project.querySelector('img'), {
-              scale: 1.1,
-              duration: 0.8,
-              ease: 'power3.out'
-            });
-          });
-
-          cardImage!.addEventListener('mouseleave', () => {
-            gsap.to(cardImage, {
-              scale: 1,
-              duration: 0.8,
-              ease: 'power3.out'
-            });
-
-            gsap.to(project.querySelector('img'), {
-              scale: 1,
-              duration: 0.8,
-              ease: 'power3.out'
-            });
-          });
-        });
       });
     };
     animateProjects(projects);
+
+    const hoverCard = (project: HTMLDivElement, cardInfo: Element) => {
+      const hovertl = gsap.timeline({ paused: true });
+      hovertl
+        .to(cardInfo, {
+          background: 'linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%)',
+          duration: 0.2
+        })
+        .to(
+          cardInfo.querySelector('h3')!.children,
+          {
+            y: 0,
+            rotate: 0,
+            stagger: 0.025,
+            duration: 0.4,
+            ease: 'back.out(2)'
+          },
+          0
+        )
+        .fromTo(
+          cardInfo.querySelector('.tags')!.children,
+          {
+            scale: 0
+          },
+          {
+            scale: 1,
+            stagger: 0.025,
+            duration: 0.5,
+            // delay: -0.3,
+            ease: 'back.out(2)'
+          },
+          0
+        )
+        .fromTo(
+          project.querySelector('.link'),
+          {
+            scale: 0
+          },
+          {
+            scale: 1,
+            duration: 0.5,
+            ease: 'back.out(2)'
+          },
+          0
+        )
+        .to(
+          project.querySelector('.link'),
+          {
+            rotate: 365,
+            duration: 1,
+            ease: 'back.inOut(3)'
+          },
+          0
+        );
+
+      project.addEventListener('mouseenter', () => {
+        hovertl.play();
+      });
+
+      project.addEventListener('mouseleave', () => {
+        hovertl.reverse();
+      });
+    };
+
+    projects.forEach((project: HTMLDivElement) => {
+      const cardInfo = project.querySelector('.card-info');
+      hoverCard(project, cardInfo!);
+    });
   }, []);
 
   return projectsRef;

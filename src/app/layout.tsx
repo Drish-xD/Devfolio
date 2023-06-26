@@ -16,9 +16,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${jetBrain.variable} ${offBit.variable}`}>
       <body>
-        <Blob />
         <Navbar />
         {children}
+        <Blob />
         <Analytics />
       </body>
     </html>

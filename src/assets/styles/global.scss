@@ -15,9 +15,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: white;
   background: $black;
+  overscroll-behavior: none;
   font-family: $JetBrain, monospace;
 }
 
+// Lenis scroll
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+// disable scrollbar
 body::-webkit-scrollbar {
   display: none;
 }
@@ -85,7 +109,7 @@ li {
   .section-header {
     display: inline-flex;
     align-items: baseline;
-    margin-top: 8em;
+    margin-block: 8em;
     line-height: 0.9;
     overflow: hidden;
 

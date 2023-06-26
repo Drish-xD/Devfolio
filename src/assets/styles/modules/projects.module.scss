@@ -1,75 +1,115 @@
 .projects-container {
   width: 100%;
-  margin-top: 2rem;
+  align-items: center;
   display: flex;
-  flex-wrap: nowrap;
-  gap: 10rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
 
-  .half_container {
+  .project-card {
+    position: relative;
+    display: block;
     width: 50%;
-    object-fit: contain;
+    aspect-ratio: 4 / 3;
+    will-change: transform;
+    transform-origin: 50% 50%;
 
-    &.right {
-      margin-top: 7rem;
-    }
+    .card-cover {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
 
-    &.left .project-card .card-image {
-      aspect-ratio: 1;
-    }
-
-    .project-card {
-      width: 100%;
-
-      .card-image {
-        position: relative;
+      span {
+        display: block;
         width: 100%;
-        aspect-ratio: 4 / 5;
-        border-radius: 1rem;
-        transform-origin: bottom;
+        height: 100%;
+        background-color: #111111;
+        overflow: hidden;
+      }
+    }
+
+    &:nth-child(odd) {
+      margin-left: auto;
+    }
+
+    &:nth-child(even) {
+      margin-right: auto;
+    }
+
+    img {
+      object-fit: cover;
+      transition: filter 0.4s;
+    }
+
+    .card-info {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      bottom: 0;
+      inset-inline: 0;
+      z-index: 2;
+      overflow: hidden;
+
+      h3 {
+        margin-top: 1rem;
+        display: inline-flex;
+        overflow: hidden;
+        margin-left: 2rem;
+        font-size: 4rem;
+        font-weight: 700;
+
+        span {
+          transform: translateY(100%) rotate(45deg);
+          transform-origin: bottom left;
+        }
+      }
+
+      p {
+        margin-left: 2rem;
+        margin-bottom: 0.5rem;
+        font-size: 2rem;
+        font-weight: 200;
+      }
+
+      .tags {
+        margin: 1rem;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
         overflow: hidden;
 
-        img {
-          border-radius: inherit;
-          object-fit: cover;
-        }
-
-        .tags {
-          z-index: 1;
-          position: absolute;
-          inset: auto 0 0 0;
-          margin: 1rem;
-          display: flex;
-          gap: 1rem;
-          flex-wrap: wrap;
-          justify-content: space-evenly;
-
-          span {
-            padding: 0.2rem 0.5rem;
-            background-color: rgba($black, 15%);
-            backdrop-filter: blur(1rem);
-            font-size: 0.8rem;
-            border-radius: 0.4rem;
-          }
+        span {
+          padding: 0.2rem 0.5rem;
+          margin: 0.2rem;
+          background-color: rgba($black, 15%);
+          backdrop-filter: blur(1rem);
+          font-size: 0.8rem;
+          border-radius: 0.4rem;
+          overflow: inherit;
+          transform: scale(0);
         }
       }
+    }
 
-      .card-info {
-        padding: 1rem;
-        text-align: center;
-
-        h3 {
-          margin-bottom: 0.5rem;
-          font-size: 1.8rem;
-          font-weight: bold;
-          font-style: italic;
-        }
-
-        p {
-          margin-bottom: 0.5rem;
-          font-size: 1rem;
-          font-weight: 200;
-        }
-      }
+    .link {
+      position: absolute;
+      bottom: 15%;
+      right: -2.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $white;
+      border-radius: 50%;
+      width: 5rem;
+      aspect-ratio: 1;
+      z-index: 3;
+      transform: scale(0);
+      font-size: 2rem;
+      color: $black;
+      font-family: $Offbit;
+      vertical-align: baseline;
+      transform: rotate(365);
     }
   }
 }
