@@ -1,2 +1,38 @@
 #skills {
+  .global-section {
+    margin-bottom: 0;
+  }
+
+  .skill-container {
+    width: 100vw;
+    overflow: hidden;
+
+    .row {
+      font-size: 6rem;
+      font-weight: 600;
+      display: flex;
+      flex-wrap: nowrap;
+      margin-bottom: 3rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      span {
+        white-space: nowrap;
+
+        &::after {
+          content: '·';
+          font-size: 4rem;
+          color: $white;
+          margin-inline: 0.5rem;
+        }
+
+        &:nth-child(even) {
+          color: transparent;
+          -webkit-text-stroke: 1px $white;
+        }
+      }
+    }
+  }
 }

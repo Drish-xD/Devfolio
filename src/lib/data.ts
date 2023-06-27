@@ -25,21 +25,25 @@ export const projectsJson = [
   }
 ];
 
-export const technologies = {
-  frontEnd: [
-    'HTML/CSS',
-    'JavaScript',
-    'SCSS',
-    'jQuery',
-    'React.js',
-    'Redux',
-    'Next.js',
-    'Gatsby',
-    'Vue.js'
-  ],
-
-  mobileApp: ['Flutter', 'React Native'],
-  backEnd: ['Node.js', 'Flask'],
-  database: ['MySQL', 'SQLite', 'MongoDB'],
-  baas: ['Firebase', 'AppWrite', 'Supabase']
-};
+export const skills = [
+  'JavaScript',
+  'TypeScript',
+  'Python',
+  'Dart',
+  'SCSS',
+  'React.js',
+  'Redux',
+  'Next.js',
+  'Gatsby',
+  'GSAP',
+  'Vue.js',
+  'Flutter',
+  'Native',
+  'Node.js',
+  'Flask',
+  'MySQL',
+  'MongoDB',
+  'Firebase',
+  'AppWrite',
+  'Supabase'
+];

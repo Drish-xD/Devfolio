@@ -5,12 +5,7 @@ export default function About() {
     <section className="global-section" id="about">
       <SectionHeader text="About" num={4} />
       <div className="about-container">
-        <h3>
-          Hi, I&rsquo;m{' '}
-          <span data-value="Drish." className="hover-animation">
-            Drish.
-          </span>
-        </h3>
+        <h3>Hi, I&rsquo;m Drish.</h3>
         <h4>Let&rsquo;s build something together.</h4>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis sapiente illo ab
