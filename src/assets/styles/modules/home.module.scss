@@ -1,28 +1,22 @@
 #home {
   width: 100%;
-  user-select: none;
 
   .home_container {
-    padding-block: 8rem;
-    margin: auto;
-    width: 65%;
-    height: 100%;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    display: flex;
+    width: 65%;
+    height: 100%;
+    padding-block: 8rem;
+    margin: auto;
 
     .line-wrap {
       width: 100%;
       display: flex;
+      white-space: nowrap;
 
       &.one {
-        align-items: center;
-        display: flex;
-        overflow: hidden;
-        span {
-          margin-right: 1em;
-          font: 15em $Offbit;
-        }
+        justify-content: flex-end;
       }
 
       &.three {
@@ -40,6 +34,7 @@
           font-size: 1rem;
           font-weight: 300;
           text-transform: uppercase;
+          white-space: normal;
         }
       }
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { SectionHeader } from '@components';
-import { skills } from '@lib/data';
+import { SKILLS } from '@lib/data';
 import { useLayoutEffect, useState } from 'react';
 
 import Marquee from './marquee';
@@ -13,7 +13,7 @@ export default function Skills() {
 
   useLayoutEffect(() => {
     // Create the 2D random list of skills
-    const shuffledSkills = [...skills].sort(() => Math.random() - 0.5);
+    const shuffledSkills = [...SKILLS].sort(() => Math.random() - 0.5);
 
     const updatedSkills2D: string[][] = Array.from(
       { length: Math.ceil(shuffledSkills.length / COLUMN_SIZE) },

@@ -6,7 +6,6 @@ export default function About() {
       <SectionHeader text="About" num={4} />
       <div className="about-container">
         <h3>Hi, I&rsquo;m Drish.</h3>
-        <h4>Let&rsquo;s build something together.</h4>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis sapiente illo ab
           eveniet? Alias voluptas est minima officia illum eos, ad minus mollitia ipsa natus.

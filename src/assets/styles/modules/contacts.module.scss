@@ -1,5 +1,35 @@
 #contact {
-  position: relative;
-  display: block;
-  height: 100vh;
+  .contact-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    h3 {
+      font-size: 3rem;
+    }
+
+    .links-container {
+      > li {
+        margin-bottom: 1.5rem;
+
+        h4 {
+          text-transform: capitalize;
+          font-size: 1.8rem;
+        }
+
+        ul {
+          width: 80%;
+          display: inline-flex;
+          flex-wrap: nowrap;
+          flex-direction: row;
+
+          li {
+            font-size: 1rem;
+            font-weight: 200;
+            flex-grow: 1;
+            margin-top: 0.2rem;
+          }
+        }
+      }
+    }
+  }
 }

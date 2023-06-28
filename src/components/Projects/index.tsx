@@ -1,7 +1,7 @@
 'use client';
 
 import { SectionHeader } from '@components';
-import { projectsJson } from '@lib/data';
+import { PROJECTSJSON } from '@lib/data';
 import { useCardsAnimation } from '@myhooks';
 
 import Card from './Card';
@@ -13,7 +13,7 @@ export default function Projects() {
     <section className="global-section" id="projects">
       <SectionHeader text="Projects" num={2} />
       <div className="projects-container">
-        {projectsJson.map((project, index) => (
+        {PROJECTSJSON.map((project, index) => (
           <Card
             key={project.id}
             {...project}

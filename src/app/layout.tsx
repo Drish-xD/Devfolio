@@ -4,8 +4,11 @@ import '@styles/global.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { ReactNode } from 'react';
 
-const Blob = nextImport('Blob');
-const Navbar = nextImport('Navbar');
+const { Blob, Navbar, Footer } = {
+  Blob: nextImport('Blob'),
+  Navbar: nextImport('Navbar'),
+  Footer: nextImport('Footer')
+};
 
 export const metadata = {
   title: 'Drish | Portfolio',
@@ -19,6 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Navbar />
         {children}
         <Blob />
+        <Footer />
         <Analytics />
       </body>
     </html>

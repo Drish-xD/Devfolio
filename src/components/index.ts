@@ -1,9 +1,10 @@
 export { default as About } from './About';
 export { default as Contacts } from './Contacts';
 export { default as Home } from './Home';
-export { default as Loader } from './Loader';
-export { default as Navbar } from './Navbar';
 export { default as Projects } from './Projects';
 export { default as Skills } from './Skills';
 export { default as Blob } from './common/Blob';
+export { default as Footer } from './common/Footer';
+export { default as Loader } from './common/Loader';
+export { default as Navbar } from './common/Navbar';
 export { default as SectionHeader } from './common/SectionHeader';
