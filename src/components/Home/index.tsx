@@ -3,7 +3,6 @@ export default function Home() {
     <section id="home">
       <div className="home_container">
         <div className="line-wrap one">
-          <span></span>
           <h1>I Design</h1>
         </div>
         <div className="line-wrap two">

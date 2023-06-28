@@ -71,7 +71,6 @@ li {
 }
 
 .blob-wrapper {
-  pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: -12;
@@ -92,11 +91,19 @@ li {
   }
 
   #blur {
-    pointer-events: none;
     position: fixed;
     inset: 0;
     z-index: -10;
     backdrop-filter: blur(12vmax);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/noise.webp');
+      opacity: 0.8;
+      z-index: -10;
+    }
   }
 }
 
@@ -120,7 +127,6 @@ li {
     }
     span {
       font-size: 1.2rem;
-      overflow: inherit;
     }
   }
 }
