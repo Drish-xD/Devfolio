@@ -19,15 +19,28 @@ const NavbarAnime = (): {
           ease: 'Expo.easeInOut',
           duration: 0.8
         })
-        .to('.menu h2 span', {
-          duration: 0.4,
-          y: 0,
-          rotate: 0,
-          ease: 'Circ.easeOut',
-          stagger: {
-            each: 0.1
-          }
-        });
+        .to(
+          '.menu h2 a',
+          {
+            duration: 0.4,
+            y: 0,
+            rotate: 0,
+            stagger: 0.1,
+            ease: 'back.out(2)'
+          },
+          1
+        )
+        .fromTo(
+          '.menu h2 span',
+          { scale: 0 },
+          {
+            scale: 1,
+            duration: 0.4,
+            stagger: 0.1,
+            ease: 'back.out(2)'
+          },
+          1
+        );
     }, navbarRef);
 
     return () => ctx.revert();

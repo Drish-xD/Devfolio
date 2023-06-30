@@ -3,7 +3,7 @@ export default function Home() {
     <section id="home">
       <div className="home_container">
         <div className="line-wrap one">
-          <h1>I Design</h1>
+          <h1>I Create</h1>
         </div>
         <div className="line-wrap two">
           <h1>Experiences</h1>

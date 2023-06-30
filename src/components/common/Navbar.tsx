@@ -1,12 +1,11 @@
 'use client';
 
+import { NAVLINKS } from '@lib/data';
 import { useNavAnimation } from '@myhooks';
 import Link from 'next/link';
 
 export default function Navbar() {
   const { navbarRef, closeMenu, openMenu } = useNavAnimation();
-
-  const links = ['home', 'about', 'skills', 'projects', 'contacts'];
 
   return (
     <header>
@@ -25,18 +24,17 @@ export default function Navbar() {
           </div>
         </div>
         <nav className="menu">
-          {links.map((link) => (
+          {NAVLINKS.map((link, i) => (
             <h2 key={link}>
-              <span>
-                <Link
-                  className="hover-animation"
-                  data-value={link}
-                  href={`/#${link}`}
-                  onClick={closeMenu}
-                >
-                  {link}
-                </Link>
-              </span>
+              <Link
+                className="hover-animation"
+                data-value={link}
+                href={`/#${link}`}
+                onClick={closeMenu}
+              >
+                {link}
+              </Link>
+              <span>{`(0${i + 1})`}</span>
             </h2>
           ))}
         </nav>

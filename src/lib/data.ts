@@ -1,3 +1,5 @@
+export const NAVLINKS = ['home', 'about', 'skills', 'projects', 'contacts'];
+
 export const PROJECTSJSON = [
   {
     id: 1,
@@ -48,7 +50,7 @@ export const SKILLS = [
   'Supabase'
 ];
 
-export const LINKS = {
+export const CONTACTLINKS = {
   mail: [
     {
       name: 'Drish.xD@gmail.com',

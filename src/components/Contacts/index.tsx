@@ -1,5 +1,5 @@
 import { SectionHeader } from '@components';
-import { LINKS } from '@lib/data';
+import { CONTACTLINKS } from '@lib/data';
 import Link from 'next/link';
 
 export default function Contacts() {
@@ -12,11 +12,11 @@ export default function Contacts() {
         </h3>
 
         <ul className="links-container">
-          {Object.keys(LINKS).map((category: string, i: number) => (
+          {Object.keys(CONTACTLINKS).map((category: string, i: number) => (
             <li key={i}>
               <h4>{category}</h4>
               <ul>
-                {LINKS[category as keyof typeof LINKS].map(({ name, link }) => (
+                {CONTACTLINKS[category as keyof typeof CONTACTLINKS].map(({ name, link }) => (
                   <li key={name}>
                     <Link href={link} className="hover-animation" data-value={name}>
                       {name}
