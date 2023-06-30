@@ -104,6 +104,22 @@ const CardsAnime = () => {
           0
         );
 
+      const circleLink = project.querySelector('.link');
+
+      circleLink?.addEventListener('mouseenter', () => {
+        gsap.to(circleLink, {
+          scale: 0.9,
+          duration: 0.4
+        });
+      });
+
+      circleLink?.addEventListener('mouseleave', () => {
+        gsap.to(circleLink, {
+          scale: 1,
+          duration: 0.4
+        });
+      });
+
       project.addEventListener('mouseenter', () => {
         hovertl.play();
       });

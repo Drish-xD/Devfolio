@@ -5,24 +5,20 @@ import { useEffect, useState } from 'react';
 const YEAR = new Date().getFullYear();
 
 export default function Footer() {
-  const [time, setTime] = useState(
-    new Date().toLocaleTimeString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
-    })
-  );
+  const getDateTime = () => {
+    const date = new Date().toLocaleDateString('en-US', { dateStyle: 'medium' });
+    const time = new Date().toLocaleTimeString('en-US', { timeStyle: 'short', hour12: false });
+    return { date, time };
+  };
+  const [{ date, time }, setDateTime] = useState(getDateTime());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(
-        new Date().toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false
-        })
-      );
-    }, 60);
+      const { time } = getDateTime();
+      setDateTime((state) => ({ ...state, time }));
+      console.log(time);
+    }, 60000);
+
     return () => {
       clearInterval(timer);
     };
@@ -31,7 +27,9 @@ export default function Footer() {
   return (
     <footer className="global-section" id="footer">
       <p>Copyright &copy; {YEAR}. All rights reserved.</p>
-      <p>{time} IST</p>
+      <p>
+        {date} | {time}
+      </p>
     </footer>
   );
 }
