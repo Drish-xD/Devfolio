@@ -1,6 +1,6 @@
 import Script from 'next/script';
 
-export default function google() {
+export default function GoogleTag() {
   return (
     <>
       <Script
