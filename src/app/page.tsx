@@ -1,10 +1,10 @@
 'use client';
 
 import { Loader } from '@components';
+import { ScrollTrigger } from '@lib/gsap';
 import { nextImport } from '@lib/nextImport';
-import { useHoverTextAnimation, useSplitTextAnimation } from '@myhooks';
+import { useHoverTextAnimation } from '@myhooks';
 import { Lenis, useLenis } from '@studio-freight/react-lenis';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect } from 'react';
 
 // dynamic imports
@@ -20,8 +20,6 @@ export default function Portfolio() {
   // smooth scroll using lenis
   const lenis = useLenis(ScrollTrigger.update);
   useLayoutEffect(() => ScrollTrigger.refresh, [lenis]);
-  // section-header animations
-  useSplitTextAnimation();
   // text-hover animation
   useHoverTextAnimation('.hover-animation');
 

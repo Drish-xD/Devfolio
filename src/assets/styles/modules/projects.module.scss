@@ -100,7 +100,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $white;
+      background-color: rgba($white, 80%);
+      backdrop-filter: blur(0.5rem);
       border-radius: 50%;
       width: 5rem;
       aspect-ratio: 1;

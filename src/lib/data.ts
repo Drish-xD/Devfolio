@@ -1,3 +1,49 @@
+import { Metadata } from 'next';
+
+export const METADATA: Metadata = {
+  title: 'Drish | Portfolio',
+  description: 'Drish',
+  alternates: { canonical: 'https://portfolio-drish-xd.vercel.app/' },
+  authors: { name: 'Drish', url: 'https://portfolio-drish-xd.vercel.app/' },
+  category: 'Portfolio',
+  colorScheme: 'dark',
+  creator: 'Drish',
+  icons: '',
+  keywords: [
+    'Portfolio',
+    'Drish',
+    'DrishxD',
+    'Drish-xD',
+    'Drish Portfolio',
+    'Drish.xD',
+    'Website',
+    'Gsap',
+    'SRM',
+    'Front-end',
+    'Developer'
+  ],
+  openGraph: {
+    type: 'website',
+    countryName: 'India',
+    emails: 'drish.xd@gmail.com',
+    title: 'Drish | Portfolio',
+    url: '',
+    description: 'Drish',
+    images: ''
+  },
+  publisher: 'Drish',
+  manifest: '',
+  robots: 'index, follow',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Drish | Portfolio',
+    description: '',
+    siteId: '',
+    creator: '@Drish-xD'
+  },
+  referrer: 'origin'
+};
+
 export const NAVLINKS = ['home', 'about', 'skills', 'projects', 'contacts'];
 
 export const PROJECTSJSON = [

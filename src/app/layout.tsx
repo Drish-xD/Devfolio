@@ -1,5 +1,6 @@
 import { GoogleTag } from '@components';
 import { jetBrain, offBit } from '@fonts/font';
+import { METADATA } from '@lib/data';
 import { nextImport } from '@lib/nextImport';
 import '@styles/global.scss';
 import { Analytics } from '@vercel/analytics/react';
@@ -13,10 +14,7 @@ const { Blob, Navbar, Footer } = {
 };
 
 // meta data
-export const metadata = {
-  title: 'Drish | Portfolio',
-  description: 'Drish'
-};
+export const metadata = METADATA;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
