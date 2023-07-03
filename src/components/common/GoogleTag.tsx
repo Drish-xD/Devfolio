@@ -4,16 +4,16 @@ export default function GoogleTag() {
   return (
     <>
       <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-40B78ZZ8HD"
       />
-      <Script id="google-analytics">
+      <Script strategy="afterInteractive" id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+          gtag('config', 'G-40B78ZZ8HD');
         `}
       </Script>
     </>
