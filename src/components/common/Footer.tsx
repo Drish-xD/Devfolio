@@ -16,7 +16,6 @@ export default function Footer() {
     const timer = setInterval(() => {
       const { time } = getDateTime();
       setDateTime((state) => ({ ...state, time }));
-      console.log(time);
     }, 60000);
 
     return () => {

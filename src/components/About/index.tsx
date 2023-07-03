@@ -1,20 +1,18 @@
+'use client';
+
 import { SectionHeader } from '@components';
+import { ABOUTTEXT } from '@lib/data';
+import { useAboutAnimation } from '@myhooks';
 
 export default function About() {
+  const aboutRef = useAboutAnimation();
+
   return (
     <section className="global-section" id="about">
       <SectionHeader text="About" num={4} />
-      <div className="about-container">
+      <div className="about-container" ref={aboutRef}>
         <h3>Hi, I&rsquo;m Drish.</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis sapiente illo ab
-          eveniet? Alias voluptas est minima officia illum eos, ad minus mollitia ipsa natus.
-          Praesentium quis eveniet eaque aliquam omnis ullam nostrum adipisci quas obcaecati
-          eligendi totam delectus suscipit, eos nobis labore dolores! Ad, voluptates. Illum esse
-          amet modi, dolores iusto voluptatum cumque incidunt aliquid, quia perspiciatis tenetur
-          exercitationem adipisci deleniti vero natus architecto nam possimus qui mollitia? Fugit
-          maxime inventore saepe odit, perspiciatis in fuga sunt dignissimos possimus!
-        </p>
+        <p>{ABOUTTEXT}</p>
       </div>
     </section>
   );

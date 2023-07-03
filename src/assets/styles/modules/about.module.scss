@@ -6,6 +6,11 @@
       font-size: 3rem;
       line-height: 1.2;
       font-weight: 700;
+      background: linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(37, 37, 37) 50%);
+      background-size: 200% 100%;
+      background-position-x: 100%;
+      color: transparent;
+      background-clip: text;
     }
 
     p {
@@ -13,7 +18,14 @@
       margin-top: 1rem;
       font-size: 2rem;
       font-weight: 300;
-      color: rgba($white, 0.9);
+
+      span {
+        background: linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(37, 37, 37) 50%);
+        background-size: 200% 100%;
+        background-position-x: 100%;
+        color: transparent;
+        background-clip: text;
+      }
     }
   }
 }

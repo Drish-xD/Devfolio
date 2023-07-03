@@ -1,3 +1,4 @@
+export { default as useAboutAnimation } from './Animations/about';
 export { default as useCardsAnimation } from './Animations/cards';
 export { default as useHoverTextAnimation } from './Animations/hoverText';
 export { default as useLoaderAnimation } from './Animations/loader';
