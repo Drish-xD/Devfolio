@@ -1,8 +1,5 @@
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { gsap } from '@lib/gsap';
 import { RefObject, useEffect, useRef } from 'react';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const SplitTextAnime = (): RefObject<HTMLDivElement> => {
   const sectionHeaders = useRef<HTMLDivElement>(null);

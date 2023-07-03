@@ -7,4 +7,5 @@ export { default as Blob } from './common/Blob';
 export { default as Footer } from './common/Footer';
 export { default as Loader } from './common/Loader';
 export { default as Navbar } from './common/Navbar';
+export { default as GoogleTag } from './common/google';
 export { default as SectionHeader } from './common/SectionHeader';

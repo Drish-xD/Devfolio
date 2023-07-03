@@ -1,5 +1,5 @@
+import { gsap } from '@lib/gsap';
 import { useLenis } from '@studio-freight/react-lenis';
-import { gsap } from 'gsap';
 import { RefObject, useLayoutEffect, useRef } from 'react';
 
 const NavbarAnime = (): {

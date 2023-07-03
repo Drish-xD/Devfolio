@@ -1,9 +1,6 @@
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from '@lib/gsap';
 import { useLayoutEffect, useRef } from 'react';
 import SplitType from 'split-type';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutAnime() {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -11,14 +8,15 @@ export default function AboutAnime() {
   useLayoutEffect(() => {
     const container = aboutRef.current;
 
-    if (container) {
-      const textContent = new SplitType(container.querySelector('p')!, {
-        types: 'lines',
-        tagName: 'span'
-      });
+    if (!container) return;
 
-      const aboutTl = gsap.timeline({ paused: true });
-      aboutTl
+    const textContent = new SplitType(container.querySelector('p')!, {
+      types: 'lines',
+      tagName: 'span'
+    });
+    const ctx = gsap.context(() => {
+      gsap
+        .timeline({ paused: true })
         .to(container.querySelector('h3'), {
           duration: 1,
           backgroundPositionX: 0,
@@ -35,12 +33,14 @@ export default function AboutAnime() {
           stagger: 1,
           scrollTrigger: {
             trigger: textContent.lines,
-            scrub: 1,
+            scrub: 2,
             start: 'top center+=20%',
             end: 'bottom top'
           }
         });
-    }
+    }, container);
+
+    return () => ctx.revert();
   }, []);
 
   return aboutRef;

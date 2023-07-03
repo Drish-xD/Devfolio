@@ -1,4 +1,4 @@
-import { gsap } from 'gsap';
+import { gsap } from '@lib/gsap';
 import { RefObject, useLayoutEffect, useRef } from 'react';
 
 const Marquee = (skills: string[][]): RefObject<HTMLHeadingElement[]> => {
