@@ -1,20 +1,17 @@
 #home {
   .home_container {
-    width: 80%;
-    padding-block: 8rem;
-    margin: auto;
+    width: 100%;
+    height: 100dvh;
+    @include flexbox($alignItem: center, $jusCon: center, $dir: column);
 
     h1 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      @include flexbox($alignItem: center, $jusCon: center, $dir: column);
       white-space: nowrap;
-      font-size: clamp(2.8rem, 10vi, 10rem);
+      font-size: clamp(3rem, 10vi, 10rem);
       line-height: 1.2;
 
       > span:last-child {
-        display: flex;
+        @include flexbox;
 
         > span {
           display: inline-block;
@@ -25,7 +22,7 @@
       }
     }
     p {
-      width: 60%;
+      width: 50%;
       margin: 1rem auto;
       text-align: center;
       font-size: clamp(0.8rem, 1.5vi, 1.3rem);
@@ -35,27 +32,14 @@
   }
 }
 
-@include device('tablet') {
-  #home .home_container {
-    p {
-      width: 80%;
-    }
-  }
-}
-
 @include device('mobile') {
-  #home .home_container {
-    width: 90%;
-    p {
-      width: 70%;
-    }
-  }
-}
+  #home {
+    height: 85dvh;
 
-@include device('small-mobile') {
-  #home .home_container {
-    p {
-      width: 80%;
+    .home_container {
+      p {
+        width: 60%;
+      }
     }
   }
 }
