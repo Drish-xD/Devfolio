@@ -1,5 +1,6 @@
 // Import Variables and Fonts
 @import './variable';
+@import './mixin';
 
 // Global CSS
 * {
@@ -16,7 +17,7 @@ body {
   color: white;
   background: $black;
   overscroll-behavior: none;
-  font-family: $JetBrain, monospace;
+  font-family: $MainFont;
 }
 
 // Lenis scroll
@@ -77,7 +78,7 @@ li {
 
   #blob {
     display: block;
-    height: 28vmax;
+    height: 25vmax;
     aspect-ratio: 1;
     position: absolute;
     left: 50%;
@@ -94,7 +95,7 @@ li {
     position: fixed;
     inset: 0;
     z-index: -10;
-    backdrop-filter: blur(12vmax);
+    backdrop-filter: blur(12.5vmax);
 
     &::before {
       content: '';
@@ -123,7 +124,7 @@ li {
     h2 {
       letter-spacing: 1rem;
       font-size: 15em;
-      font-family: $Offbit;
+      font-family: $SecFont;
     }
     span {
       font-size: 1.2rem;

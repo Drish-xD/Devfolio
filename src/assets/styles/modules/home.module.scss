@@ -1,91 +1,61 @@
 #home {
   .home_container {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
+    width: 80%;
     padding-block: 8rem;
     margin: auto;
 
-    .line-wrap {
+    h1 {
       display: flex;
-      white-space: nowrap;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      font-size: clamp(2.8rem, 10vi, 10rem);
+      line-height: 1.2;
 
-      &.three {
-        span {
-          margin-left: -1.5rem;
-          margin-block: auto;
-          font-size: 1.5rem;
-          font-weight: 700;
+      > span:last-child {
+        display: flex;
+
+        > span {
+          display: inline-block;
+          margin: auto;
+          font-size: clamp(0.2em, 2vi, 0.25em);
           transform: rotate(-90deg);
         }
-        p {
-          margin: auto 0 auto 1rem;
-          font-size: 1.3rem;
-          font-weight: 200;
-          text-transform: uppercase;
-          white-space: normal;
-        }
       }
-
-      h1 {
-        font-size: 10em;
-        line-height: 1.2;
-      }
-
-      &.mobile {
-        display: none;
-      }
+    }
+    p {
+      width: 60%;
+      margin: 1rem auto;
+      text-align: center;
+      font-size: clamp(0.8rem, 1.5vi, 1.3rem);
+      font-weight: 200;
+      text-transform: uppercase;
     }
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .home_container {
-    .line-wrap {
-      &.one {
-        span {
-          font-size: 9em;
-        }
-      }
-
-      // h1 {
-      //   font-size: 7em;
-      // }
+@include device('tablet') {
+  #home .home_container {
+    p {
+      width: 80%;
     }
   }
 }
 
-@media screen and (max-width: 768px) {
-  .home_container {
-    width: 85%;
+@include device('mobile') {
+  #home .home_container {
+    width: 90%;
+    p {
+      width: 70%;
+    }
+  }
+}
 
-    .line-wrap {
-      &.one {
-        span {
-          font-size: 8em;
-        }
-      }
-
-      &.three {
-        h1,
-        span {
-          display: none;
-        }
-
-        p {
-          font-size: 0.8rem;
-          width: 70%;
-        }
-      }
-
-      // h1 {
-      //   font-size: 5em;
-      // }
-
-      &.mobile {
-        display: block;
-      }
+@include device('small-mobile') {
+  #home .home_container {
+    p {
+      width: 80%;
     }
   }
 }
