@@ -1,69 +1,50 @@
 header {
-  position: absolute;
-  inset: 0 0 auto;
+  @include position($inset: 0 0 auto);
   z-index: 40;
 
   .fixed-header {
+    @include position($l: 50%);
+    @include flexbox($jusCon: space-between, $alignItem: center);
     width: 75%;
-    position: absolute;
-    left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-top: 0.5rem;
 
-    .spade {
-      font-size: 3rem;
+    span:first-of-type {
+      font-size: clamp(2rem, 8vi, 3rem);
+    }
+
+    span:last-of-type {
+      font-size: clamp(0.7rem, 3vi, 1rem);
+      cursor: pointer;
     }
   }
 
-  .menu-close,
-  .menu-open {
-    font-size: 1rem;
-    cursor: pointer;
-  }
-
-  .menu-close {
-    margin-top: 1.2rem;
-  }
-
-  .nav-container {
-    position: fixed;
-    top: -100%;
+  section {
+    @include position($t: -100%, $isFixed: true);
+    @include blurbg(20%, 2vmax);
     width: 100%;
-    height: 100vh;
-    background: rgba($black, 20%);
-    backdrop-filter: blur(2vmax);
+    height: 100dvh;
 
-    .menu {
+    nav {
       height: 100%;
-      gap: 1em;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      gap: 1rem;
+      @include flexbox($dir: column, $alignItem: center, $jusCon: center);
 
       h2 {
-        display: inline-flex;
-        flex-wrap: nowrap;
-        align-items: baseline;
+        @include flexbox($alignItem: baseline);
         overflow: hidden;
-
-        &:nth-child(odd) {
-          flex-direction: row-reverse;
-        }
 
         a {
           display: block;
           text-transform: uppercase;
-          font-size: 3.5em;
+          font-size: clamp(1.3em, 8vi, 3.5em);
           transform: translateY(110%) rotate(3deg);
         }
 
         span {
-          overflow: hidden;
+          overflow: inherit;
           font-weight: 400;
+          font-size: clamp(0.5em, 1.5vi, 1em);
           transform: scale(0);
         }
       }

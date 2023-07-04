@@ -1,3 +1,65 @@
+// Position absolute mixin
+
+@mixin position($t: null, $l: null, $b: null, $r: null, $inset: null, $isFixed: false) {
+  // fixed or absolute
+  @if $isFixed {
+    position: fixed;
+  } @else {
+    position: absolute;
+  }
+
+  // position
+  @if $inset != null {
+    inset: $inset;
+  } @else {
+    @if $t != null {
+      top: $t;
+    }
+
+    @if $l != null {
+      left: $l;
+    }
+
+    @if $b != null {
+      bottom: $b;
+    }
+
+    @if $r != null {
+      right: $r;
+    }
+  }
+}
+
+// FlexBox Mixin
+
+@mixin flexbox($dir: '', $jusCon: '', $alignItem: '', $wrap: '') {
+  display: flex;
+
+  @if $jusCon != '' {
+    justify-content: $jusCon;
+  }
+
+  @if $alignItem != '' {
+    align-items: $alignItem;
+  }
+
+  @if $dir != '' {
+    flex-direction: $dir;
+  }
+
+  @if $wrap != '' {
+    flex-wrap: $wrap;
+  }
+}
+
+// Blured background mixin
+@mixin blurbg($o, $b, $c: $black) {
+  background: rgba($c, $o);
+  backdrop-filter: blur($b);
+}
+
+// responsive media mixin
+
 @mixin device($breakpoint) {
   @if $breakpoint == desktop {
     @media screen and (max-width: 1280px) {

@@ -1,12 +1,12 @@
 import { useLayoutEffect, useRef } from 'react';
 
 const HoverTextAnime = () => {
-  const linkRef = useRef<HTMLBodyElement>(null);
+  const bodyRef = useRef<HTMLBodyElement>(null);
 
   useLayoutEffect(() => {
-    const links = linkRef.current;
+    const body = bodyRef.current;
 
-    if (!links) return;
+    if (!body) return;
 
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -14,7 +14,7 @@ const HoverTextAnime = () => {
       const target = event.target as HTMLElement;
 
       let iteration = 0;
-      const targetValue = target.getAttribute('data-value') || '';
+      const targetValue = target.getAttribute('data-hover') || '';
 
       const interval = setInterval(() => {
         target.innerText = targetValue
@@ -35,7 +35,7 @@ const HoverTextAnime = () => {
       }, 30);
     };
 
-    const elements = links.querySelectorAll('.hover-animation');
+    const elements = body.querySelectorAll('[data-hover]');
     elements.forEach((element) => {
       element.addEventListener('mouseover', handleMouseEvent);
       element.addEventListener('mouseleave', handleMouseEvent);
@@ -47,8 +47,8 @@ const HoverTextAnime = () => {
         element.removeEventListener('mouseleave', handleMouseEvent);
       });
     };
-  }, [linkRef]);
-  return linkRef;
+  }, [bodyRef]);
+  return bodyRef;
 };
 
 export default HoverTextAnime;

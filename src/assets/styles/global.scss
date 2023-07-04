@@ -72,17 +72,14 @@ li {
 }
 
 .blob-wrapper {
-  position: fixed;
-  inset: 0;
+  @include position($inset: 0, $isFixed: true);
   z-index: -12;
 
   #blob {
     display: block;
     height: 25vmax;
     aspect-ratio: 1;
-    position: absolute;
-    left: 50%;
-    top: 50%;
+    @include position($t: 50%, $l: 50%);
     translate: -50% -50%;
     border-radius: 50%;
     background: linear-gradient(to right, aquamarine, mediumpurple);
@@ -92,15 +89,14 @@ li {
   }
 
   #blur {
-    position: fixed;
-    inset: 0;
+    @include position($inset: 0, $isFixed: true);
     z-index: -10;
     backdrop-filter: blur(12.5vmax);
 
     &::before {
       content: '';
-      position: absolute;
-      inset: 0;
+
+      @include position($inset: 0);
       background-image: url('/images/noise.webp');
       opacity: 0.8;
       z-index: -10;
@@ -115,34 +111,32 @@ li {
   margin: 8em auto;
 
   .section-header {
-    display: inline-flex;
-    align-items: baseline;
+    @include flexbox($alignItem: baseline, $wrap: nowrap, $dir: row);
     margin-block: 8em;
     line-height: 0.9;
     overflow: hidden;
 
     h2 {
-      letter-spacing: 1rem;
-      font-size: 15em;
+      letter-spacing: clamp(0.2rem, 1vi, 1rem);
+      font-size: clamp(3rem, 15vi, 15rem);
       font-family: $SecFont;
     }
     span {
-      font-size: 1.2rem;
+      font-size: clamp(0.8rem, 2vi, 1.8rem);
     }
   }
 }
 
 // text hover animation
 
-.hover-animation {
+[data-hover] {
   position: relative;
   transition: color 0.3s;
   padding: 0 1rem;
 
   &::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    @include position($inset: 0);
     width: 0;
     z-index: -1;
     border-radius: 0.5rem;

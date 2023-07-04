@@ -12,15 +12,16 @@ const NavbarAnime = (): {
   const lenis = useLenis();
 
   useLayoutEffect(() => {
+    const navbar = navbarRef.current;
     let ctx = gsap.context(() => {
       nav_tl
-        .to(navbarRef.current, {
+        .to(navbar, {
           top: 0,
           ease: 'Expo.easeInOut',
           duration: 0.8
         })
         .to(
-          '.menu h2 a',
+          navbar!.querySelectorAll('h2 a'),
           {
             duration: 0.4,
             y: 0,
@@ -31,7 +32,7 @@ const NavbarAnime = (): {
           1
         )
         .fromTo(
-          '.menu h2 span',
+          navbar!.querySelectorAll('h2 span'),
           { scale: 0 },
           {
             scale: 1,

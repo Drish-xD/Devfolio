@@ -10,35 +10,30 @@ export default function Navbar() {
   return (
     <header>
       <div className="fixed-header">
-        <div className="spade">♠</div>
-        <div className="hover-animation menu-open" data-value="Menu" onClick={openMenu}>
+        <span>♠</span>
+        <span data-hover="Menu" onClick={openMenu}>
           Menu
-        </div>
+        </span>
       </div>
 
-      <div className="nav-container" ref={navbarRef}>
+      <section ref={navbarRef}>
         <div className="fixed-header">
-          <span></span>
-          <div data-value="Close" className="hover-animation menu-close" onClick={closeMenu}>
+          <span>♠</span>
+          <span data-hover="Close" onClick={closeMenu}>
             Close
-          </div>
+          </span>
         </div>
-        <nav className="menu">
+        <nav>
           {NAVLINKS.map((link, i) => (
             <h2 key={link}>
-              <Link
-                className="hover-animation"
-                data-value={link}
-                href={`/#${link}`}
-                onClick={closeMenu}
-              >
+              <Link data-hover={link} href={`/#${link}`} onClick={closeMenu}>
                 {link}
               </Link>
               <span>{`(0${i + 1})`}</span>
             </h2>
           ))}
         </nav>
-      </div>
+      </section>
     </header>
   );
 }
