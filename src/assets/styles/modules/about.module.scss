@@ -3,7 +3,7 @@
     width: 80%;
 
     h3 {
-      font-size: 3rem;
+      font-size: clamp(1.7rem, 5vi, 3rem);
       line-height: 1.2;
       font-weight: 700;
       background: linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(37, 37, 37) 50%);
@@ -16,7 +16,7 @@
     p {
       line-height: 1.5;
       margin-top: 1rem;
-      font-size: 2rem;
+      font-size: clamp(1.2rem, 3.4vi, 2rem);
       font-weight: 300;
 
       span {
@@ -26,6 +26,14 @@
         color: transparent;
         background-clip: text;
       }
+    }
+  }
+}
+
+@include device('tablet') {
+  #about {
+    .about-container {
+      width: 100%;
     }
   }
 }

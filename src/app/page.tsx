@@ -1,8 +1,8 @@
 import { Loader } from '@components';
-import { nextImport } from '@lib/nextImport';
+import { nextImport } from '@utils/nextImport';
 
 // dynamic imports
-const { Home, Projects, Skills, About, Contacts } = {
+const { Home, Projects, About, Contacts, Skills } = {
   Home: nextImport('Home'),
   Projects: nextImport('Projects'),
   Skills: nextImport('Skills'),

@@ -1,7 +1,7 @@
-import { useMarqueeAnimation } from '@myhooks';
+import { useMarqueeAnime } from '@myhooks';
 
 export default function Marquee({ skills }: { skills: string[][] }) {
-  const rowRefs = useMarqueeAnimation(skills);
+  const rowRefs = useMarqueeAnime(skills);
 
   return (
     <>

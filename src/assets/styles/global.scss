@@ -107,11 +107,11 @@ li {
 
 .global-section {
   width: 70%;
-  margin: 8em auto;
+  margin: clamp(4em, 10vi, 8em) auto;
 
   .section-header {
     @include flexbox($alignItem: baseline, $wrap: nowrap, $dir: row, $isInline: true);
-    margin-block: 8em;
+    margin-block: clamp(4em, 10vi, 8em);
     line-height: 0.9;
     overflow: hidden;
 

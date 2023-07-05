@@ -2,9 +2,10 @@
   .contact-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
 
     h3 {
-      font-size: 3rem;
+      font-size: clamp(1.5rem, 5vi, 3rem);
     }
 
     .links-container {
@@ -13,23 +14,49 @@
 
         h4 {
           text-transform: capitalize;
-          font-size: 1.8rem;
+          font-size: clamp(1rem, 2.5vi, 1.6em);
         }
 
         ul {
-          width: 80%;
-          display: inline-flex;
-          flex-wrap: nowrap;
-          flex-direction: row;
+          @include flexbox($dir: row, $wrap: nowrap);
 
           li {
-            font-size: 1rem;
+            font-size: clamp(0.7rem, 3vi, 1.1rem);
             font-weight: 200;
             flex-grow: 1;
-            margin-top: 0.2rem;
+            margin-top: 0.5rem;
           }
         }
       }
+    }
+  }
+}
+
+@include device(laptop) {
+  #contact {
+    .contact-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+
+      .links-container {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@include device(tablet) {
+  #contact {
+    .contact-container {
+      gap: 2rem;
+    }
+  }
+}
+
+@include device(mobile) {
+  #contact {
+    .contact-container {
+      gap: 1.2rem;
     }
   }
 }

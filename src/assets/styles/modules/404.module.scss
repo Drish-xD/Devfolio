@@ -1,20 +1,27 @@
 #not_found {
-  margin-top: 15em;
-  text-align: center;
+  height: 90dvh;
+  @include flexbox(column, flex-end, center);
+  margin-bottom: clamp(-4em, -10vi, -8em);
+
   h1 {
     font-size: 30vw;
     font-style: italic;
-    font-family: $Offbit;
-    line-height: 0.8;
+    font-family: $SecFont;
   }
 
   h3 {
-    font-size: 3rem;
+    font-size: clamp(1rem, 4vi, 3rem);
     font-weight: 200;
   }
 
   a {
-    font-size: 1.5rem;
+    font-size: clamp(0.8rem, 2.5vi, 1.5rem);
     font-weight: 400;
+  }
+}
+
+@include device(laptop) {
+  #not_found {
+    justify-content: center;
   }
 }

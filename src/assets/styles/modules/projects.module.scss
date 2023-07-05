@@ -5,6 +5,7 @@
     position: relative;
     width: calc(50% + 1rem);
     aspect-ratio: 4 / 3;
+    border-radius: 0.4rem;
 
     &:nth-child(odd) {
       margin-left: auto;
@@ -16,12 +17,14 @@
 
     img {
       object-fit: cover;
+      border-radius: inherit;
     }
 
     > span {
-      @include position($inset: 0);
+      @include position($inset: -1px);
       overflow: hidden;
       z-index: 4;
+      border-radius: inherit;
 
       > span {
         display: block;
@@ -37,11 +40,12 @@
       @include position($inset: auto 0 0);
       z-index: 3;
       overflow: hidden;
+      border-radius: 0.3rem;
 
       h3 {
         @include flexbox($isInline: true);
-        margin: 1rem 0 0 2rem;
-        font-size: 4rem;
+        margin: 1rem 0 0 clamp(1.2rem, 2vi, 2rem);
+        font-size: clamp(1.5rem, 5vi, 4rem);
         overflow: hidden;
 
         > span {
@@ -50,23 +54,17 @@
         }
       }
 
-      p {
-        margin-left: 2rem;
-        margin-bottom: 0.5rem;
-        font-size: 2rem;
-        font-weight: 200;
-      }
-
       > div {
-        @include flexbox($jusCon: space-evenly, $wrap: wrap, $gap: 1rem);
-        margin: 1rem;
+        @include flexbox($jusCon: space-evenly, $wrap: wrap);
+        margin: clamp(0.4rem, 1.3vi, 1rem);
+        margin-top: clamp(0.2rem, 0.8vi, 1rem);
         overflow: hidden;
 
         span {
           padding: 0.2rem 0.5rem;
           margin: 0.2rem;
           @include blurbg(10%, 0.5rem);
-          font-size: 0.8rem;
+          font-size: clamp(0.4rem, 1.3vi, 1rem);
           border-radius: 0.4rem;
           overflow: inherit;
           transform: scale(0);
@@ -75,13 +73,13 @@
     }
 
     a {
-      @include position($b: 15%, $r: -2.5rem);
+      @include position($b: 15%, $r: calc(-1 * clamp(2.5rem, 8vi, 5rem) / 2));
       @include flexbox($jusCon: center, $alignItem: center);
       @include blurbg(80%, 0.5rem, $white);
-      width: 5rem;
+      width: clamp(2.5rem, 8vi, 5rem);
       aspect-ratio: 1;
       border-radius: 50%;
-      font-size: 2rem;
+      font-size: clamp(1.2rem, 4vi, 2rem);
       font-family: $SecFont;
       color: $black;
       transform: scale(0);
@@ -95,10 +93,15 @@
     article {
       width: 65%;
       margin: auto;
+    }
+  }
+}
 
-      a {
-        width: 5rem;
-      }
+@include device('mobile') {
+  .projects-container {
+    article {
+      width: 75%;
+      margin: auto;
     }
   }
 }

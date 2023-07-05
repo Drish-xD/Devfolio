@@ -40,10 +40,10 @@
   $gap: null,
   $isInline: false
 ) {
-  @if $isInline == false {
-    display: flex;
-  } @else {
+  @if $isInline {
     display: inline-flex;
+  } @else {
+    display: flex;
   }
 
   @if $jusCon != null {

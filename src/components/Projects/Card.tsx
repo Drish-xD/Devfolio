@@ -18,10 +18,11 @@ const Card: ForwardRefRenderFunction<HTMLDivElement, ProjectProps> = ({ ...proje
     <article ref={ref}>
       <Image
         src={`https://raw.githubusercontent.com/Drish-xD/${image}`}
-        alt="project-thumbnail"
+        alt={`Project ${name} Thumbnail`}
+        title={`Project ${name} Thumbnail`}
         fill
         loading="lazy"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        sizes="(max-width: 425px) 75%, (max-width: 768px) 65%, 50%"
       />
       <span>
         <span />
@@ -41,7 +42,7 @@ const Card: ForwardRefRenderFunction<HTMLDivElement, ProjectProps> = ({ ...proje
           ))}
         </div>
       </hgroup>
-      <Link href={github} target="_blank">
+      <Link href={github} target="_blank" prefetch={false}>
         ↗
       </Link>
     </article>

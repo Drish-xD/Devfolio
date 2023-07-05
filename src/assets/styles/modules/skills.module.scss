@@ -7,11 +7,14 @@
     overflow: hidden;
 
     .row {
-      font-size: 6rem;
+      font-size: clamp(2rem, 8vi, 6rem);
       font-weight: 600;
-      display: flex;
-      flex-wrap: nowrap;
-      margin-bottom: 3rem;
+      @include flexbox($wrap: nowrap);
+      margin-bottom: 1em;
+
+      h3 {
+        line-height: 1.2;
+      }
 
       &:last-child {
         margin-bottom: 0;
@@ -22,9 +25,9 @@
 
         &::after {
           content: '·';
-          font-size: 4rem;
+          font-size: 1em;
           color: $white;
-          margin-inline: 0.5rem;
+          margin-inline: 0.25em;
         }
 
         &:nth-child(even) {

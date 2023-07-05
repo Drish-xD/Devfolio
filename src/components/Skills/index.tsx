@@ -1,7 +1,7 @@
 'use client';
 
 import { SectionHeader } from '@components';
-import { SKILLS } from '@lib/data';
+import { SKILLS } from '@utils/data';
 import { useLayoutEffect, useState } from 'react';
 
 import Marquee from './marquee';
