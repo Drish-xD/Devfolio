@@ -32,23 +32,27 @@
 
 // FlexBox Mixin
 
-@mixin flexbox($dir: '', $jusCon: '', $alignItem: '', $wrap: '') {
+@mixin flexbox($dir: null, $jusCon: null, $alignItem: null, $wrap: null, $gap: null) {
   display: flex;
 
-  @if $jusCon != '' {
+  @if $jusCon != null {
     justify-content: $jusCon;
   }
 
-  @if $alignItem != '' {
+  @if $alignItem != null {
     align-items: $alignItem;
   }
 
-  @if $dir != '' {
+  @if $dir !=null {
     flex-direction: $dir;
   }
 
-  @if $wrap != '' {
+  @if $wrap != null {
     flex-wrap: $wrap;
+  }
+
+  @if $gap != null {
+    gap: $gap;
   }
 }
 

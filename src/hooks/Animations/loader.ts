@@ -1,7 +1,7 @@
-import { gsap } from '@lib/gsap';
+import { gsap } from '@utils/gsap';
 import { useLayoutEffect, useRef } from 'react';
 
-const LoaderAnime = (): React.RefObject<HTMLElement> => {
+export const useLoaderAnime = (): React.RefObject<HTMLElement> => {
   const loader_tl = gsap.timeline();
   const loaderRef = useRef<HTMLElement>(null);
 
@@ -42,5 +42,3 @@ const LoaderAnime = (): React.RefObject<HTMLElement> => {
 
   return loaderRef;
 };
-
-export default LoaderAnime;

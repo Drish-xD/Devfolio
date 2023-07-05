@@ -1,8 +1,8 @@
 'use client';
 
-import { ScrollTrigger } from '@lib/gsap';
-import { useHoverTextAnimation } from '@myhooks';
+import { useHoverAnime } from '@myhooks';
 import { Lenis, useLenis } from '@studio-freight/react-lenis';
+import { ScrollTrigger } from '@utils/gsap';
 import { ReactNode, useLayoutEffect } from 'react';
 
 export default function LenisWrapper({ children }: { children: ReactNode }) {
@@ -10,7 +10,7 @@ export default function LenisWrapper({ children }: { children: ReactNode }) {
   const lenis = useLenis(ScrollTrigger.update);
   useLayoutEffect(() => ScrollTrigger.refresh, [lenis]);
 
-  const ref = useHoverTextAnimation();
+  const ref = useHoverAnime();
 
   return (
     <body ref={ref}>

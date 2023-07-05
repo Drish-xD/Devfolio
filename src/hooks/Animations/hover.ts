@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 
-const HoverTextAnime = () => {
+export const useHoverAnime = () => {
   const bodyRef = useRef<HTMLBodyElement>(null);
 
   useLayoutEffect(() => {
@@ -50,5 +50,3 @@ const HoverTextAnime = () => {
   }, [bodyRef]);
   return bodyRef;
 };
-
-export default HoverTextAnime;

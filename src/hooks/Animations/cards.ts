@@ -1,7 +1,7 @@
-import { gsap } from '@lib/gsap';
+import { gsap } from '@utils/gsap';
 import { useEffect, useRef } from 'react';
 
-const CardsAnime = () => {
+export const useCardsAnime = () => {
   const projectsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
@@ -74,7 +74,6 @@ const CardsAnime = () => {
             scale: 1,
             stagger: 0.025,
             duration: 0.5,
-            // delay: -0.3,
             ease: 'back.out(2)'
           },
           0
@@ -134,5 +133,3 @@ const CardsAnime = () => {
 
   return projectsRef;
 };
-
-export default CardsAnime;

@@ -1,10 +1,10 @@
 'use client';
 
-import { useLoaderAnimation } from '@myhooks';
+import { useLoaderAnime } from '@myhooks';
 import { Fragment } from 'react';
 
 export default function Loader() {
-  const loaderRef = useLoaderAnimation();
+  const loaderRef = useLoaderAnime();
 
   return (
     <section className="loader" ref={loaderRef}>

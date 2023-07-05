@@ -1,8 +1,8 @@
-export { default as useAboutAnimation } from './Animations/about';
-export { default as useCardsAnimation } from './Animations/cards';
-export { default as useHoverTextAnimation } from './Animations/hoverText';
-export { default as useLoaderAnimation } from './Animations/loader';
-export { default as useMarqueeAnimation } from './Animations/marquee';
-export { default as useNavAnimation } from './Animations/navbar';
-export { default as useSplitTextAnimation } from './Animations/splitText';
-export { default as useMousePosition } from './useMousePosition';
+export { useAboutAnime } from './Animations/about';
+export { useCardsAnime } from './Animations/cards';
+export { useHoverAnime } from './Animations/hover';
+export { useLoaderAnime } from './Animations/loader';
+export { useMarqueeAnime } from './Animations/marquee';
+export { useNavAnime } from './Animations/navbar';
+export { useTitleAnime } from './Animations/title';
+export { useMousePosition } from './useMousePosition';

@@ -1,7 +1,7 @@
-import { gsap } from '@lib/gsap';
+import { gsap } from '@utils/gsap';
 import { RefObject, useEffect, useRef } from 'react';
 
-const SplitTextAnime = (): RefObject<HTMLDivElement> => {
+export const useTitleAnime = (): RefObject<HTMLDivElement> => {
   const sectionHeaders = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,5 +40,3 @@ const SplitTextAnime = (): RefObject<HTMLDivElement> => {
 
   return sectionHeaders;
 };
-
-export default SplitTextAnime;

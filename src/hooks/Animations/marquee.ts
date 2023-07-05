@@ -1,7 +1,7 @@
-import { gsap } from '@lib/gsap';
+import { gsap } from '@utils/gsap';
 import { RefObject, useLayoutEffect, useRef } from 'react';
 
-const Marquee = (skills: string[][]): RefObject<HTMLHeadingElement[]> => {
+export const useMarqueeAnime = (skills: string[][]): RefObject<HTMLHeadingElement[]> => {
   const rowRefs = useRef<HTMLHeadingElement[]>([]);
 
   useLayoutEffect(() => {
@@ -39,5 +39,3 @@ const Marquee = (skills: string[][]): RefObject<HTMLHeadingElement[]> => {
 
   return rowRefs;
 };
-
-export default Marquee;

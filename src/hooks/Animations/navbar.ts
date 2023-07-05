@@ -1,8 +1,8 @@
-import { gsap } from '@lib/gsap';
 import { useLenis } from '@studio-freight/react-lenis';
+import { gsap } from '@utils/gsap';
 import { RefObject, useLayoutEffect, useRef } from 'react';
 
-const NavbarAnime = (): {
+export const useNavAnime = (): {
   openMenu: () => void;
   closeMenu: () => void;
   navbarRef: RefObject<HTMLDivElement>;
@@ -59,5 +59,3 @@ const NavbarAnime = (): {
 
   return { closeMenu, openMenu, navbarRef };
 };
-
-export default NavbarAnime;

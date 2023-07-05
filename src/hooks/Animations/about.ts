@@ -1,8 +1,8 @@
-import { gsap } from '@lib/gsap';
-import { useLayoutEffect, useRef } from 'react';
+import { gsap } from '@utils/gsap';
+import { RefObject, useLayoutEffect, useRef } from 'react';
 import SplitType from 'split-type';
 
-export default function AboutAnime() {
+export const useAboutAnime = (): RefObject<HTMLDivElement> => {
   const aboutRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -44,4 +44,4 @@ export default function AboutAnime() {
   }, []);
 
   return aboutRef;
-}
+};

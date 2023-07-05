@@ -1,11 +1,11 @@
 'use client';
 
-import { NAVLINKS } from '@lib/data';
-import { useNavAnimation } from '@myhooks';
+import { useNavAnime } from '@myhooks';
+import { NAVLINKS } from '@utils/data';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const { navbarRef, closeMenu, openMenu } = useNavAnimation();
+  const { navbarRef, closeMenu, openMenu } = useNavAnime();
 
   return (
     <header>

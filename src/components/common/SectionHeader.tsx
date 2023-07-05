@@ -1,9 +1,9 @@
 'use client';
 
-import { useSplitTextAnimation } from '@myhooks';
+import { useTitleAnime } from '@myhooks';
 
 export default function SectionHeader({ text, num }: { text: string; num: number }) {
-  const ref = useSplitTextAnimation();
+  const ref = useTitleAnime();
   return (
     <div ref={ref} className="section-header">
       {Array.from(text).map((letter: string, i: number) => (

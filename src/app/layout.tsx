@@ -1,8 +1,8 @@
 import { GoogleTag, LenisWrapper } from '@components';
-import { jetBrain, offBit } from '@fonts/font';
-import { METADATA } from '@lib/data';
-import { nextImport } from '@lib/nextImport';
+import { jetBrain, offBit } from '@fonts';
 import '@styles/global.scss';
+import { METADATA } from '@utils/data';
+import { nextImport } from '@utils/nextImport';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import { ReactNode } from 'react';
 

@@ -1,11 +1,11 @@
 'use client';
 
 import { SectionHeader } from '@components';
-import { ABOUTTEXT } from '@lib/data';
-import { useAboutAnimation } from '@myhooks';
+import { useAboutAnime } from '@myhooks';
+import { ABOUTTEXT } from '@utils/data';
 
 export default function About() {
-  const aboutRef = useAboutAnimation();
+  const aboutRef = useAboutAnime();
 
   return (
     <section className="global-section" id="about">

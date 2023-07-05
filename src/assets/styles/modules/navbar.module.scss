@@ -27,8 +27,7 @@ header {
 
     nav {
       height: 100%;
-      gap: 1rem;
-      @include flexbox($dir: column, $alignItem: center, $jusCon: center);
+      @include flexbox($dir: column, $alignItem: center, $jusCon: center, $gap: 1rem);
 
       h2 {
         @include flexbox($alignItem: baseline);
