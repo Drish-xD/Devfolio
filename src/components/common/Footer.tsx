@@ -26,9 +26,9 @@ export default function Footer() {
   return (
     <footer className="global-section">
       <p>Copyright &copy; {YEAR}. All rights reserved.</p>
-      <p>
+      <time>
         {date} | {time} IST
-      </p>
+      </time>
     </footer>
   );
 }

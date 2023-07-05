@@ -3,7 +3,8 @@ footer {
   padding-block: clamp(1rem, 2vi, 2rem) 2rem;
   border-top: 1px solid rgba($white, 0.8);
 
-  p {
+  p,
+  time {
     font-size: clamp(0.7rem, 3vi, 1rem);
     text-transform: capitalize;
   }

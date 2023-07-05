@@ -1,13 +1,13 @@
 'use client';
 
 import { SectionHeader } from '@components';
-import { PROJECTSJSON } from '@lib/data';
-import { useCardsAnimation } from '@myhooks';
+import { useCardsAnime } from '@myhooks';
+import { PROJECTSJSON } from 'utils/data';
 
 import Card from './Card';
 
 export default function Projects() {
-  const projectsRef = useCardsAnimation();
+  const projectsRef = useCardsAnime();
 
   return (
     <section className="global-section" id="projects">

@@ -32,8 +32,19 @@
 
 // FlexBox Mixin
 
-@mixin flexbox($dir: null, $jusCon: null, $alignItem: null, $wrap: null, $gap: null) {
-  display: flex;
+@mixin flexbox(
+  $dir: null,
+  $jusCon: null,
+  $alignItem: null,
+  $wrap: null,
+  $gap: null,
+  $isInline: false
+) {
+  @if $isInline == false {
+    display: flex;
+  } @else {
+    display: inline-flex;
+  }
 
   @if $jusCon != null {
     justify-content: $jusCon;

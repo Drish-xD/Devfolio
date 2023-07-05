@@ -15,17 +15,18 @@ const Card: ForwardRefRenderFunction<HTMLDivElement, ProjectProps> = ({ ...proje
   const { name, tags, image, github } = projects;
 
   return (
-    <article className="project-card" ref={ref}>
+    <article ref={ref}>
       <Image
         src={`https://raw.githubusercontent.com/Drish-xD/${image}`}
         alt="project-thumbnail"
         fill
+        loading="lazy"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
-      <div className="card-cover">
+      <span>
         <span />
-      </div>
-      <div className="card-info">
+      </span>
+      <hgroup>
         <h3>
           {Array.from(name).map((letter: string, i: number) => (
             <span className="letter" key={i}>
@@ -33,13 +34,14 @@ const Card: ForwardRefRenderFunction<HTMLDivElement, ProjectProps> = ({ ...proje
             </span>
           ))}
         </h3>
-        <div className="tags">
+
+        <div>
           {tags.map((tag, i) => (
             <span key={i}>{tag}</span>
           ))}
         </div>
-      </div>
-      <Link href={github} className="link">
+      </hgroup>
+      <Link href={github} target="_blank">
         ↗
       </Link>
     </article>

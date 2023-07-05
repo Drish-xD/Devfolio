@@ -28,17 +28,17 @@ export const useCardsAnime = () => {
             {
               scale: 1,
               duration: 0.5,
-              ease: 'Power4.inOut'
+              ease: 'Power4.in'
             }
           ).fromTo(
-            project.querySelector('.card-cover span'),
+            project.querySelector('span span'),
             {
               x: 0
             },
             {
               x: '-100%',
               duration: 0.75,
-              ease: 'power3.in'
+              ease: 'power3.out'
             },
             0
           );
@@ -66,7 +66,7 @@ export const useCardsAnime = () => {
           0
         )
         .fromTo(
-          cardInfo.querySelector('.tags')!.children,
+          cardInfo.querySelector('div')!.children,
           {
             scale: 0
           },
@@ -79,7 +79,7 @@ export const useCardsAnime = () => {
           0
         )
         .fromTo(
-          project.querySelector('.link'),
+          project.querySelector('a'),
           {
             scale: 0
           },
@@ -91,7 +91,7 @@ export const useCardsAnime = () => {
           0
         )
         .to(
-          project.querySelector('.link'),
+          project.querySelector('a'),
           {
             rotate: 365,
             duration: 1,
@@ -100,7 +100,7 @@ export const useCardsAnime = () => {
           0
         );
 
-      const circleLink = project.querySelector('.link');
+      const circleLink = project.querySelector('a');
 
       circleLink?.addEventListener('mouseenter', () => {
         gsap.to(circleLink, {
@@ -126,7 +126,7 @@ export const useCardsAnime = () => {
     };
 
     projects.forEach((project: HTMLDivElement) => {
-      const cardInfo = project.querySelector('.card-info');
+      const cardInfo = project.querySelector('hgroup');
       hoverCard(project, cardInfo!);
     });
   }, []);

@@ -1,7 +1,7 @@
 'use client';
 
-import { gsap } from '@lib/gsap';
 import { useMousePosition } from '@myhooks';
+import { gsap } from '@utils/gsap';
 import { useLayoutEffect, useRef } from 'react';
 
 export default function Blob() {
@@ -19,8 +19,8 @@ export default function Blob() {
 
   return (
     <div className="blob-wrapper">
-      <div ref={blobRef} id="blob"></div>
-      <span id="blur"></span>
+      <span ref={blobRef}></span>
+      <div></div>
     </div>
   );
 }

@@ -1,33 +1,10 @@
 .projects-container {
-  width: 100%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5rem;
+  @include flexbox(column, center, center, null, 5rem);
 
-  .project-card {
+  article {
     position: relative;
-    display: block;
-    width: 50%;
+    width: calc(50% + 1rem);
     aspect-ratio: 4 / 3;
-    will-change: transform;
-    transform-origin: 50% 50%;
-
-    .card-cover {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      z-index: 4;
-
-      span {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-color: #111111;
-        overflow: hidden;
-      }
-    }
 
     &:nth-child(odd) {
       margin-left: auto;
@@ -39,27 +16,35 @@
 
     img {
       object-fit: cover;
-      transition: filter 0.4s;
     }
 
-    .card-info {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      bottom: 0;
-      inset-inline: 0;
-      z-index: 2;
+    > span {
+      @include position($inset: 0);
+      overflow: hidden;
+      z-index: 4;
+
+      > span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #111111;
+        overflow: hidden;
+      }
+    }
+
+    hgroup {
+      @include flexbox(column);
+      @include position($inset: auto 0 0);
+      z-index: 3;
       overflow: hidden;
 
       h3 {
-        margin-top: 1rem;
-        display: inline-flex;
-        overflow: hidden;
-        margin-left: 2rem;
+        @include flexbox($isInline: true);
+        margin: 1rem 0 0 2rem;
         font-size: 4rem;
-        font-weight: 700;
+        overflow: hidden;
 
-        span {
+        > span {
           transform: translateY(100%) rotate(45deg);
           transform-origin: bottom left;
         }
@@ -72,19 +57,15 @@
         font-weight: 200;
       }
 
-      .tags {
+      > div {
+        @include flexbox($jusCon: space-evenly, $wrap: wrap, $gap: 1rem);
         margin: 1rem;
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
         overflow: hidden;
 
         span {
           padding: 0.2rem 0.5rem;
           margin: 0.2rem;
-          background-color: rgba($black, 15%);
-          backdrop-filter: blur(1rem);
+          @include blurbg(10%, 0.5rem);
           font-size: 0.8rem;
           border-radius: 0.4rem;
           overflow: inherit;
@@ -93,25 +74,31 @@
       }
     }
 
-    .link {
-      position: absolute;
-      bottom: 15%;
-      right: -2.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba($white, 80%);
-      backdrop-filter: blur(0.5rem);
-      border-radius: 50%;
+    a {
+      @include position($b: 15%, $r: -2.5rem);
+      @include flexbox($jusCon: center, $alignItem: center);
+      @include blurbg(80%, 0.5rem, $white);
       width: 5rem;
       aspect-ratio: 1;
-      z-index: 5;
-      transform: scale(0);
+      border-radius: 50%;
       font-size: 2rem;
+      font-family: $SecFont;
       color: $black;
-      font-family: $Offbit;
-      vertical-align: baseline;
-      transform: rotate(365);
+      transform: scale(0);
+      z-index: 5;
+    }
+  }
+}
+
+@include device('tablet') {
+  .projects-container {
+    article {
+      width: 65%;
+      margin: auto;
+
+      a {
+        width: 5rem;
+      }
     }
   }
 }
