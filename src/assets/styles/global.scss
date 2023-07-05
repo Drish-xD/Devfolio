@@ -73,9 +73,9 @@ li {
 
 .blob-wrapper {
   @include position($inset: 0, $isFixed: true);
-  z-index: -12;
+  z-index: -15;
 
-  #blob {
+  > span {
     display: block;
     height: 25vmax;
     aspect-ratio: 1;
@@ -85,21 +85,20 @@ li {
     background: linear-gradient(to right, aquamarine, mediumpurple);
     animation: rotate 20s infinite;
     opacity: 0.8;
-    z-index: -11;
+    z-index: -14;
   }
 
-  #blur {
+  > div {
     @include position($inset: 0, $isFixed: true);
-    z-index: -10;
+    z-index: -13;
     backdrop-filter: blur(12.5vmax);
 
     &::before {
       content: '';
-
       @include position($inset: 0);
       background-image: url('/images/noise.webp');
       opacity: 0.8;
-      z-index: -10;
+      z-index: -12;
     }
   }
 }

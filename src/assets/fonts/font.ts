@@ -3,12 +3,12 @@ import localFont from 'next/font/local';
 
 export const jetBrain = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-jetbrain',
+  variable: '--font-main',
   display: 'swap'
 });
 
 export const offBit = localFont({
   src: './OffBit-Reg.woff2',
-  variable: '--font-offbit',
+  variable: '--font-sec',
   display: 'swap'
 });
