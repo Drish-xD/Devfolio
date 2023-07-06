@@ -1,5 +1,5 @@
 #not_found {
-  height: 90dvh;
+  height: 90lvh;
   @include flexbox(column, flex-end, center);
   margin-bottom: clamp(-4em, -10vi, -8em);
 

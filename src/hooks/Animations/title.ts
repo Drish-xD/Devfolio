@@ -13,12 +13,13 @@ export const useTitleAnime = (): RefObject<HTMLDivElement> => {
         .timeline({
           scrollTrigger: {
             trigger: secHeader,
-            scrub: true
-          }
+            scrub: 2,
+            end: 'bottom center-=10%'
+          },
+          ease: 'power3.out'
         })
         .from(secHeader.querySelectorAll('h2'), {
           yPercent: 100,
-          ease: 'power3.out',
           duration: 1,
           stagger: 0.1
         })
@@ -26,7 +27,6 @@ export const useTitleAnime = (): RefObject<HTMLDivElement> => {
           secHeader.querySelectorAll('span'),
           {
             scale: 0,
-            ease: 'power3.out',
             duration: 1,
             stagger: 0.1,
             delay: 0.3

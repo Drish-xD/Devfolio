@@ -26,7 +26,7 @@ export const useMarqueeAnime = (skills: string[][]): RefObject<HTMLHeadingElemen
               scrollTrigger: {
                 trigger: row,
                 start: 'top bottom',
-                scrub: 10
+                scrub: 5
               }
             }
           );

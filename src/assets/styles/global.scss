@@ -11,7 +11,7 @@
 
 body {
   width: 100%;
-  height: 100dvh;
+  height: 100lvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
@@ -111,18 +111,30 @@ li {
 
   .section-header {
     @include flexbox($alignItem: baseline, $wrap: nowrap, $dir: row, $isInline: true);
-    margin-block: clamp(4em, 10vi, 8em);
-    line-height: 0.9;
+    margin-block: clamp(4.5em, 10vi, 8em);
+    line-height: 1;
     overflow: hidden;
 
     h2 {
       letter-spacing: clamp(0.2rem, 1vi, 1rem);
-      font-size: clamp(3rem, 17vi, 15rem);
+      font-size: clamp(4.5rem, 20vi, 15rem);
       font-family: $SecFont;
     }
     span {
-      font-size: clamp(0.8rem, 2vi, 1.8rem);
+      font-size: clamp(1rem, 2vi, 1.8rem);
     }
+  }
+}
+
+@include device(laptop) {
+  .global-section {
+    width: 80%;
+  }
+}
+
+@include device(tablet) {
+  .global-section {
+    width: 90%;
   }
 }
 

@@ -2,13 +2,15 @@
 
 import { useHoverAnime } from '@myhooks';
 import { Lenis, useLenis } from '@studio-freight/react-lenis';
-import { ScrollTrigger } from '@utils/gsap';
+import { ScrollTrigger, gsap } from '@utils/gsap';
 import { ReactNode, useLayoutEffect } from 'react';
 
 export default function LenisWrapper({ children }: { children: ReactNode }) {
   // smooth scroll using lenis
   const lenis = useLenis(ScrollTrigger.update);
-  useLayoutEffect(() => ScrollTrigger.refresh, [lenis]);
+  useLayoutEffect(() => ScrollTrigger.refresh(), [lenis]);
+
+  gsap.registerPlugin(ScrollTrigger);
 
   const ref = useHoverAnime();
 

@@ -7,10 +7,9 @@
     overflow: hidden;
 
     .row {
-      font-size: clamp(2rem, 8vi, 6rem);
-      font-weight: 600;
+      font-size: clamp(2rem, 7.5vi, 6rem);
       @include flexbox($wrap: nowrap);
-      margin-bottom: 1em;
+      margin-bottom: 0.6em;
 
       h3 {
         line-height: 1.2;
@@ -22,12 +21,14 @@
 
       span {
         white-space: nowrap;
+        transform: skewX(20deg);
 
         &::after {
-          content: '·';
-          font-size: 1em;
+          content: '⬩';
+          font-size: 0.6em;
           color: $white;
-          margin-inline: 0.25em;
+          vertical-align: middle;
+          margin-inline: 0.5em;
         }
 
         &:nth-child(even) {

@@ -5,7 +5,7 @@
     gap: 5rem;
 
     h3 {
-      font-size: clamp(1.5rem, 5vi, 3rem);
+      font-size: clamp(1.7rem, 5vi, 3rem);
     }
 
     .links-container {
@@ -14,14 +14,14 @@
 
         h4 {
           text-transform: capitalize;
-          font-size: clamp(1rem, 2.5vi, 1.6em);
+          font-size: clamp(1.2rem, 3.4vi, 2rem);
         }
 
         ul {
           @include flexbox($dir: row, $wrap: nowrap);
 
           li {
-            font-size: clamp(0.7rem, 3vi, 1.1rem);
+            font-size: clamp(0.7rem, 4vi, 1rem);
             font-weight: 200;
             flex-grow: 1;
             margin-top: 0.5rem;

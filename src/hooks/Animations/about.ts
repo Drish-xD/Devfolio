@@ -28,6 +28,7 @@ export const useAboutAnime = (): RefObject<HTMLDivElement> => {
           duration: 10,
           backgroundPositionX: 0,
           stagger: 5,
+          ease: 'power1.out',
           scrollTrigger: {
             trigger: container.querySelector('p span'),
             scrub: 2,

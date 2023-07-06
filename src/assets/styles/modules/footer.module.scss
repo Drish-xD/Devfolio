@@ -5,13 +5,13 @@ footer {
 
   p,
   time {
-    font-size: clamp(0.7rem, 3vi, 1rem);
+    font-size: clamp(0.7rem, 3.5vi, 1rem);
     text-transform: capitalize;
   }
 }
 
 @include device(900px) {
   footer {
-    @include flexbox($dir: column, $alignItem: center, $gap: 0.5rem);
+    @include flexbox($dir: column, $alignItem: center, $gap: 0.6rem);
   }
 }

@@ -5,8 +5,7 @@
     h3 {
       font-size: clamp(1.7rem, 5vi, 3rem);
       line-height: 1.2;
-      font-weight: 700;
-      background: linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(37, 37, 37) 50%);
+      background: linear-gradient(to right, $white 46%, #252525 50%);
       background-size: 200% 100%;
       background-position-x: 100%;
       color: transparent;
@@ -20,7 +19,7 @@
       font-weight: 300;
 
       span {
-        background: linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(37, 37, 37) 50%);
+        background: linear-gradient(to right, $white 46%, #252525 50%);
         background-size: 200% 100%;
         background-position-x: 100%;
         color: transparent;

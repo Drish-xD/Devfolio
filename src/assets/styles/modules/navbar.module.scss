@@ -10,11 +10,11 @@ header {
     margin-top: 0.5rem;
 
     span:first-of-type {
-      font-size: clamp(2rem, 8vi, 3rem);
+      font-size: clamp(1.8rem, 7vi, 3rem);
     }
 
     span:last-of-type {
-      font-size: clamp(0.7rem, 3vi, 1rem);
+      font-size: clamp(0.7rem, 4vi, 1rem);
       cursor: pointer;
     }
   }
@@ -32,21 +32,44 @@ header {
       h2 {
         @include flexbox($alignItem: baseline);
         overflow: hidden;
+        font-size: clamp(2em, 10vi, 3.5em);
+        text-transform: uppercase;
 
         a {
           display: block;
-          text-transform: uppercase;
-          font-size: clamp(1.3em, 8vi, 3.5em);
           transform: translateY(110%) rotate(3deg);
         }
 
         span {
           overflow: inherit;
           font-weight: 400;
-          font-size: clamp(0.5em, 1.5vi, 1em);
+          font-size: 0.4em;
           transform: scale(0);
         }
       }
+    }
+  }
+}
+
+@include device(tablet) {
+  header {
+    .fixed-header {
+      margin-top: 1rem;
+      width: 85%;
+    }
+
+    section {
+      nav {
+        gap: 2rem;
+      }
+    }
+  }
+}
+
+@include device(mobile) {
+  header {
+    .fixed-header {
+      width: 90%;
     }
   }
 }

@@ -44,8 +44,8 @@
 
       h3 {
         @include flexbox($isInline: true);
-        margin: 1rem 0 0 clamp(1.2rem, 2vi, 2rem);
-        font-size: clamp(1.5rem, 5vi, 4rem);
+        margin: 1rem 0 0 clamp(1.5rem, 2vi, 2rem);
+        font-size: clamp(2rem, 8vi, 4rem);
         overflow: hidden;
 
         > span {
@@ -64,7 +64,7 @@
           padding: 0.2rem 0.5rem;
           margin: 0.2rem;
           @include blurbg(10%, 0.5rem);
-          font-size: clamp(0.4rem, 1.3vi, 1rem);
+          font-size: clamp(0.5rem, 2.5vi, 1rem);
           border-radius: 0.4rem;
           overflow: inherit;
           transform: scale(0);
@@ -76,10 +76,10 @@
       @include position($b: 15%, $r: calc(-1 * clamp(2.5rem, 8vi, 5rem) / 2));
       @include flexbox($jusCon: center, $alignItem: center);
       @include blurbg(80%, 0.5rem, $white);
-      width: clamp(2.5rem, 8vi, 5rem);
+      width: clamp(3.5rem, 10vi, 5rem);
       aspect-ratio: 1;
       border-radius: 50%;
-      font-size: clamp(1.2rem, 4vi, 2rem);
+      font-size: clamp(2rem, 5vi, 2rem);
       font-family: $SecFont;
       color: $black;
       transform: scale(0);
@@ -88,16 +88,7 @@
   }
 }
 
-@include device('tablet') {
-  .projects-container {
-    article {
-      width: 65%;
-      margin: auto;
-    }
-  }
-}
-
-@include device('mobile') {
+@include device(tablet) {
   .projects-container {
     article {
       width: 75%;
