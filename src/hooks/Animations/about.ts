@@ -18,24 +18,20 @@ export const useAboutAnime = (): RefObject<HTMLDivElement> => {
       gsap
         .timeline({ paused: true })
         .to(container.querySelector('h3'), {
-          duration: 1,
           backgroundPositionX: 0,
           scrollTrigger: {
             trigger: container.querySelector('h3'),
-            scrub: 1,
-            start: 'top center+=20%',
-            end: 'bottom top'
+            scrub: true
           }
         })
         .to(textContent.lines, {
-          duration: 5,
+          duration: 10,
           backgroundPositionX: 0,
-          stagger: 1,
+          stagger: 5,
           scrollTrigger: {
-            trigger: textContent.lines,
+            trigger: container.querySelector('p span'),
             scrub: 2,
-            start: 'top center+=20%',
-            end: 'bottom top'
+            start: 'top center+=25%'
           }
         });
     }, container);

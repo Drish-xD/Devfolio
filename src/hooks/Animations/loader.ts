@@ -12,27 +12,30 @@ export const useLoaderAnime = (): React.RefObject<HTMLElement> => {
         .to('.grid', {
           autoAlpha: 1
         })
-        .from('.grid span', {
-          opacity: 1,
-          duration: 0.75,
-          scale: 0.001,
-          rotate: 10,
-          yPercent: 40,
-          ease: 'power1.inOut',
-          delay: 0.5,
-          stagger: {
-            amount: 2,
-            from: 'end',
-            grid: [7, 7],
-            yoyo: true,
-            repeat: 3
-          }
-        })
+        .from(
+          '.grid span',
+          {
+            opacity: 1,
+            duration: 0.75,
+            scale: 0.001,
+            rotate: 10,
+            yPercent: matchMedia('(max-width: 1024px)').matches ? 50 : 100,
+            ease: 'power1.inOut',
+            stagger: {
+              amount: 2,
+              from: 'end',
+              grid: [7, 7],
+              yoyo: true,
+              repeat: 3
+            }
+          },
+          0
+        )
         // Loader FadeOut Animation
         .to(loaderRef.current, {
           autoAlpha: 0,
           ease: 'none',
-          delay: -1.2,
+          delay: -1,
           duration: 0.5
         });
     }, loaderRef);

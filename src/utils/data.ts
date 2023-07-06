@@ -1,5 +1,9 @@
 import { Metadata } from 'next';
 
+/*!***************!*/
+/*!   MetaData    !*/
+/*!***************!*/
+
 export const METADATA: Metadata = {
   title: 'Drish | Portfolio',
   description: 'Drish',
@@ -44,7 +48,15 @@ export const METADATA: Metadata = {
   referrer: 'origin'
 };
 
+/*!*******************!*/
+/*!   Navbar Links    !*/
+/*!*******************!*/
+
 export const NAVLINKS = ['home', 'about', 'skills', 'projects', 'contacts'];
+
+/*!***************!*/
+/*!   Projects    !*/
+/*!***************!*/
 
 export const PROJECTSJSON = [
   {
@@ -73,6 +85,10 @@ export const PROJECTSJSON = [
   }
 ];
 
+/*!************!*/
+/*!   Skill    !*/
+/*!************!*/
+
 export const SKILLS = [
   'JavaScript',
   'TypeScript',
@@ -96,6 +112,10 @@ export const SKILLS = [
   'Supabase'
 ];
 
+/*!************!*/
+/*!   About    !*/
+/*!************!*/
+
 export const ABOUTTEXT =
   'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis sapiente illo ab \
           eveniet? Alias voluptas est minima officia illum eos, ad minus mollitia ipsa natus. \
@@ -104,6 +124,10 @@ export const ABOUTTEXT =
           amet modi, dolores iusto voluptatum cumque incidunt aliquid, quia perspiciatis tenetur \
           exercitationem adipisci deleniti vero natus architecto nam possimus qui mollitia? Fugit \
           maxime inventore saepe odit, perspiciatis in fuga sunt dignissimos possimus!';
+
+/*!***************!*/
+/*!   Contacts    !*/
+/*!***************!*/
 
 export const CONTACTLINKS = {
   mail: [

@@ -30,13 +30,10 @@ export const useCardsAnime = () => {
               duration: 0.5,
               ease: 'Power4.in'
             }
-          ).fromTo(
+          ).to(
             project.querySelector('span span'),
             {
-              x: 0
-            },
-            {
-              x: '-100%',
+              xPercent: -100,
               duration: 0.75,
               ease: 'power3.out'
             },

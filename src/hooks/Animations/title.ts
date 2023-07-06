@@ -17,7 +17,7 @@ export const useTitleAnime = (): RefObject<HTMLDivElement> => {
           }
         })
         .from(secHeader.querySelectorAll('h2'), {
-          y: '100%',
+          yPercent: 100,
           ease: 'power3.out',
           duration: 1,
           stagger: 0.1

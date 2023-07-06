@@ -1,33 +1,22 @@
 .loader {
-  inset: 0;
-  position: fixed;
+  @include position($inset: 0, $isFixed: true);
   background: $black;
   z-index: 50;
-  user-select: none;
-
-  .loader-overlay {
-    inset: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 51;
-  }
+  padding: 4vh 0;
 
   .grid {
-    opacity: 0;
-    visibility: hidden;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     height: 100%;
     place-items: center;
-    color: $white;
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    visibility: hidden;
+    opacity: 0;
 
     span {
-      display: flex;
-      justify-content: center;
-      width: 2em;
+      @include flexbox($jusCon: center);
+      width: 2rem;
       position: relative;
       transform: rotate(-3deg);
 
