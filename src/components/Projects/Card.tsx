@@ -17,7 +17,7 @@ const Card: ForwardRefRenderFunction<HTMLDivElement, ProjectProps> = ({ ...proje
   return (
     <article ref={ref}>
       <Image
-        src={`https://raw.githubusercontent.com/Drish-xD/${image}`}
+        src={`https://raw.githubusercontent.com/Drish-xD/portfolio_2.0/main/public/images/${image}`}
         alt={`Project ${name} Thumbnail`}
         title={`Project ${name} Thumbnail`}
         fill
