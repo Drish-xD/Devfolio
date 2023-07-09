@@ -52,7 +52,7 @@ export const METADATA: Metadata = {
 /*!   Navbar Links    !*/
 /*!*******************!*/
 
-export const NAVLINKS = ['home', 'about', 'skills', 'projects', 'contacts'];
+export const NAVLINKS = ['home', 'projects', 'skills', 'about', 'contacts'];
 
 /*!***************!*/
 /*!   Projects    !*/
@@ -62,7 +62,7 @@ export const PROJECTSJSON = [
   {
     id: 1,
     name: 'Zapkart',
-    image: 'Zapkart/master/public/images/Screenshot.png',
+    image: 'zapkart.webp',
     github: 'https://github.com/Drish-xD/Zapkart',
     live: 'https://zapkart-ecom.netlify.app/',
     tags: ['ReactJs', 'Material UI', 'Commerce.js']
@@ -70,7 +70,7 @@ export const PROJECTSJSON = [
   {
     id: 2,
     name: 'Mark-it',
-    image: 'Zapkart/master/public/images/Screenshot.png',
+    image: 'zapkart.webp',
     github: 'https://github.com/Drish-xD/Mark-it',
     live: '',
     tags: ['React Native', 'Expo', 'Paper']
@@ -78,7 +78,7 @@ export const PROJECTSJSON = [
   {
     id: 3,
     name: 'Fitcel',
-    image: 'Zapkart/master/public/images/Screenshot.png',
+    image: 'zapkart.webp',
     github: 'https://github.com/orgs/Fitcel/repositories',
     live: '',
     tags: ['Flutter', 'Firebase', 'Health']
