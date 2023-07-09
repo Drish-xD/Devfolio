@@ -1,0 +1,15 @@
+.toast {
+  display: block;
+  @include position($inset: auto 2% 2.5%, $isFixed: true);
+  @include blurbg(15%, 7vmax, $white);
+  width: auto;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  z-index: 10;
+  font-size: clamp(0.7rem, 3.5vi, 1rem);
+
+  span {
+    @include position($inset: 1% 2% auto auto, $isFixed: true);
+    font-size: 1em;
+  }
+}

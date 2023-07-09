@@ -1,9 +1,10 @@
 import { gsap } from '@utils/gsap';
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
-export const useLoaderAnime = (): React.RefObject<HTMLElement> => {
+export const useLoaderAnime = (): [React.RefObject<HTMLElement>, boolean] => {
   const loader_tl = gsap.timeline();
   const loaderRef = useRef<HTMLElement>(null);
+  const [isComplete, setComplete] = useState(false);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -36,12 +37,15 @@ export const useLoaderAnime = (): React.RefObject<HTMLElement> => {
           autoAlpha: 0,
           ease: 'none',
           delay: -1,
-          duration: 0.5
+          duration: 0.5,
+          onComplete: () => {
+            setTimeout(() => setComplete(true), 500);
+          }
         });
     }, loaderRef);
 
     return () => ctx.revert();
   }, []);
 
-  return loaderRef;
+  return [loaderRef, isComplete];
 };

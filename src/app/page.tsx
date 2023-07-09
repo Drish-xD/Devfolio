@@ -2,12 +2,13 @@ import { Loader } from '@components';
 import { nextImport } from '@utils/nextImport';
 
 // dynamic imports
-const { Home, Projects, About, Contacts, Skills } = {
+const { Home, Projects, About, Contacts, Skills, Toast } = {
   Home: nextImport('Home'),
   Projects: nextImport('Projects'),
   Skills: nextImport('Skills'),
   About: nextImport('About'),
-  Contacts: nextImport('Contacts')
+  Contacts: nextImport('Contacts'),
+  Toast: nextImport('Toast')
 };
 
 export default function Portfolio() {
@@ -21,6 +22,7 @@ export default function Portfolio() {
         <About />
         <Contacts />
       </main>
+      <Toast />
     </>
   );
 }
