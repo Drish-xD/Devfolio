@@ -10,7 +10,7 @@ export const useAboutAnime = (): RefObject<HTMLDivElement> => {
 
     if (!container) return;
 
-    const textContent = new SplitType(container.querySelector('p')!, {
+    const textContent = new SplitType(container.querySelectorAll('p')!, {
       types: 'lines',
       tagName: 'span'
     });

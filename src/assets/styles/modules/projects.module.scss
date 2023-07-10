@@ -30,7 +30,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        background-color: #111111;
+        background-color: $veryDarkGray;
         overflow: hidden;
       }
     }
@@ -73,14 +73,15 @@
     }
 
     a {
-      @include position($b: 15%, $r: calc(-1 * clamp(2.5rem, 8vi, 5rem) / 2));
+      @include position($b: 15%, $r: calc(-1 * clamp(3.5rem, 10vi, 5rem) / 2));
       @include flexbox($jusCon: center, $alignItem: center);
       @include blurbg(80%, 0.5rem, $white);
       width: clamp(3.5rem, 10vi, 5rem);
       aspect-ratio: 1;
       border-radius: 50%;
-      font-size: clamp(2rem, 5vi, 2rem);
+      font-size: clamp(1.8rem, 5vi, 2.5rem);
       font-family: $SecFont;
+      line-height: 1;
       color: $black;
       transform: scale(0);
       z-index: 5;

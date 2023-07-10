@@ -15,7 +15,7 @@ export default function Projects() {
       <div className="projects-container">
         {PROJECTSJSON.map((project, index) => (
           <Card
-            key={project.id}
+            key={index}
             {...project}
             ref={(ref: HTMLDivElement) => (projectsRef.current[index] = ref)}
           />

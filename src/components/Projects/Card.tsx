@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { ForwardRefRenderFunction, forwardRef } from 'react';
 
 interface ProjectProps {
-  id: number;
   name: string;
   image: string;
   github: string;
@@ -17,7 +16,7 @@ const Card: ForwardRefRenderFunction<HTMLDivElement, ProjectProps> = ({ ...proje
   return (
     <article ref={ref}>
       <Image
-        src={`https://raw.githubusercontent.com/Drish-xD/portfolio_2.0/main/public/images/${image}`}
+        src={`https://www.drishxd.dev/images/${image}`}
         alt={`Project ${name} Thumbnail`}
         title={`Project ${name} Thumbnail`}
         fill

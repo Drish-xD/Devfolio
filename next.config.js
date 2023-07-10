@@ -12,7 +12,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')]
   },
   images: {
-    domains: ['raw.githubusercontent.com']
+    domains: ['www.drishxd.dev']
   }
 };
 

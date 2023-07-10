@@ -12,7 +12,9 @@ export default function About() {
       <SectionHeader text="About" num={4} />
       <div className="about-container" ref={aboutRef}>
         <h3>Hi, I&rsquo;m Drish.</h3>
-        <p>{ABOUTTEXT}</p>
+        {ABOUTTEXT.map((text: string, i: number) => (
+          <p key={i}>{text}</p>
+        ))}
       </div>
     </section>
   );
