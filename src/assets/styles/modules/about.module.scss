@@ -26,6 +26,13 @@
         color: transparent;
         background-clip: text;
       }
+
+      &:last-of-type {
+        font-weight: 100;
+        a {
+          text-decoration: underline 1px solid $white;
+        }
+      }
     }
   }
 }
