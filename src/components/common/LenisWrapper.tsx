@@ -15,7 +15,7 @@ export default function LenisWrapper({ children }: { children: ReactNode }) {
   const ref = useHoverAnime();
 
   return (
-    <body ref={ref}>
+    <body ref={ref} onContextMenu={(e) => e.preventDefault}>
       <Lenis
         root
         options={{

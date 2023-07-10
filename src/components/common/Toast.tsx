@@ -25,14 +25,12 @@ export default function Toast({
 
   useEffect(() => {
     setWinWidth(window.innerWidth);
-
-    const timer = setTimeout(() => {
-      hideToast();
-    }, 15000);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    if (mounted) {
+      const timer = setTimeout(() => {
+        hideToast();
+      }, 15000);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   if (!mounted || winWidth > 768) {

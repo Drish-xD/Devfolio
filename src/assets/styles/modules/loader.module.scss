@@ -19,6 +19,7 @@
       width: 2rem;
       position: relative;
       transform: rotate(-3deg);
+      font-family: $SecFont;
 
       &::before {
         display: block;

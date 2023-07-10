@@ -18,6 +18,7 @@ body {
   background: $black;
   overscroll-behavior: none;
   font-family: $MainFont;
+  user-select: none;
 }
 
 // Lenis scroll
