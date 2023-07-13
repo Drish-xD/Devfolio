@@ -1,46 +1,42 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { gsap } from '@utils/gsap';
+import { useEffect, useRef } from 'react';
 
-export default function Toast({
-  text = 'For the better experience, use desktop.'
-}: {
-  text?: string;
-}) {
-  const [mounted, setMounted] = useState(true);
+export default function Toast({ text = 'Available for Freelance Work' }: { text?: string }) {
   const toastRef = useRef<HTMLDivElement>(null);
-  const [winWidth, setWinWidth] = useState(0);
+
+  const showToast = () => {
+    gsap.to(toastRef.current!, {
+      opacity: 1,
+      duration: 0.5
+    });
+  };
 
   const hideToast = () => {
-    import('@utils/gsap').then(({ gsap }) => {
-      gsap.to(toastRef.current!, {
-        opacity: 0,
-        duration: 0.3,
-        onComplete: () => {
-          setMounted(false);
-        }
-      });
+    gsap.to(toastRef.current!, {
+      opacity: 0,
+      duration: 0.3,
+      onComplete: () => {
+        toastRef.current!.remove();
+      }
     });
   };
 
   useEffect(() => {
-    setWinWidth(window.innerWidth);
-    if (mounted) {
-      const timer = setTimeout(() => {
-        hideToast();
-      }, 15000);
-      return () => clearTimeout(timer);
-    }
+    const showTimer = setTimeout(showToast, 4500);
+    const hideTimer = setTimeout(hideToast, 25000);
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
 
-  if (!mounted || winWidth > 768) {
-    return null;
-  }
-
   return (
-    <div className="toast" ref={toastRef} onClick={hideToast}>
+    <div className="toast" ref={toastRef}>
       <p>{text}</p>
-      <span>×</span>
+      <span onClick={hideToast}>×</span>
     </div>
   );
 }

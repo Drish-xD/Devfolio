@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react';
 
 const YEAR = new Date().getFullYear();
 
+const getDateTime = () => {
+  const d = new Date();
+  const date = d.toLocaleDateString('en-US', { dateStyle: 'medium' });
+  const time = d.toLocaleTimeString('en-US', { timeStyle: 'short', hour12: false });
+  return { date, time };
+};
+
 export default function Footer() {
-  const getDateTime = () => {
-    const date = new Date().toLocaleDateString('en-US', { dateStyle: 'medium' });
-    const time = new Date().toLocaleTimeString('en-US', { timeStyle: 'short', hour12: false });
-    return { date, time };
-  };
   const [{ date, time }, setDateTime] = useState(getDateTime());
 
   useEffect(() => {

@@ -83,7 +83,7 @@ li {
     @include position($t: 50%, $l: 50%);
     translate: -50% -50%;
     border-radius: 50%;
-    background: linear-gradient(to right, aquamarine, mediumpurple);
+    background: linear-gradient(to right, #7fffd4, #9370d8);
     animation: rotate 20s infinite;
     opacity: 0.8;
     z-index: -14;
@@ -92,13 +92,12 @@ li {
   > div {
     @include position($inset: 0, $isFixed: true);
     z-index: -13;
-    backdrop-filter: blur(12.5vmax);
+    backdrop-filter: blur(10vmax);
 
     &::before {
       content: '';
       @include position($inset: 0);
       background-image: url('/images/noise.webp');
-      opacity: 0.8;
       z-index: -12;
     }
   }
@@ -118,7 +117,7 @@ li {
 
     h2 {
       letter-spacing: clamp(0.2rem, 1vi, 1rem);
-      font-size: clamp(4.5rem, 20vi, 15rem);
+      font-size: clamp(4rem, 20vi, 15rem);
       font-family: $SecFont;
     }
     span {

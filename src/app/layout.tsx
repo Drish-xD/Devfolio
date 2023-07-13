@@ -3,7 +3,6 @@ import { jetBrain, offBit } from '@fonts';
 import '@styles/global.scss';
 import { METADATA } from '@utils/data';
 import { nextImport } from '@utils/nextImport';
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import { ReactNode } from 'react';
 
 // dynamic imports
@@ -25,7 +24,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {children}
         <Blob />
         <Footer />
-        <VercelAnalytics />
       </LenisWrapper>
     </html>
   );

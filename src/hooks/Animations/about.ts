@@ -30,9 +30,10 @@ export const useAboutAnime = (): RefObject<HTMLDivElement> => {
           stagger: 5,
           ease: 'power1.out',
           scrollTrigger: {
-            trigger: container.querySelector('p span'),
+            trigger: textContent.lines,
             scrub: 2,
-            start: 'top center+=25%'
+            start: 'top center+=20%',
+            end: 'bottom top-=20%'
           }
         });
     }, container);

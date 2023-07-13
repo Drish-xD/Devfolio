@@ -1,15 +1,30 @@
 .toast {
   display: block;
-  @include position($inset: auto 2% 2.5%, $isFixed: true);
-  @include blurbg(15%, 7vmax, $white);
-  width: auto;
-  padding: 0.7rem 1rem;
+  @include position($inset: auto 2.5% 2.5% auto, $isFixed: true);
+  @include blurbg(10%, 5vmax, $white);
+  padding: 0.7rem 1.5rem 0.7rem 1.2rem;
   border-radius: 0.5rem;
   z-index: 10;
   font-size: clamp(0.7rem, 3.5vi, 1rem);
-
-  span {
-    @include position($inset: 1% 2% auto auto, $isFixed: true);
+  opacity: 0;
+  white-space: nowrap;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  p {
+    font-family: $SecFont;
+    margin-bottom: -0.2em;
+  }
+  > span {
+    @include position($inset: 1% 2% auto auto);
     font-size: 1em;
+    padding: 0.1em;
+    cursor: pointer;
+  }
+}
+
+@include device(tablet) {
+  .toast {
+    inset: auto 50% 2.5% auto;
+    transform: translateX(50%);
   }
 }
