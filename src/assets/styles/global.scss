@@ -164,6 +164,13 @@ li {
   }
 }
 
+.screen {
+  @include position($inset: 0, $isFixed: true);
+  transform: translateY(-100%);
+  background: $black;
+  z-index: 100;
+}
+
 // Module Imports
 
 @import './modules/loader.module';

@@ -1,5 +1,7 @@
 'use client';
 
+import { TransitionLayout } from '@components';
+import { TransitionProvider } from '@context/TransitionContext';
 import { useHoverAnime } from '@myhooks';
 import { Lenis, useLenis } from '@studio-freight/react-lenis';
 import { ScrollTrigger, gsap } from '@utils/gsap';
@@ -23,7 +25,11 @@ export default function LenisWrapper({ children }: { children: ReactNode }) {
           smoothWheel: true
         }}
       >
-        {children}
+        <TransitionProvider>
+          <TransitionLayout>
+            <div>{children}</div>
+          </TransitionLayout>
+        </TransitionProvider>
       </Lenis>
     </body>
   );
