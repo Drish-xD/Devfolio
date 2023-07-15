@@ -32,7 +32,7 @@ header {
       h2 {
         @include flexbox($alignItem: baseline);
         overflow: hidden;
-        font-size: clamp(2em, 10vi, 3.5em);
+        font-size: clamp(2em, 9vi, 5em);
         text-transform: uppercase;
 
         a {

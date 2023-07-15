@@ -12,7 +12,7 @@ const getDateTime = () => {
 };
 
 export default function Footer() {
-  const [{ date, time }, setDateTime] = useState(getDateTime());
+  const [{ date, time }, setDateTime] = useState({ date: '', time: '' });
 
   useEffect(() => {
     const timer = setInterval(() => {
