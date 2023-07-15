@@ -15,9 +15,9 @@ const Card = ({ project }: { project: ProjectsProps }) => {
         src={img}
         alt={`Project ${name} Thumbnail`}
         title={`Project ${name} Thumbnail`}
-        fill
-        loading="lazy"
         sizes="(max-width: 425px) 75%, (max-width: 768px) 65%, 50%"
+        priority
+        fill
       />
       <span>
         <span />
@@ -37,7 +37,9 @@ const Card = ({ project }: { project: ProjectsProps }) => {
           ))}
         </div>
       </hgroup>
-      <Link href={`/project/${slug}`}>↗</Link>
+      <Link href={`/project/${slug}`} prefetch>
+        ↗
+      </Link>
     </article>
   );
 };

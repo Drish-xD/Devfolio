@@ -34,7 +34,5 @@ export async function GET(slug: string) {
   const page = res.results[0];
   const mdblocks = await n2m.pageToMarkdown(page.id);
   const mdString = n2m.toMarkdownString(mdblocks);
-  console.log(mdString);
-
   return NextResponse.json(mdString);
 }
