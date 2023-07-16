@@ -104,7 +104,7 @@ li {
 }
 
 // section and headers
-
+.page,
 .global-section {
   width: 70%;
   margin: clamp(4em, 10vi, 8em) auto;
@@ -124,6 +124,11 @@ li {
       font-size: clamp(1rem, 2vi, 1.8rem);
     }
   }
+}
+
+.page {
+  margin-top: 0;
+  padding-top: clamp(4em, 10vi, 8em);
 }
 
 @include device(laptop) {
@@ -165,10 +170,31 @@ li {
 }
 
 .screen {
-  @include position($inset: 0, $isFixed: true);
-  transform: translateY(-100%);
-  background: $black;
-  z-index: 100;
+  @include position($isFixed: true);
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+  z-index: 500;
+  transform: translateX(-100%);
+
+  span {
+    display: block;
+    width: 100dvw;
+    height: 100%;
+
+    &:nth-last-of-type(1) {
+      @include blurbg(90%, 2vmax, #080808);
+    }
+    &:nth-last-of-type(2) {
+      @include blurbg(90%, 2vmax, #101010);
+    }
+    &:nth-last-of-type(3) {
+      @include blurbg(90%, 2vmax, #181818);
+    }
+    &:nth-last-of-type(4) {
+      @include blurbg(90%, 2vmax, #202020);
+    }
+  }
 }
 
 // Module Imports

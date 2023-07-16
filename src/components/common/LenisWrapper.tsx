@@ -10,8 +10,12 @@ import { ReactNode, useLayoutEffect } from 'react';
 export default function LenisWrapper({ children }: { children: ReactNode }) {
   // smooth scroll using lenis
   const lenis = useLenis(ScrollTrigger.update);
-  useLayoutEffect(() => ScrollTrigger.refresh(), [lenis]);
-
+  useLayoutEffect(() => {
+    ScrollTrigger.refresh();
+    if (lenis) {
+      lenis!.scrollTo('header');
+    }
+  }, [lenis]);
   gsap.registerPlugin(ScrollTrigger);
 
   const ref = useHoverAnime();

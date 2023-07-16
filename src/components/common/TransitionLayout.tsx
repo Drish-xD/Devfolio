@@ -9,37 +9,58 @@ import { SwitchTransition, Transition } from 'react-transition-group';
 const TransitionLayout = ({ children }: { children: ReactNode }) => {
   const { toggleCompleted } = useContext(TransitionContext);
   const pathName = usePathname();
-  const screenRef = useRef(null);
-  const screen = screenRef.current;
+  const screenRef = useRef<HTMLDivElement>(null);
+
+  const screen = screenRef.current!;
+
+  const pageExit = async () => {
+    toggleCompleted(false);
+    gsap.fromTo(
+      screen.querySelectorAll('span'),
+      {
+        xPercent: 0
+      },
+      {
+        xPercent: 100,
+        duration: 0.8,
+        ease: 'Power4.easeInOut',
+        stagger: 0.1,
+        delay: -0.4
+      }
+    );
+  };
+
+  const pageEnter = async () => {
+    gsap.timeline().fromTo(
+      screen.querySelectorAll('span'),
+      {
+        xPercent: 100
+      },
+      {
+        xPercent: 200,
+        duration: 0.8,
+        ease: 'Power4.easeInOut',
+        stagger: -0.1,
+        onComplete: () => toggleCompleted(true)
+      }
+    );
+  };
 
   return (
     <>
-      <span className="screen" ref={screenRef} />
+      <section className="screen" ref={screenRef}>
+        <span />
+        <span />
+        <span />
+        <span />
+      </section>
       <SwitchTransition>
         <Transition
           key={pathName}
-          timeout={500}
-          onEnter={() => {
-            toggleCompleted(false);
-            gsap.set(screen!, { yPercent: -100 });
-
-            gsap
-              .timeline({
-                paused: true
-              })
-              .to(screen!, { yPercent: 0, duration: 5 })
-              .to(screen!, {
-                onComplete: () => toggleCompleted(true)
-              })
-              .play();
-          }}
-          onExit={() => {
-            gsap
-              .timeline({ paused: true })
-              .to(screen!, { yPercent: 100, duration: 5 })
-              .to(screen!, { autoAlpha: 0 })
-              .play();
-          }}
+          nodeRef={screenRef}
+          timeout={1000}
+          onEnter={pageEnter}
+          onExit={pageExit}
         >
           {children}
         </Transition>

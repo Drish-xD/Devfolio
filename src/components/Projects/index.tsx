@@ -4,8 +4,8 @@ import { ProjectsProps } from '@types';
 import Card from './Card';
 
 const fetchProjects = async () => {
-  const notion = await import('@api/notion/route');
-  return await (await notion.GET()).json();
+  const notion = await fetch('http://localhost:3000/api/notion/');
+  return notion.json();
 };
 
 export default async function Projects() {
