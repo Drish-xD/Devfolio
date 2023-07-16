@@ -74,6 +74,13 @@ export const NAVLINKS = ['home', 'projects', 'skills', 'about', 'contacts'];
 
 export const PROJECTSJSON = [
   {
+    name: 'Portfolio',
+    image: 'zapkart.webp',
+    github: 'https://github.com/Drish-xD/Portfolio',
+    live: 'https://drishxd.dev',
+    tags: ['NextJs', 'GSAP', 'Lenis']
+  },
+  {
     name: 'Zapkart',
     image: 'zapkart.webp',
     github: 'https://github.com/Drish-xD/Zapkart',
