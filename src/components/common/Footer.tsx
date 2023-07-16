@@ -2,17 +2,20 @@
 
 import { useEffect, useState } from 'react';
 
-const YEAR = new Date().getFullYear();
-
 const getDateTime = () => {
   const d = new Date();
+  const year = d.getFullYear();
   const date = d.toLocaleDateString('en-US', { dateStyle: 'medium' });
   const time = d.toLocaleTimeString('en-US', { timeStyle: 'short', hour12: false });
-  return { date, time };
+  return { date, time, year };
 };
 
 export default function Footer() {
-  const [{ date, time }, setDateTime] = useState({ date: '', time: '' });
+  const [{ date, time, year }, setDateTime] = useState({ date: '', time: '', year: 0 });
+
+  useEffect(() => {
+    setDateTime(getDateTime());
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -27,7 +30,7 @@ export default function Footer() {
 
   return (
     <footer className="global-section">
-      <p>Copyright &copy; {YEAR}. All rights reserved.</p>
+      <p>Copyright &copy; {year}. All rights reserved.</p>
       <time>
         {date} | {time} IST
       </time>
