@@ -2,7 +2,7 @@
 
 import { useTitleAnime } from '@myhooks';
 
-export default function SectionHeader({ text, num }: { text: string; num?: number }) {
+export default function SectionHeader({ text, num }: { text: string; num: number }) {
   const ref = useTitleAnime();
 
   return (
@@ -10,7 +10,7 @@ export default function SectionHeader({ text, num }: { text: string; num?: numbe
       {Array.from(text).map((letter: string, i: number) => (
         <h2 key={i}>{letter}</h2>
       ))}
-      {num && <span>{`(0${num})`}</span>}
+      <span>{`(0${num})`}</span>
     </div>
   );
 }

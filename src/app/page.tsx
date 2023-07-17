@@ -13,16 +13,14 @@ const { Home, Projects, About, Contacts, Skills, Toast } = {
 
 export default function Portfolio() {
   return (
-    <>
+    <main>
       <Loader />
-      <main>
-        <Home />
-        <Projects />
-        <Skills />
-        <About />
-        <Contacts />
-      </main>
+      <Home />
+      <Projects />
+      <Skills />
+      <About />
+      <Contacts />
       <Toast />
-    </>
+    </main>
   );
 }

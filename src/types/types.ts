@@ -1,3 +1,8 @@
+export interface MousePosition {
+  x: number | undefined;
+  y: number | undefined;
+}
+
 export interface ProjectsProps {
   id: number;
   name: string;
@@ -20,4 +25,11 @@ export interface Properties {
   img: { id: string; files: { name: string; file: { url: string } }[] };
   name: { id: string; title: { text: { content: string } }[] };
   tags: { id: string; multi_select: { id: string; name: string }[] };
+}
+
+export interface TransitionContextProps {
+  completed: boolean;
+
+  // eslint-disable-next-line no-unused-vars
+  toggleCompleted: (value: boolean) => void;
 }
