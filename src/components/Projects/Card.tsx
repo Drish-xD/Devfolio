@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const Card = ({ project }: { project: ProjectsProps }) => {
   const projectsRef = useCardsAnime();
-  const { name, tags, img, id, slug } = project;
+  const { name, tags, img, id, slug } = project!;
 
   return (
     <article ref={(ref: HTMLDivElement) => (projectsRef.current[id] = ref)}>
@@ -15,7 +15,7 @@ const Card = ({ project }: { project: ProjectsProps }) => {
         src={img}
         alt={`Project ${name} Thumbnail`}
         title={`Project ${name} Thumbnail`}
-        sizes="(max-width: 425px) 75%, (max-width: 768px) 65%, 50%"
+        sizes="(max-width: 425px) 80vw, (max-width: 768px) 65vw, 50vw"
         priority
         fill
       />
