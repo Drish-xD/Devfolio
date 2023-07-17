@@ -2,6 +2,7 @@ export { default as About } from './About';
 export { default as Contacts } from './Contacts';
 export { default as Home } from './Home';
 export { default as Projects } from './Projects';
+export { default as Markdown } from './Projects/Markdown';
 export { default as Skills } from './Skills';
 export { default as Blob } from './common/Blob';
 export { default as Footer } from './common/Footer';

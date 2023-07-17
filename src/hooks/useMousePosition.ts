@@ -1,9 +1,5 @@
+import { MousePosition } from '@types';
 import { useEffect, useState } from 'react';
-
-interface MousePosition {
-  x: number | undefined;
-  y: number | undefined;
-}
 
 export const useMousePosition = (): MousePosition => {
   const [mousePosition, setMousePosition] = useState<MousePosition>({

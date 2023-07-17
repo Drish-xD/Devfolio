@@ -4,7 +4,7 @@ import { ProjectsProps } from '@types';
 import Card from './Card';
 
 const fetchProjects = async () => {
-  const notion = await fetch('http://localhost:3000/api/notion/');
+  const notion = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/notion/`);
   return notion.json();
 };
 
