@@ -1,12 +1,19 @@
 import { gsap } from '@utils/gsap';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { RefObject, useLayoutEffect, useRef, useState } from 'react';
 
-export const useLoaderAnime = (): [React.RefObject<HTMLElement>, boolean] => {
+export const useLoaderAnime = (): [RefObject<HTMLElement>, boolean] => {
   const loader_tl = gsap.timeline();
   const loaderRef = useRef<HTMLElement>(null);
-  const [isComplete, setComplete] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState<boolean>(true);
 
   useLayoutEffect(() => {
+    const item = sessionStorage.getItem('shouldAnimateLoader');
+
+    if (item === 'false') {
+      setShouldAnimate(false);
+      return;
+    }
+
     let ctx = gsap.context(() => {
       // Wave Letter Animation
       loader_tl
@@ -39,7 +46,10 @@ export const useLoaderAnime = (): [React.RefObject<HTMLElement>, boolean] => {
           delay: -1,
           duration: 0.5,
           onComplete: () => {
-            setTimeout(() => setComplete(true), 500);
+            setTimeout(() => {
+              sessionStorage.setItem('shouldAnimateLoader', 'false');
+              setShouldAnimate(false);
+            }, 500);
           }
         });
     }, loaderRef);
@@ -47,5 +57,5 @@ export const useLoaderAnime = (): [React.RefObject<HTMLElement>, boolean] => {
     return () => ctx.revert();
   }, []);
 
-  return [loaderRef, isComplete];
+  return [loaderRef, shouldAnimate];
 };

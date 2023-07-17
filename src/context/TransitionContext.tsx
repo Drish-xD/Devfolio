@@ -1,22 +1,15 @@
 'use client';
 
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 
 interface TransitionContextType {
   completed: boolean;
   toggleCompleted: (value: boolean) => void;
 }
 
-const TransitionContext = createContext<TransitionContextType>({
-  completed: false,
-  toggleCompleted: () => {}
-});
+const TransitionContext = createContext<TransitionContextType | null>(null);
 
-interface TransitionProviderProps {
-  children: ReactNode;
-}
-
-export const TransitionProvider = ({ children }: TransitionProviderProps) => {
+export const TransitionProvider = ({ children }: { children: ReactNode }) => {
   const [completed, setCompleted] = useState<boolean>(false);
 
   const toggleCompleted = (value: boolean) => {
@@ -35,4 +28,10 @@ export const TransitionProvider = ({ children }: TransitionProviderProps) => {
   );
 };
 
-export default TransitionContext;
+export function useTransitionContext(): TransitionContextType {
+  const context = useContext(TransitionContext);
+  if (!context) {
+    throw new Error('useTransitionContext must be used within a Provider');
+  }
+  return context;
+}

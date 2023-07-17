@@ -12,8 +12,17 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')]
   },
   images: {
-    domains: ['www.drishxd.dev', 's3.us-west-2.amazonaws.com']
+    domains: ['www.drishxd.dev'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.amazonaws.com',
+        port: '',
+        pathname: '/secure.notion-static.com/**'
+      }
+    ]
   }
 };
 
-module.exports = nextConfig;
+const withMDX = require('@next/mdx')();
+module.exports = withMDX(nextConfig);

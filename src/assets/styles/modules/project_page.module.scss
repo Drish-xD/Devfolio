@@ -1,0 +1,50 @@
+@import '../variable';
+@import '../mixin';
+
+.project {
+  word-wrap: none;
+
+  .image_container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 0.4rem;
+    margin: calc(-1 * clamp(1.5em, 3.33vi, 2.66em)) auto auto;
+
+    img {
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+
+  p {
+    margin-block: clamp(1.2rem, 3.4vi, 2rem);
+    line-height: 1.5;
+    margin-top: 1rem;
+    font-size: clamp(1.2rem, 3.4vi, 2rem);
+    font-weight: 300;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 7vi, 6rem);
+    letter-spacing: clamp(0.2rem, 1vi, 1rem);
+    font-family: $SecFont;
+  }
+
+  ul {
+    margin-left: clamp(4rem, 10vi, 6rem);
+    li {
+      list-style: decimal-leading-zero;
+      font-size: clamp(1.2rem, 3.4vi, 2rem);
+    }
+  }
+
+  .project_links {
+    margin-block: clamp(1.2rem, 3.4vi, 2rem);
+
+    @include flexbox($jusCon: space-evenly, $gap: 0.5rem);
+    a {
+      font-size: clamp(1rem, 3vi, 1.5rem);
+    }
+  }
+}

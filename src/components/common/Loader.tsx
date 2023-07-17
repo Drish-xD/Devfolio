@@ -4,9 +4,9 @@ import { useLoaderAnime } from '@myhooks';
 import { Fragment } from 'react';
 
 export default function Loader() {
-  const [loaderRef, isComplete] = useLoaderAnime();
+  const [loaderRef, shouldAnimate] = useLoaderAnime();
 
-  if (isComplete) return;
+  if (!shouldAnimate) return;
 
   return (
     <section className="loader" ref={loaderRef}>

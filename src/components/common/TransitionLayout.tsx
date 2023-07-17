@@ -1,13 +1,13 @@
 'use client';
 
-import TransitionContext from '@context/TransitionContext';
+import { useTransitionContext } from '@context/TransitionContext';
 import gsap from 'gsap/dist/gsap';
 import { usePathname } from 'next/navigation';
-import { ReactNode, useContext, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import { SwitchTransition, Transition } from 'react-transition-group';
 
 const TransitionLayout = ({ children }: { children: ReactNode }) => {
-  const { toggleCompleted } = useContext(TransitionContext);
+  const { toggleCompleted } = useTransitionContext();
   const pathName = usePathname();
   const screenRef = useRef<HTMLDivElement>(null);
 

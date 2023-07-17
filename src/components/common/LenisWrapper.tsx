@@ -12,10 +12,14 @@ export default function LenisWrapper({ children }: { children: ReactNode }) {
   const lenis = useLenis(ScrollTrigger.update);
   useLayoutEffect(() => {
     ScrollTrigger.refresh();
+  }, [lenis]);
+
+  useLayoutEffect(() => {
     if (lenis) {
       lenis!.scrollTo('header');
     }
   }, [lenis]);
+
   gsap.registerPlugin(ScrollTrigger);
 
   const ref = useHoverAnime();

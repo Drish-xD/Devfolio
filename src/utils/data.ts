@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 export const METADATA: Metadata = {
   title: {
     default: 'Drish | Portfolio',
-    template: ' %s | Drish'
+    template: ' %s - Drish | Portfolio'
   },
   description:
     "Hi, I 'm Drish, a front-end developer, CSS Enthusiast, and Open-Sourcerer from India. \
@@ -67,41 +67,6 @@ export const METADATA: Metadata = {
 /*!*******************!*/
 
 export const NAVLINKS = ['home', 'projects', 'skills', 'about', 'contacts'];
-
-/*!***************!*/
-/*!   Projects    !*/
-/*!***************!*/
-
-export const PROJECTSJSON = [
-  {
-    name: 'Portfolio',
-    image: 'zapkart.webp',
-    github: 'https://github.com/Drish-xD/Portfolio',
-    live: 'https://drishxd.dev',
-    tags: ['NextJs', 'GSAP', 'Lenis']
-  },
-  {
-    name: 'Zapkart',
-    image: 'zapkart.webp',
-    github: 'https://github.com/Drish-xD/Zapkart',
-    live: 'https://zapkart-ecom.netlify.app/',
-    tags: ['ReactJs', 'Material UI', 'Commerce.js']
-  },
-  {
-    name: 'Mark-it',
-    image: 'zapkart.webp',
-    github: 'https://github.com/Drish-xD/Mark-it',
-    live: '',
-    tags: ['React Native', 'Expo', 'Paper']
-  },
-  {
-    name: 'Fitcel',
-    image: 'zapkart.webp',
-    github: 'https://github.com/orgs/Fitcel/repositories',
-    live: '',
-    tags: ['Flutter', 'Firebase', 'Health']
-  }
-];
 
 /*!************!*/
 /*!   Skill    !*/

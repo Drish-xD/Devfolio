@@ -6,6 +6,15 @@ export interface ProjectsProps {
   tags: Array<string>;
 }
 
+export interface ProjectProps {
+  name: string;
+  img: string;
+  tags: Array<string>;
+  mdx: string;
+  github: string;
+  live: string;
+}
+
 export interface Properties {
   slug: { id: string; rich_text: { text: { content: string } }[] };
   img: { id: string; files: { name: string; file: { url: string } }[] };
