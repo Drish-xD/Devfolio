@@ -1,17 +1,13 @@
 import styles from '@styles/modules/project_page.module.scss';
 import { ProjectProps } from '@types';
+import { getSingleProject } from '@utils/notion';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Image from 'next/image';
 import Link from 'next/link';
 
-async function fetchProject(slug: string) {
-  const notion = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/notion/${slug}`);
-  if (!notion.ok) throw new Error('Failed to fetch data');
-  return notion.json();
-}
-
 export default async function MarkDown({ slug }: { slug: string }) {
-  const project: ProjectProps = await fetchProject(slug);
+  const project: ProjectProps = await getSingleProject(slug);
+
   const { name, img, mdx, github, live } = project!;
 
   return (

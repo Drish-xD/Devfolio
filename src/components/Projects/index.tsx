@@ -1,15 +1,11 @@
 import { SectionHeader } from '@components';
 import { ProjectsProps } from '@types';
+import { getAllProjects } from '@utils/notion';
 
 import Card from './Card';
 
-const fetchProjects = async () => {
-  const notion = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/notion/`);
-  return notion.json();
-};
-
 export default async function Projects() {
-  const projects = await fetchProjects();
+  const projects = await getAllProjects();
 
   return (
     <section className="global-section" id="projects">
