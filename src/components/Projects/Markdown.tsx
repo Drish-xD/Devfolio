@@ -1,27 +1,23 @@
 import styles from '@styles/modules/project_page.module.scss';
 import { ProjectProps } from '@types';
-import { getSingleProject } from '@utils/notion';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function MarkDown({ slug }: { slug: string }) {
-  const project: ProjectProps = await getSingleProject(slug);
+import SectionHeader from 'components/common/SectionHeader';
 
+export default function MarkDown({ project }: { project: ProjectProps }) {
   const { name, img, mdx, github, live } = project!;
 
   return (
     <>
-      <div className="section-header">
-        <h2>{name}</h2>
-      </div>
-
+      <SectionHeader text={name} trigger={false} />
       <div className={styles.image_container}>
         <Image
           src={img}
           alt={`Project ${name} Thumbnail`}
           title={`Project ${name} Thumbnail`}
-          sizes="(max-width: 425px) 80vw, (max-width: 768px) 65vw, 50vw"
+          sizes="80vw"
           priority
           fill
         />

@@ -1,7 +1,7 @@
 import { gsap } from '@utils/gsap';
 import { RefObject, useEffect, useRef } from 'react';
 
-export const useTitleAnime = (): RefObject<HTMLDivElement> => {
+export const useTitleAnime = (isScrollTrigger: boolean): RefObject<HTMLDivElement> => {
   const sectionHeaders = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ export const useTitleAnime = (): RefObject<HTMLDivElement> => {
     // Animation
     if (!secHeader) return;
     const ctx = gsap.context(() => {
-      gsap
+      const titleTl = gsap
         .timeline({
           scrollTrigger: {
             trigger: secHeader,
@@ -22,8 +22,10 @@ export const useTitleAnime = (): RefObject<HTMLDivElement> => {
           yPercent: 100,
           duration: 1,
           stagger: 0.1
-        })
-        .from(
+        });
+
+      if (isScrollTrigger) {
+        titleTl.from(
           secHeader.querySelectorAll('span'),
           {
             scale: 0,
@@ -33,6 +35,11 @@ export const useTitleAnime = (): RefObject<HTMLDivElement> => {
           },
           0
         );
+        titleTl.scrollTrigger?.enable();
+      } else {
+        titleTl.scrollTrigger?.disable();
+        titleTl.play();
+      }
     });
 
     return () => ctx.revert();

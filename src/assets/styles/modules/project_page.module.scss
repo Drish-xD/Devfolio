@@ -2,8 +2,6 @@
 @import '../mixin';
 
 .project {
-  word-wrap: none;
-
   .image_container {
     position: relative;
     width: 100%;
@@ -36,6 +34,9 @@
     li {
       list-style: decimal-leading-zero;
       font-size: clamp(1.2rem, 3.4vi, 2rem);
+      &::marker {
+        font-size: 0.9em;
+      }
     }
   }
 
@@ -45,6 +46,7 @@
     @include flexbox($jusCon: space-evenly, $gap: 0.5rem);
     a {
       font-size: clamp(1rem, 3vi, 1.5rem);
+      text-decoration: underline;
     }
   }
 }

@@ -4,6 +4,8 @@ import { getAllProjects } from '@utils/notion';
 
 import Card from './Card';
 
+export const revalidate = 1800;
+
 export default async function Projects() {
   const projects = await getAllProjects();
 

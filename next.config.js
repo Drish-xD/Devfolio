@@ -21,8 +21,15 @@ const nextConfig = {
         pathname: '/secure.notion-static.com/**'
       }
     ]
+  },
+  experimental: {
+    nextScriptWorkers: true
   }
 };
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+});
+
 const withMDX = require('@next/mdx')();
-module.exports = withMDX(nextConfig);
+module.exports = withBundleAnalyzer(withMDX(nextConfig));

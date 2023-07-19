@@ -12,9 +12,6 @@ const { Blob, Navbar, Footer } = {
   Footer: nextImport('Footer')
 };
 
-// meta data
-export const metadata = METADATA;
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${jetBrain.variable} ${offBit.variable}`}>
@@ -28,3 +25,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+
+// meta data
+
+export const metadata = METADATA;
