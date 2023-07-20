@@ -2,12 +2,28 @@
 @import '../mixin';
 
 .project {
+  .tags {
+    @include flexbox($jusCon: space-evenly, $wrap: wrap);
+    margin: clamp(0.4rem, 1.3vi, 1rem);
+    margin-top: clamp(0.2rem, 0.8vi, 1rem);
+    overflow: hidden;
+
+    span {
+      padding: 0.2rem 0.8rem;
+      margin: 0.2rem;
+      @include blurbg(10%, 0.5rem, $white);
+      font-size: clamp(0.8rem, 2.5vi, 1.2rem);
+      border-radius: 0.4rem;
+      overflow: inherit;
+    }
+  }
+
   .image_container {
+    margin: calc(-1 * clamp(1.5em, 3.33vi, 2.8em)) auto auto;
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
     border-radius: 0.4rem;
-    margin: calc(-1 * clamp(1.5em, 3.33vi, 2.66em)) auto auto;
 
     img {
       object-fit: cover;
@@ -15,7 +31,7 @@
     }
   }
 
-  p {
+  > p {
     margin-block: clamp(1.2rem, 3.4vi, 2rem);
     line-height: 1.5;
     margin-top: 1rem;
@@ -29,13 +45,23 @@
     font-family: $SecFont;
   }
 
-  ul {
-    margin-left: clamp(4rem, 10vi, 6rem);
+  ol {
+    margin-left: clamp(3rem, 7vi, 4rem);
     li {
+      margin-block: clamp(1.2rem, 3.4vi, 2rem);
       list-style: decimal-leading-zero;
       font-size: clamp(1.2rem, 3.4vi, 2rem);
       &::marker {
         font-size: 0.9em;
+      }
+
+      p:first-of-type {
+        font-weight: 600;
+      }
+
+      p:last-of-type {
+        font-weight: 200;
+        font-size: 0.8em;
       }
     }
   }

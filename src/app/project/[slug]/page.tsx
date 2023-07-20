@@ -6,12 +6,10 @@ import { Metadata } from 'next';
 
 const Markdown = nextImport('Markdown');
 
-export default async function Project({ params: { slug } }: { params: { slug: string } }) {
-  const project: ProjectProps = await getSingleProject(slug);
-
+export default function Project({ params: { slug } }: { params: { slug: string } }) {
   return (
     <main className={`page ${styles.project}`}>
-      <Markdown project={project} />
+      <Markdown slug={slug} />
     </main>
   );
 }

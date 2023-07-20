@@ -1,14 +1,16 @@
 import styles from '@styles/modules/project_page.module.scss';
 import { ProjectProps } from '@types';
+import { getSingleProject } from '@utils/notion';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import SectionHeader from 'components/common/SectionHeader';
 
-export default function MarkDown({ project }: { project: ProjectProps }) {
-  const { name, img, mdx, github, live } = project!;
+export default async function MarkDown({ slug }: { slug: string }) {
+  const project: ProjectProps = await getSingleProject(slug);
 
+  const { name, img, mdx, github, live, tags } = project!;
   return (
     <>
       <SectionHeader text={name} trigger={false} />
@@ -23,6 +25,11 @@ export default function MarkDown({ project }: { project: ProjectProps }) {
         />
       </div>
 
+      <div className={styles.tags}>
+        {tags.map((tag, i) => (
+          <span key={i}>{tag}</span>
+        ))}
+      </div>
       <MDXRemote source={mdx} />
 
       <div className={styles.project_links}>
