@@ -1,6 +1,5 @@
 import { SectionHeader } from '@components';
-import { ProjectsProps } from '@types';
-import { getAllProjects } from '@utils/notion';
+import { getAllProjects } from '@utils/contentful';
 
 import Card from './Card';
 
@@ -11,7 +10,8 @@ export default async function Projects() {
     <section className="global-section" id="projects">
       <SectionHeader text="Projects" num={2} />
       <div className="projects-container">
-        {projects.map((project: ProjectsProps) => (
+        {projects.map((project) => (
+          // @ts-ignore
           <Card key={project.id} project={project} />
         ))}
       </div>

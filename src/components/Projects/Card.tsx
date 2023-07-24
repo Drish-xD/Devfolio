@@ -1,18 +1,18 @@
 'use client';
 
 import { useCardsAnime } from '@myhooks';
-import { ProjectsProps } from '@types';
+import { ProjectCardProps } from '@types';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Card = ({ project }: { project: ProjectsProps }) => {
+const Card = ({ project }: { project: ProjectCardProps }) => {
   const projectsRef = useCardsAnime();
-  const { name, tags, img, id, slug } = project!;
+  const { name, tags, image, id, slug } = project!;
 
   return (
     <article ref={(ref: HTMLDivElement) => (projectsRef.current[id] = ref)}>
       <Image
-        src={img}
+        src={image}
         alt={`Project ${name} Thumbnail`}
         title={`Project ${name} Thumbnail`}
         sizes="(max-width: 425px) 80vw, (max-width: 768px) 65vw, 50vw"

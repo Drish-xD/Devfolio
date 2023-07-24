@@ -3,28 +3,22 @@ export interface MousePosition {
   y: number | undefined;
 }
 
-export interface ProjectsProps {
+export interface ProjectCardProps {
   id: number;
-  name: string;
   slug: string;
-  img: string;
-  tags: Array<string>;
+  name: string;
+  image: string;
+  tags: string[];
 }
 
-export interface ProjectProps {
+export interface ProjectProperties {
   name: string;
-  img: string;
-  tags: Array<string>;
+  slug: string;
+  tags: string[];
+  image: string;
   mdx: string;
   github: string;
   live: string;
-}
-
-export interface Properties {
-  slug: { id: string; rich_text: { text: { content: string } }[] };
-  img: { id: string; files: { name: string; file: { url: string } }[] };
-  name: { id: string; title: { text: { content: string } }[] };
-  tags: { id: string; multi_select: { id: string; name: string }[] };
 }
 
 export interface TransitionContextProps {

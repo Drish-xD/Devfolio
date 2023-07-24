@@ -12,15 +12,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')]
   },
   images: {
-    domains: ['www.drishxd.dev'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**.amazonaws.com',
-        port: '',
-        pathname: '/secure.notion-static.com/**'
-      }
-    ]
+    domains: ['www.drishxd.dev', 'images.ctfassets.net']
   },
   experimental: {
     nextScriptWorkers: true
