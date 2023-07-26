@@ -4,7 +4,8 @@ import { ProjectProperties } from '@types';
 import { getSingleProject } from '@utils/contentful';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Image from 'next/image';
-import Link from 'next/link';
+
+import ProjectLinks from './ProjectLinks';
 
 export default async function MarkDown({ slug }: { slug: string }) {
   // @ts-ignore
@@ -33,16 +34,7 @@ export default async function MarkDown({ slug }: { slug: string }) {
 
       <MDXRemote source={mdx} />
 
-      <div className={styles.project_links}>
-        <Link href={github} data-hover="Github">
-          Github
-        </Link>
-        {live && (
-          <Link href={live} data-hover="Live">
-            Live
-          </Link>
-        )}
-      </div>
+      <ProjectLinks github={github} live={live} />
     </>
   );
 }

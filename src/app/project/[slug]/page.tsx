@@ -12,6 +12,7 @@ export default function Project({ params: { slug } }: { params: { slug: string }
   );
 }
 
+// generating meta data dynamically
 export const generateMetadata = async ({
   params: { slug }
 }: {

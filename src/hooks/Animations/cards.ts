@@ -15,7 +15,7 @@ export const useCardsAnime = () => {
             delay: 0.1,
             scrollTrigger: {
               trigger: project,
-              start: 'top bottom',
+              start: 'center bottom',
               end: 'top center-=100',
               toggleActions: 'restart none none reset'
             }
@@ -31,11 +31,12 @@ export const useCardsAnime = () => {
               ease: 'Power4.in'
             }
           ).to(
-            project.querySelector('span span'),
+            project.querySelectorAll('span span'),
             {
               xPercent: -100,
               duration: 0.75,
-              ease: 'power3.out'
+              ease: 'power3.out',
+              stagger: 0.2
             },
             0
           );
@@ -45,7 +46,15 @@ export const useCardsAnime = () => {
     animateProjects(projects);
 
     const hoverCard = (project: HTMLDivElement, cardInfo: Element) => {
-      const hovertl = gsap.timeline({ paused: true });
+      const hovertl = gsap.timeline({
+        paused: true,
+        scrollTrigger: {
+          trigger: cardInfo,
+          start: 'top bottom',
+          end: 'top center-=100',
+          toggleActions: 'restart none none reset'
+        }
+      });
       hovertl
         .to(cardInfo, {
           background: 'linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%)',
@@ -96,6 +105,10 @@ export const useCardsAnime = () => {
           },
           0
         );
+
+      matchMedia('(max-width: 1024px)').matches
+        ? hovertl.scrollTrigger?.enable()
+        : hovertl.scrollTrigger?.disable();
 
       const circleLink = project.querySelector('a');
 

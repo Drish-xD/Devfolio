@@ -1,12 +1,14 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const useHoverAnime = () => {
-  const bodyRef = useRef<HTMLBodyElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    const body = bodyRef.current;
+  const isPhoneDevice = () => window.innerWidth <= 768;
 
-    if (!body) return;
+  useEffect(() => {
+    const selectedElem = ref.current;
+
+    if (!selectedElem || isPhoneDevice()) return;
 
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -35,7 +37,7 @@ export const useHoverAnime = () => {
       }, 30);
     };
 
-    const elements = body.querySelectorAll('[data-hover]');
+    const elements = selectedElem.querySelectorAll('[data-hover]');
     elements.forEach((element) => {
       element.addEventListener('mouseover', handleMouseEvent);
       element.addEventListener('mouseleave', handleMouseEvent);
@@ -47,6 +49,6 @@ export const useHoverAnime = () => {
         element.removeEventListener('mouseleave', handleMouseEvent);
       });
     };
-  }, [bodyRef]);
-  return bodyRef;
+  }, [ref]);
+  return ref;
 };

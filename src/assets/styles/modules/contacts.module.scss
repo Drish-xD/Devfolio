@@ -1,4 +1,4 @@
-#contact {
+#contacts {
   .contact-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -33,7 +33,7 @@
 }
 
 @include device(laptop) {
-  #contact {
+  #contacts {
     .contact-container {
       grid-template-columns: 1fr;
       gap: 3rem;
@@ -43,7 +43,7 @@
 }
 
 @include device(tablet) {
-  #contact {
+  #contacts {
     .contact-container {
       gap: 2rem;
     }
@@ -51,7 +51,7 @@
 }
 
 @include device(mobile) {
-  #contact {
+  #contacts {
     .contact-container {
       gap: 1.2rem;
     }

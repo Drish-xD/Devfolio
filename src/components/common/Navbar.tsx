@@ -1,14 +1,15 @@
 'use client';
 
-import { useNavAnime } from '@myhooks';
+import { useHoverAnime, useNavAnime } from '@myhooks';
 import { NAVLINKS } from '@utils/data';
 import Link from 'next/link';
 
 export default function Navbar() {
   const { navbarRef, closeMenu, openMenu } = useNavAnime();
+  const ref = useHoverAnime();
 
   return (
-    <header>
+    <header ref={ref}>
       <div className="fixed-header">
         <span>♠</span>
         <span data-hover="Menu" onClick={openMenu}>

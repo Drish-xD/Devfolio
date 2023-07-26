@@ -2,7 +2,6 @@
 
 import { TransitionLayout } from '@components';
 import { TransitionProvider } from '@context/TransitionContext';
-import { useHoverAnime } from '@myhooks';
 import { Lenis, useLenis } from '@studio-freight/react-lenis';
 import { ScrollTrigger, gsap } from '@utils/gsap';
 import { ReactNode, useLayoutEffect } from 'react';
@@ -22,10 +21,8 @@ export default function LenisWrapper({ children }: { children: ReactNode }) {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const ref = useHoverAnime();
-
   return (
-    <body ref={ref} onContextMenu={(e) => e.preventDefault}>
+    <body onContextMenu={(e) => e.preventDefault()}>
       <Lenis
         root
         options={{
