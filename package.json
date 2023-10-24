@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@builder.io/partytown": "^0.8.0",
-    "@mdx-js/loader": "^2.3.0",
-    "@mdx-js/react": "^2.3.0",
+    "@mdx-js/loader": "^3.0.0",
+    "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^13.4.10",
     "@studio-freight/react-lenis": "^0.0.36",
     "contentful": "^10.3.6",
