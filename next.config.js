@@ -2,20 +2,13 @@
  * @type {import('next').NextConfig}
  */
 
-const path = require('path');
-
 const nextConfig = {
-  trailingSlash: true,
   reactStrictMode: false,
-  swcMinify: true,
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')]
-  },
   images: {
-    domains: ['www.drishxd.dev', 'images.ctfassets.net']
-  },
-  experimental: {
-    nextScriptWorkers: true
+    remotePatterns: [
+      { protocol: 'https', hostname: 'www.drishxd.dev' },
+      { protocol: 'https', hostname: 'images.ctfassets.net' }
+    ]
   }
 };
 
@@ -24,4 +17,5 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const withMDX = require('@next/mdx')();
+
 module.exports = withBundleAnalyzer(withMDX(nextConfig));

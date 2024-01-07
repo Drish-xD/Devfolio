@@ -1,6 +1,6 @@
 # Portfolio
 
-The personal Portfolio website showcases projects, skills, and blogs to share experiences. The website is built using Next.js as a Static Site Generator, GSAP for animations, and Lenis Scroll for smooth scrolling. Notion SDK is integrated to use it as a CMS for managing Projects.
+The personal Portfolio website showcases projects, skills, and blogs to share experiences. The website is built using Next.js as a Static Site Generator, GSAP for animations, and Lenis Scroll for smooth scrolling. Contentful SDK is integrated to use it as a CMS for managing Projects.
 
 ### Key Features
 
@@ -16,9 +16,9 @@ The personal Portfolio website showcases projects, skills, and blogs to share ex
 
    Lenis Scroll integration ensures a smooth scrolling experience, enhancing user navigation throughout the website.
 
-4. CMS using Notion SDK
+4. Contentful as CMS
 
-   Integration of Notion SDK enables easy content management for projects, allowing the user to update and manage content seamlessly.
+   Integration of Contentful SDK enables easy content management for projects, allowing the user to update and manage content seamlessly.
 
 5. Attractive UI Design
 
