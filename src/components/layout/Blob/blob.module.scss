@@ -1,0 +1,25 @@
+@use '@/base' as *;
+
+.blob {
+  display: block;
+  height: 25vmax;
+  aspect-ratio: 1;
+  @include position($l: 50%, $t: 50%, $isFixed: true);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  border-radius: 50%;
+  background: linear-gradient(to right, #80ffd4cc, #9370d8cc);
+  z-index: -9;
+}
+
+.noise {
+  @include position($inset: 0, $isFixed: true);
+  backdrop-filter: blur(10vmax);
+  z-index: -9;
+
+  &::before {
+    content: '';
+    @include position($inset: 0);
+    background-image: url('/images/noise.webp');
+  }
+}

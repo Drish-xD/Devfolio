@@ -1,0 +1,28 @@
+@use '@/base' as *;
+
+.NotFound {
+  @include flexbox(column, flex-end, center);
+  height: 90lvh;
+
+  h1 {
+    font-size: 30vw;
+    font-style: italic;
+    font-family: $SecFont;
+  }
+
+  h3 {
+    font-size: clamp(1rem, 4vi, 3rem);
+    font-weight: 200;
+  }
+
+  button {
+    font-size: clamp(0.8rem, 2.5vi, 1.5rem);
+    font-weight: 400;
+    margin-block: 1rem 3rem;
+    text-decoration: underline solid;
+  }
+
+  @include device(laptop) {
+    justify-content: center;
+  }
+}

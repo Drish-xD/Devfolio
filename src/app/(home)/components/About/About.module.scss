@@ -1,0 +1,30 @@
+@use '@/base' as *;
+
+.about {
+  @include container;
+
+  h3 {
+    font-size: clamp(1.7rem, 5vi, 3rem);
+    font-weight: 400;
+  }
+
+  p {
+    width: 80%;
+    line-height: 1.5;
+    margin-top: 1rem;
+    font-size: clamp(1.2rem, 3.4vi, 2rem);
+    font-weight: 300;
+
+    a {
+      text-decoration: underline solid;
+    }
+
+    @include device(laptop) {
+      width: 90%;
+    }
+
+    @include device(tablet) {
+      width: 100%;
+    }
+  }
+}

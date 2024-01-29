@@ -1,5 +1,6 @@
-import { createClient } from 'contentful';
 import { cache } from 'react';
+
+import { createClient } from 'contentful';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_SPACE_ID!,
@@ -14,7 +15,7 @@ const getAllProjects = cache(async () => {
 
   const items = res.items.map((i) => i.fields);
 
-  return items.map(({ name, slug, tags, image }, index) => ({
+  return items.map(({ name, slug, tags, image, index }) => ({
     id: index,
     name,
     slug,

@@ -1,0 +1,122 @@
+@use './variable' as *;
+
+// Position absolute mixin
+@mixin position($t: null, $l: null, $b: null, $r: null, $inset: null, $isFixed: false) {
+  // fixed or absolute
+  @if $isFixed {
+    position: fixed;
+  } @else {
+    position: absolute;
+  }
+
+  // position
+  @if $inset != null {
+    inset: $inset;
+  } @else {
+    @if $t != null {
+      top: $t;
+    }
+
+    @if $l != null {
+      left: $l;
+    }
+
+    @if $b != null {
+      bottom: $b;
+    }
+
+    @if $r != null {
+      right: $r;
+    }
+  }
+}
+
+// FlexBox Mixin
+
+@mixin flexbox(
+  $dir: null,
+  $jusCon: null,
+  $alignItem: null,
+  $wrap: null,
+  $gap: null,
+  $isInline: false
+) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  @if $jusCon != null {
+    justify-content: $jusCon;
+  }
+
+  @if $alignItem != null {
+    align-items: $alignItem;
+  }
+
+  @if $dir !=null {
+    flex-direction: $dir;
+  }
+
+  @if $wrap != null {
+    flex-wrap: $wrap;
+  }
+
+  @if $gap != null {
+    gap: $gap;
+  }
+}
+
+// Blured background mixin
+@mixin blurbg($o, $b, $c: $black) {
+  background: rgba($c, $o);
+  backdrop-filter: blur($b);
+}
+
+// responsive media mixin
+
+@mixin device($breakpoint) {
+  @if $breakpoint == desktop {
+    @media screen and (max-width: 1280px) {
+      @content;
+    }
+  } @else if $breakpoint == laptop {
+    @media screen and (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media screen and (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media only screen and (max-width: 425px) {
+      @content;
+    }
+  } @else if $breakpoint == small-mobile {
+    @media only screen and (max-width: 320px) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin container($margin: true) {
+  width: 75%;
+  margin-inline: auto;
+
+  @if $margin {
+    margin-top: clamp(4em, 10vi, 8em);
+  }
+
+  @include device(tablet) {
+    width: 85%;
+  }
+
+  @include device(mobile) {
+    width: 90%;
+  }
+}
