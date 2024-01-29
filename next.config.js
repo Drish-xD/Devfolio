@@ -1,8 +1,13 @@
 /**
  * @type {import('next').NextConfig}
  */
+const path = require('path');
 
 const nextConfig = {
+  webpack: (config) => {
+    config.resolve.alias['@/base'] = path.resolve(__dirname, 'src/styles/base');
+    return config;
+  },
   reactStrictMode: false,
   images: {
     remotePatterns: [

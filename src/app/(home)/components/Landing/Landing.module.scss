@@ -1,0 +1,56 @@
+@use '@/base' as *;
+
+.home {
+  width: 100%;
+  min-height: 100lvh;
+  text-align: center;
+  @include flexbox($alignItem: center, $jusCon: center, $dir: column);
+
+  h1 {
+    line-height: 1.2;
+    font-size: clamp(3rem, 14vi, 10rem);
+
+    span {
+      display: block;
+    }
+
+    > span:last-child {
+      @include flexbox($jusCon: center, $gap: 1rem);
+
+      > span {
+        display: inline-block;
+        font-size: 0.25em;
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+      }
+    }
+
+    @include device(mobile) {
+      line-height: 1.5;
+    }
+  }
+  p {
+    width: 50%;
+    margin: 1rem auto;
+    font-size: clamp(0.8rem, 3.5vi, 1.3rem);
+    font-weight: 200;
+    text-transform: uppercase;
+
+    @include device(laptop) {
+      width: 60%;
+    }
+
+    @include device(tablet) {
+      width: 70%;
+    }
+
+    @include device(mobile) {
+      width: 80%;
+      line-height: 1.5;
+    }
+  }
+
+  @include device(tablet) {
+    height: 85lvh;
+  }
+}

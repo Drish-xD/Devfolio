@@ -1,5 +1,6 @@
-import { MousePosition } from '@types';
 import { useEffect, useState } from 'react';
+
+import { type MousePosition } from '@/types';
 
 export const useMousePosition = (): MousePosition => {
   const [mousePosition, setMousePosition] = useState<MousePosition>({
@@ -8,18 +9,23 @@ export const useMousePosition = (): MousePosition => {
   });
 
   useEffect(() => {
-    const updateMousePosition = (ev: MouseEvent | TouchEvent) => {
+    const halfWindowWidth = window.innerWidth / 2;
+    const halfWindowHeight = window.innerHeight / 2;
+
+    const updateMousePosition = throttle((event: MouseEvent | TouchEvent) => {
       let x: number, y: number;
 
-      if ('touches' in ev) {
-        const touch = (ev as TouchEvent).touches[0];
-        [x, y] = [touch.clientX, touch.clientY];
+      if ('touches' in event) {
+        const touch = (event as TouchEvent).touches[0];
+        x = touch.clientX - halfWindowWidth;
+        y = touch.clientY - halfWindowHeight;
       } else {
-        [x, y] = [(ev as MouseEvent).clientX, (ev as MouseEvent).clientY];
+        x = event.clientX - halfWindowWidth;
+        y = event.clientY - halfWindowHeight;
       }
 
       setMousePosition({ x, y });
-    };
+    }, 200);
 
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('touchmove', updateMousePosition);
@@ -31,4 +37,19 @@ export const useMousePosition = (): MousePosition => {
   }, []);
 
   return mousePosition;
+};
+
+const throttle = <T, F extends (...args: any[]) => any>(
+  func: (this: T, ...args: Parameters<F>) => ReturnType<F>,
+  limit: number
+): ((this: T, ...args: Parameters<F>) => void) => {
+  let inThrottle: boolean;
+  return function (this: T, ...args: Parameters<F>) {
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
 };

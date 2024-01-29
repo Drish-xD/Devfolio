@@ -1,4 +1,4 @@
-import { getAllProjects } from '@utils/contentful';
+import { getAllProjects } from '@/utils/contentful';
 
 const URL = 'https://drishxd.dev';
 

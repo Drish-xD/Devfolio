@@ -1,16 +1,15 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
+import styles from '@/styles/common/404.module.scss';
 
-export default function PagNotFound() {
+export default function NotFound() {
   return (
-    <main>
-      <section id="not_found">
-        <h1>404</h1>
-        <h3>Page not found</h3>
+    <section className={styles.NotFound}>
+      <h1>404</h1>
+      <h3>Page not found</h3>
 
-        <Link href="/" data-hover="GO BACK">
-          GO BACK
-        </Link>
-      </section>
-    </main>
+      <Link href="/" as="Page">
+        GO BACK
+      </Link>
+    </section>
   );
 }

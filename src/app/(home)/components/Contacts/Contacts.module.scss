@@ -1,0 +1,48 @@
+@use '@/base' as *;
+
+.contacts {
+  @include container;
+
+  > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+
+    h3 {
+      font-size: clamp(1.7rem, 5vi, 3rem);
+    }
+
+    > ul li {
+      h4 {
+        text-transform: capitalize;
+        font-size: clamp(1.2rem, 3.4vi, 2rem);
+      }
+
+      > ul {
+        @include flexbox($dir: row, $wrap: nowrap);
+        margin-bottom: 1.5rem;
+
+        li {
+          font-size: clamp(0.7rem, 4vi, 1rem);
+          font-weight: 200;
+          flex-grow: 1;
+          margin-top: 0.5rem;
+        }
+      }
+    }
+
+    @include device(laptop) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+
+    @include device(tablet) {
+      gap: 2rem;
+    }
+
+    @include device(mobile) {
+      gap: 1.2rem;
+    }
+  }
+}
