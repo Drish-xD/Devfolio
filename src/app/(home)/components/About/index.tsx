@@ -11,9 +11,9 @@ export default function About() {
   const aboutRef = useAboutAnimation();
 
   return (
-    <section id="about" className={styles.about}>
+    <section id="about">
       <SectionTitle text="About" num={4} />
-      <div ref={aboutRef}>
+      <div ref={aboutRef} className={styles.about}>
         <h3>Hi, I&rsquo;m Drish.</h3>
         {ABOUT_TEXT.map((text: string, i: number) => (
           <p key={i}>{text}</p>

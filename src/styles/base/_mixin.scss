@@ -104,13 +104,9 @@
   }
 }
 
-@mixin container($margin: true) {
+@mixin container() {
   width: 75%;
   margin-inline: auto;
-
-  @if $margin {
-    margin-top: clamp(4em, 10vi, 8em);
-  }
 
   @include device(tablet) {
     width: 85%;

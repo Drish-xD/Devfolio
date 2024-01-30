@@ -6,9 +6,9 @@ import styles from './Contacts.module.scss';
 
 export default function Contacts() {
   return (
-    <section id="contacts" className={styles.contacts}>
+    <section id="contacts">
       <SectionTitle text="Contact" num={5} />
-      <div>
+      <div className={styles.contacts}>
         <h3>
           Want to discuss a new project? <br /> Get in touch.
         </h3>

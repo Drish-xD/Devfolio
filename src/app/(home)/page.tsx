@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 
 import Landing from './components/Landing';
+import Skills from './components/Skills';
 
 const About = dynamic(() => import('./components/About'));
 // const Projects = dynamic(() => import('./components/Projects'));
@@ -13,8 +14,8 @@ export default function Portfolio() {
     <main>
       {/* <Loader /> */}
       <Landing />
-      {/* <Projects />
-      <Skills /> */}
+      {/* <Projects /> */}
+      <Skills />
       <About />
       <Contacts />
       {/* <Toast /> */}

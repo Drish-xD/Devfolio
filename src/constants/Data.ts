@@ -30,26 +30,35 @@ export const NAV_LINKS = [
 /*!************!*/
 
 export const SKILLS = [
-  'JavaScript',
-  'TypeScript',
-  'Python',
-  'Dart',
+  'HTML/CSS',
   'SCSS',
+  'JS/TS',
+  'JQuery',
   'React.js',
-  'Redux',
   'Next.js',
-  'Gatsby',
+  'Redux',
+  'React-Query',
+  'Zod',
   'GSAP',
   'Vue.js',
-  'Flutter',
+  'Fastify',
+  'Nest.js',
+  'Express',
+  'Python',
   'Native',
-  'Node.js',
-  'Flask',
-  'MySQL',
-  'MongoDB',
+  'Expo',
+  'Flutter',
+  'Dart',
+  'SQL',
+  'NoSQL',
   'Firebase',
   'AppWrite',
-  'Supabase'
+  'Supabase',
+  'CMS',
+  'SEO',
+  'UI Libraries',
+  'API Integrations',
+  'Redis'
 ];
 
 /*!************!*/
@@ -77,8 +86,8 @@ export const ABOUT_TEXT = [
 export const CONTACT_LINKS = {
   mail: [
     {
-      label: 'Drish.xD@gmail.com',
-      value: 'mailto:Drish.xD@gmail.com'
+      label: 'hey@drishxd.dev',
+      value: 'mailto:hey@drishxd.dev'
     }
   ],
   socials: [

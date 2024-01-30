@@ -1,42 +1,42 @@
-import { RefObject, useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 
-import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
-export const useMarqueeAnime = (skills: string[][]): RefObject<HTMLHeadingElement[]> => {
-  const rowRefs = useRef<HTMLHeadingElement[]>([]);
+export const useMarqueeAnimation = () => {
+  const ref = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    const rows = rowRefs.current;
+  useGSAP(
+    () => {
+      const container = ref.current;
+      if (!container) return;
 
-    if (!rows) return;
+      const rows = container.querySelectorAll('h3');
 
-    const ctx = gsap.context(() => {
-      rows.forEach((row, index) => {
-        if (row) {
-          const h3Width = row.querySelector('h3')!.clientWidth;
-          const initial = index % 2 === 0 ? 0 : -h3Width;
-          const animate = index % 2 === 0 ? -h3Width : 0;
-          gsap.fromTo(
-            row,
-            {
-              x: initial
-            },
-            {
-              x: animate,
-              duration: 4,
-              scrollTrigger: {
-                trigger: row,
-                start: 'top bottom',
-                scrub: 5
-              }
-            }
-          );
-        }
+      rows!.forEach((row, index) => {
+        const rowWidth = row.scrollWidth / 2;
+        const isEven = index % 2;
+
+        const initial = isEven ? 0 : -rowWidth;
+        const animate = isEven ? -rowWidth : 0;
+
+        gsap.set(row, { x: initial });
+
+        gsap.to(row, {
+          x: animate,
+          duration: 4,
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 90%',
+            end: 'bottom 10%',
+            scrub: 5,
+            markers: true
+          }
+        });
       });
+    },
+    { scope: ref }
+  );
 
-      return () => ctx.kill();
-    }, rowRefs);
-  }, [skills]);
-
-  return rowRefs;
+  return ref;
 };

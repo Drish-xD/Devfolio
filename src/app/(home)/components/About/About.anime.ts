@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 import { useGSAP } from '@gsap/react';
-import { Power4, gsap } from 'gsap';
+import { Expo, gsap } from 'gsap';
 import SplitType from 'split-type';
 
 export const useAboutAnimation = () => {
@@ -14,11 +14,11 @@ export const useAboutAnimation = () => {
       if (!container) return;
 
       const titleContent = new SplitType(container.querySelectorAll('h3')!, {
-        types: 'chars,words'
+        types: 'words'
       });
 
       const textContent = new SplitType(container.querySelectorAll('p')!, {
-        types: 'chars,words'
+        types: 'words'
       });
 
       gsap
@@ -30,16 +30,16 @@ export const useAboutAnimation = () => {
             start: 'top 80%',
             end: 'bottom 20%'
           },
-          ease: Power4.easeOut
+          ease: Expo.easeInOut
         })
-        .from(titleContent.chars, {
+        .from(titleContent.words, {
           opacity: 0.25,
-          duration: 10,
+          duration: 5,
           stagger: 5
         })
-        .from(textContent.chars, {
+        .from(textContent.words, {
           opacity: 0.25,
-          duration: 10,
+          duration: 5,
           stagger: 5
         });
     },

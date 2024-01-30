@@ -5,16 +5,15 @@
   @include flexbox($dir: row, $jusCon: space-between);
   padding-block: clamp(1rem, 2vi, 2rem) 2rem;
   border-top: 1px solid rgba($white, 0.8);
+  margin-top: $container-margin;
 
   p,
   a {
     font-size: clamp(0.7rem, 3.5vi, 1rem);
     text-transform: capitalize;
   }
-}
 
-@include device(900px) {
-  .footer {
+  @include device(tablet) {
     @include flexbox($dir: column, $alignItem: center, $gap: 1rem);
   }
 }
