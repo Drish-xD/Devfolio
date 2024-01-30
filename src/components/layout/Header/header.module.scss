@@ -5,7 +5,7 @@
   z-index: 50;
 
   .fixed_nav {
-    @include container(false);
+    @include container;
     @include position($inset: 0 0 auto);
     @include flexbox($jusCon: space-between, $alignItem: center);
     padding-block: 1rem;

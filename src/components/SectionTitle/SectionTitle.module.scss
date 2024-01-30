@@ -1,8 +1,9 @@
 @use '@/base' as *;
 
 .title {
+  @include container;
   @include flexbox($alignItem: baseline, $wrap: nowrap, $dir: row);
-  margin-bottom: clamp(4rem, 10vi, 8rem);
+  margin-block: calc($container-margin * 2) $container-margin;
   font-size: clamp(2.5rem, 10vi, 8rem);
   line-height: 1;
   overflow: hidden;
