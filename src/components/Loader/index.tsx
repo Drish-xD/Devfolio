@@ -2,15 +2,14 @@
 
 import { Fragment } from 'react';
 
-import { useLoaderAnime } from '@/hooks';
+// import { useLoaderAnime } from '@/hooks';
 
 export default function Loader() {
-  const [loaderRef, shouldAnimate] = useLoaderAnime();
-
-  if (!shouldAnimate) return;
+  // const [loaderRef, shouldAnimate] = useLoaderAnime();
+  console.log('Loader component');
 
   return (
-    <section className="loader" ref={loaderRef}>
+    <section className="loader">
       <div className="grid">
         {[...Array(7)].map((_, i) => (
           <Fragment key={i}>
