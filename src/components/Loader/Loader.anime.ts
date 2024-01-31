@@ -1,11 +1,12 @@
 import { RefObject, useLayoutEffect, useRef, useState } from 'react';
 
-import { gsap } from '@/utils/gsap';
+import { gsap } from 'gsap';
 
 export const useLoaderAnime = (): [RefObject<HTMLElement>, boolean] => {
   const loader_tl = gsap.timeline();
   const loaderRef = useRef<HTMLElement>(null);
   const [shouldAnimate, setShouldAnimate] = useState<boolean>(true);
+  console.log('Loader anime');
 
   useLayoutEffect(() => {
     const item = sessionStorage.getItem('shouldAnimateLoader');
