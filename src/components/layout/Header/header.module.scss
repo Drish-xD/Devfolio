@@ -27,62 +27,29 @@
     overflow: hidden;
 
     nav {
-      @include flexbox($dir: column, $alignItem: center, $jusCon: center, $gap: 1rem);
       flex-grow: 1;
 
-      h2 {
-        @include flexbox($alignItem: baseline);
-        font-size: clamp(2em, 9vi, 5em);
-        overflow: hidden;
-        text-transform: uppercase;
+      ul {
+        height: 100%;
+        @include flexbox($dir: column, $alignItem: center, $jusCon: center, $gap: 1rem);
 
-        span {
-          overflow: inherit;
-          font-weight: 400;
-          font-size: 0.4em;
+        li {
+          @include flexbox($alignItem: baseline);
+          font-size: clamp(2em, 9vi, 5em);
+          overflow: hidden;
+          text-transform: uppercase;
+
+          span {
+            overflow: inherit;
+            font-weight: 400;
+            font-size: 0.4em;
+          }
+        }
+
+        @include device(tablet) {
+          gap: 2rem;
         }
       }
-
-      @include device(tablet) {
-        gap: 2rem;
-      }
-    }
-  }
-}
-
-.overlay {
-  @include position($inset: 0);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-
-  span {
-    &:nth-last-of-type(1) {
-      @include blurbg(25%, 2vmax, #080808);
-    }
-    &:nth-last-of-type(2) {
-      @include blurbg(25%, 2vmax, #101010);
-    }
-    &:nth-last-of-type(3) {
-      @include blurbg(25%, 2vmax, #181818);
-    }
-    &:nth-last-of-type(4) {
-      @include blurbg(25%, 2vmax, #202020);
-    }
-  }
-
-  @include device(tablet) {
-    grid-template-columns: repeat(3, 1fr);
-
-    span:nth-last-of-type(4) {
-      display: none;
-    }
-  }
-
-  @include device(mobile) {
-    grid-template-columns: repeat(2, 1fr);
-
-    span:nth-last-of-type(3) {
-      display: none;
     }
   }
 }

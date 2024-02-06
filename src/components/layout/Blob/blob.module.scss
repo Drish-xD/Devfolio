@@ -2,14 +2,22 @@
 
 .blob {
   display: block;
-  height: 25vmax;
-  aspect-ratio: 1;
   @include position($l: 50%, $t: 50%, $isFixed: true);
-  transform: translate(-50%, -50%);
-  will-change: transform;
-  border-radius: 50%;
-  background: linear-gradient(to right, #80ffd4cc, #9370d8cc);
+  width: 0;
+  height: 0;
   z-index: -9;
+  will-change: transform;
+
+  &::before {
+    content: '';
+    display: block;
+    pointer-events: none;
+    height: 25vmax;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: linear-gradient(to right, #80ffd4cc, #9370d8cc);
+  }
 }
 
 .noise {

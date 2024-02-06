@@ -10,18 +10,18 @@
     line-height: 1.2;
     font-size: clamp(3rem, 14vi, 10rem);
 
-    span {
+    > span {
       display: block;
-    }
 
-    > span:last-child {
-      @include flexbox($jusCon: center, $gap: 1rem);
+      &:last-child {
+        @include flexbox($jusCon: center, $gap: 1rem);
 
-      > span {
-        display: inline-block;
-        font-size: 0.25em;
-        writing-mode: vertical-lr;
-        transform: rotate(180deg);
+        > span {
+          display: inline-block;
+          font-size: 0.25em;
+          writing-mode: vertical-lr;
+          transform: rotate(180deg);
+        }
       }
     }
 

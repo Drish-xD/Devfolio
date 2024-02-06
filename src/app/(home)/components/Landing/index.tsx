@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <section id="home" className={styles.home}>
       <h1>
-        <span>I Create</span>
+        I Create
         <span>Experiences</span>
         <span>
           <span>that</span>

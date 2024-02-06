@@ -29,8 +29,7 @@ export const useMarqueeAnimation = () => {
             trigger: row,
             start: 'top 90%',
             end: 'bottom 10%',
-            scrub: 5,
-            markers: true
+            scrub: 5
           }
         });
       });

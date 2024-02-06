@@ -22,7 +22,7 @@ export default function About() {
           Here are some
           <Link
             href="https://open.spotify.com/user/9x451ffpyvo2czqnpr6b8kkyp?si=9dbff05426324240"
-            as="External"
+            target="_blank"
           >
             playlists
           </Link>
