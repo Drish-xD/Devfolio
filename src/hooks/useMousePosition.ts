@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { type MousePosition } from '@/types';
 
+/**
+ * Custom hook to find the position of the cusror or touch
+ */
 export const useMousePosition = (): MousePosition => {
   const [mousePosition, setMousePosition] = useState<MousePosition>({
     x: undefined,
@@ -9,19 +12,18 @@ export const useMousePosition = (): MousePosition => {
   });
 
   useEffect(() => {
-    const halfWindowWidth = window.innerWidth / 2;
-    const halfWindowHeight = window.innerHeight / 2;
+    const { innerHeight, innerWidth } = window;
 
     const updateMousePosition = throttle((event: MouseEvent | TouchEvent) => {
       let x: number, y: number;
 
       if ('touches' in event) {
-        const touch = (event as TouchEvent).touches[0];
-        x = touch.clientX - halfWindowWidth;
-        y = touch.clientY - halfWindowHeight;
+        const { clientX, clientY } = (event as TouchEvent).touches[0];
+        x = calcPosition(clientX, innerWidth);
+        y = calcPosition(clientY, innerHeight);
       } else {
-        x = event.clientX - halfWindowWidth;
-        y = event.clientY - halfWindowHeight;
+        x = calcPosition(event.clientX, innerWidth);
+        y = calcPosition(event.clientY, innerHeight);
       }
 
       setMousePosition({ x, y });
@@ -39,11 +41,15 @@ export const useMousePosition = (): MousePosition => {
   return mousePosition;
 };
 
+/**
+ * Function to add some debounce for tracking mouse position
+ */
 const throttle = <T, F extends (...args: any[]) => any>(
   func: (this: T, ...args: Parameters<F>) => ReturnType<F>,
   limit: number
 ): ((this: T, ...args: Parameters<F>) => void) => {
   let inThrottle: boolean;
+
   return function (this: T, ...args: Parameters<F>) {
     const context = this;
     if (!inThrottle) {
@@ -53,3 +59,8 @@ const throttle = <T, F extends (...args: any[]) => any>(
     }
   };
 };
+
+/**
+ * Function to calculate the position of mouse
+ */
+const calcPosition = (value: number, total: number) => value - total / 2;

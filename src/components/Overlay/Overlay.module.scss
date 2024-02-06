@@ -1,0 +1,35 @@
+@use '@/base' as *;
+
+.overlay {
+  @include position($inset: 0);
+  display: grid;
+  border-radius: inherit;
+  overflow: hidden;
+
+  span {
+    @include blurbg(25%, 2vmax);
+  }
+
+  &.row {
+    grid-template-rows: repeat(var(--count), 1fr);
+  }
+
+  &.col {
+    grid-template-columns: repeat(var(--count), 1fr);
+
+    @include device(tablet) {
+      grid-template-columns: repeat(calc(var(--count) - 1), 1fr);
+
+      span:last-of-type {
+        display: none;
+      }
+    }
+
+    @include device(mobile) {
+      grid-template-columns: repeat(calc(var(--count) - 2), 1fr);
+      span:nth-last-child(2) {
+        display: none;
+      }
+    }
+  }
+}

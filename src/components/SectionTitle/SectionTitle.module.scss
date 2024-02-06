@@ -4,8 +4,8 @@
   @include container;
   @include flexbox($alignItem: baseline, $wrap: nowrap, $dir: row);
   margin-block: calc($container-margin * 2) $container-margin;
-  font-size: clamp(2.5rem, 10vi, 8rem);
-  line-height: 1;
+  font-size: clamp(2.5rem, 9vi, 10rem);
+  line-height: 1.2;
   overflow: hidden;
 
   span {

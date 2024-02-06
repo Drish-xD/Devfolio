@@ -1,20 +1,27 @@
 import SectionTitle from '@/components/SectionTitle';
+import { ProjectCardProps } from '@/types';
 import { getAllProjects } from '@/utils/contentful';
 
 import Card from './Card';
+import styles from './Projects.module.scss';
 
-export default async function Projects() {
-  const projects = await getAllProjects();
-
+export default function Projects() {
   return (
-    <section className="global-section" id="projects">
+    <section id="projects">
       <SectionTitle text="Projects" num={2} />
-      <div className="projects-container">
-        {projects.map((project) => (
-          // @ts-ignore
-          <Card key={project.id} project={project} />
-        ))}
-      </div>
+      <ProjectList />
     </section>
   );
 }
+
+const ProjectList = async () => {
+  const projects = await getAllProjects();
+
+  return (
+    <div className={styles.projects}>
+      {projects.map((project) => (
+        <Card key={project.id as string} {...(project as ProjectCardProps)} />
+      ))}
+    </div>
+  );
+};

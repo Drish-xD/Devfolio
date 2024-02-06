@@ -3,6 +3,7 @@
 import NextLink from 'next/link';
 
 import Link from '@/components/Link';
+import Overlay from '@/components/Overlay';
 import { NAV_LINKS } from '@/constants';
 import { useHoverAnimation } from '@/hooks/useHoverAnimation';
 
@@ -17,24 +18,13 @@ export default function Header() {
       <FixedNav label="Menu" onClick={openMenu} />
 
       <section ref={navRef}>
-        <Overlay />
+        <Overlay count={4} dir="col" name="header" />
         <FixedNav label="Close" onClick={closeMenu} />
         <NavLinks onClick={closeMenu} />
       </section>
     </header>
   );
 }
-
-const Overlay = () => {
-  return (
-    <div className={`${styles.overlay} overlay`}>
-      <span />
-      <span />
-      <span />
-      <span />
-    </div>
-  );
-};
 
 const FixedNav = ({ label, onClick }: { label: string; onClick: () => void }) => {
   const ref = useHoverAnimation<HTMLDivElement>();
@@ -53,14 +43,16 @@ const FixedNav = ({ label, onClick }: { label: string; onClick: () => void }) =>
 const NavLinks = ({ onClick }: { onClick: () => void }) => {
   return (
     <nav>
-      {NAV_LINKS.map(({ label, value }, i) => (
-        <h2 key={label}>
-          <Link href={value} onClick={onClick} as="Hash">
-            {label}
-          </Link>
-          <span>({String(i + 1).padStart(2, '0')})</span>
-        </h2>
-      ))}
+      <ul>
+        {NAV_LINKS.map(({ label, value, ...rest }, i) => (
+          <li key={label}>
+            <Link href={value} onClick={onClick} {...rest}>
+              {label}
+            </Link>
+            <span>({String(i + 1).padStart(2, '0')})</span>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };

@@ -1,21 +1,29 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useLayoutEffect } from 'react';
+
+import { useLenis } from '@studio-freight/react-lenis';
+
+import Overlay from '@/components/Overlay';
+import { scrollTo } from '@/utils/PageTransition';
 
 export default function Template({ children }: { children: ReactNode }) {
-  // useEffect(() => {
-  //   pageEnter();
-  // }, []);
+  const lenis = useLenis();
+  useLayoutEffect(() => {
+    // pageEnter();
+  }, []);
+
+  useEffect(() => {
+    if (lenis) {
+      const hash = window.location.hash || '';
+      scrollTo(lenis, hash!, 'Template');
+    }
+  }, [lenis]);
 
   return (
     <>
       {children}
-      <section className="screen" data-page-transitition>
-        <span />
-        <span />
-        <span />
-        <span />
-      </section>
+      <Overlay count={4} dir="row" name="page" />
     </>
   );
 }

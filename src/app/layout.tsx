@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
+import { METADATA } from '@/constants';
 import { SmoothScroll } from '@/providers';
 import '@/styles/global.scss';
 import { fontMain, fontSec } from '@/utils/fonts';
@@ -26,4 +27,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   );
 }
 
-// export const metadata = METADATA;
+export const metadata = METADATA;

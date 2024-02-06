@@ -20,7 +20,7 @@ export default function Contacts() {
               <ul>
                 {CONTACT_LINKS[category as keyof typeof CONTACT_LINKS].map(({ label, value }) => (
                   <li key={label}>
-                    <Link as="External" href={value}>
+                    <Link href={value} target="_blank">
                       {label}
                     </Link>
                   </li>

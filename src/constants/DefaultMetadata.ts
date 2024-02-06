@@ -1,60 +1,62 @@
 import { Metadata } from 'next';
 
-/*!***************!*/
-/*!   MetaData    !*/
-/*!***************!*/
+const title = {
+  default: 'Drish | Portfolio',
+  template: ' %s - Drish | Portfolio'
+};
 
+const description =
+  "Hi, I 'm Drish, a front-end developer. I specialize in creating responsive, efficient web solutions. My work emphasizes clean design, usability, and modern web technologies, aiming to deliver optimal user experiences. Explore how strategic design and development converge in my projects.";
+
+const images = '/images/screenshot.webp';
+
+const url = 'https://drishxd.dev';
+
+/**
+ * Default Metadata for the website
+ */
 export const METADATA: Metadata = {
-  title: {
-    default: 'Drish | Portfolio',
-    template: ' %s - Drish | Portfolio'
-  },
-  description:
-    "Hi, I 'm Drish, a front-end developer, CSS Enthusiast, and Open-Sourcerer from India. \
-    Let's bring your vision to life through seamless coding and captivating designs.",
+  title,
+  description,
   category: 'Portfolio',
-  metadataBase: new URL('https://drishxd.dev'),
+  metadataBase: new URL(url),
   creator: 'Drish',
-  authors: { name: 'Drish', url: 'https://drishxd.dev' },
+  authors: { name: 'Drish', url },
   icons: '/images/icon.png',
   alternates: { canonical: '/' },
+  generator: 'Next.js',
   keywords: [
+    'Front-End Development',
+    'Responsive Web Design',
+    'Next.js Development',
+    'GSAP Animation',
+    'Web Performance',
+    'User Experience Design',
+    'Professional Web Developer',
+    'Software Engineering',
+    'Creative Coding',
     'Portfolio',
     'Drish',
     'DrishxD',
     'Drish-xD',
-    'Drish Portfolio',
-    'Drish.xD',
-    'Website',
-    'Gsap',
-    'SRM',
-    'Front-end',
-    'Developer',
-    'NextJs',
-    'Next.js',
-    'India',
-    'freelancer'
+    'Drish',
+    'Freelancer'
   ],
   openGraph: {
     type: 'website',
     countryName: 'India',
-    emails: 'drish.xd@gmail.com',
-    title: 'Drish | Portfolio',
-    url: 'https://drishxd.dev',
-    description:
-      "Hi, I 'm Drish, a front-end developer, CSS Enthusiast, and Open-Sourcerer from India. \
-    Let's bring your vision to life through seamless coding and captivating designs.",
-    images: '/images/screenshot.webp'
+    emails: 'hey@drishxd.dev',
+    title,
+    description,
+    images
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Drish | Portfolio',
-    description:
-      "Hi, I 'm Drish, a front-end developer, CSS Enthusiast, and Open-Sourcerer from India. \
-    Let's bring your vision to life through seamless coding and captivating designs.",
     creator: '@Drish-xD',
-    images: '/images/screenshot.webp',
-    site: 'https://drishxd.dev'
+    site: url,
+    title,
+    description,
+    images
   },
   robots: 'index, follow',
   referrer: 'origin-when-cross-origin'

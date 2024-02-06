@@ -1,19 +1,20 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { ReactNode, Ref } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { HTMLAttributeAnchorTarget, MouseEvent, ReactNode } from 'react';
 
 import { useLenis } from '@studio-freight/react-lenis';
 
 import { useHoverAnimation } from '@/hooks/useHoverAnimation';
+import { scrollTo } from '@/utils/PageTransition';
 
 // import { pageExit } from '@/utils/PageTransition';
 
 interface NavigationLinkProps {
   children: ReactNode | string;
   href: string;
-  as: 'Hash' | 'External' | 'Page';
+  target?: HTMLAttributeAnchorTarget;
   animate?: boolean;
   className?: string;
   onClick?: () => void;
@@ -22,68 +23,46 @@ interface NavigationLinkProps {
 export default function NavigationLink({
   href,
   children,
-  as,
+  target,
   className,
   animate = true,
   onClick
 }: NavigationLinkProps) {
   const router = useRouter();
-  const ref = useHoverAnimation();
+  const pathname = usePathname();
+  const ref = useHoverAnimation<HTMLAnchorElement>();
   const lenis = useLenis();
 
   const dataHoverProps = animate && typeof children === 'string' ? { 'data-hover': children } : {};
 
-  const handleClick = () => {
+  const handleClick = (e: MouseEvent) => {
+    const [hrefPath, hash] = href.split('#');
     if (onClick) {
       onClick();
     }
 
-    if (as === 'Hash') {
-      const sanitizedHref = href.split('#').pop();
-      const target = sanitizedHref ? `#${sanitizedHref}` : 0;
-      lenis.scrollTo(target, { duration: 2 });
-    } else {
+    if (hrefPath && hrefPath !== pathname) {
+      e.preventDefault();
+      router.push(href, { scroll: true });
       //TODO: add pageExit animation
       // pageExit(href, router);
     }
+
+    if ((!hrefPath || hrefPath === pathname) && href.includes('#')) {
+      scrollTo(lenis, `#${hash}`, 'Link');
+    }
   };
 
-  if (as === 'External') {
-    return (
-      <Link
-        href={href}
-        className={className}
-        target="_blank"
-        ref={ref as Ref<HTMLAnchorElement>}
-        {...dataHoverProps}
-      >
-        {children}
-      </Link>
-    );
-  }
-
-  if (as === 'Hash') {
-    return (
-      <Link
-        href={href}
-        onClick={handleClick}
-        className={className}
-        ref={ref as Ref<HTMLAnchorElement>}
-        {...dataHoverProps}
-      >
-        {children}
-      </Link>
-    );
-  }
-
   return (
-    <button
+    <Link
+      href={href}
       className={className}
-      onClick={handleClick}
-      ref={ref as Ref<HTMLButtonElement>}
+      target={target}
+      {...(!target && { onClick: handleClick })}
+      ref={ref}
       {...dataHoverProps}
     >
       {children}
-    </button>
+    </Link>
   );
 }
