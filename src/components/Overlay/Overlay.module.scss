@@ -7,7 +7,7 @@
   overflow: hidden;
 
   span {
-    @include blurbg(25%, 2vmax);
+    @include blurbg(var(--bgBlur, 25%), 2vmax, var(--bgColor, $black));
   }
 
   &.row {

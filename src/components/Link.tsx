@@ -12,7 +12,7 @@ import { scrollTo } from '@/utils/PageTransition';
 // import { pageExit } from '@/utils/PageTransition';
 
 interface NavigationLinkProps {
-  children: ReactNode | string;
+  children?: ReactNode | string;
   href: string;
   target?: HTMLAttributeAnchorTarget;
   animate?: boolean;
@@ -49,7 +49,7 @@ export default function NavigationLink({
     }
 
     if ((!hrefPath || hrefPath === pathname) && href.includes('#')) {
-      scrollTo(lenis, `#${hash}`, 'Link');
+      scrollTo(lenis, `#${hash}`);
     }
   };
 

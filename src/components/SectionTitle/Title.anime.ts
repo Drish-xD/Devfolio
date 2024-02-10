@@ -22,21 +22,16 @@ export const useTitleAnimation = (isScrollTrigger: boolean) => {
           },
           ease: 'power3.out'
         })
+        .duration(1)
         .from('span', {
           yPercent: 100,
-          duration: 1,
           stagger: 0.1
         });
 
       if (isScrollTrigger) {
-        titleTl.from(
-          'sub',
-          {
-            scale: 0,
-            duration: 1
-          },
-          0
-        );
+        titleTl.from('sub', {
+          yPercent: 160
+        });
         titleTl.scrollTrigger?.enable();
       } else {
         titleTl.scrollTrigger?.disable();

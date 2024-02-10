@@ -4,96 +4,91 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 
 export const useCardsAnimation = () => {
-  const projectsRef = useRef<HTMLDivElement[]>([]);
+  const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
-    () => {
-      const projects = projectsRef.current;
+    (_, contextSafe) => {
+      const project = ref.current;
 
-      // OnScroll animation
-      projects.forEach((project) => {
-        gsap
+      if (!project) return;
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: project,
+            start: 'top 90%',
+            end: 'bottom center',
+            toggleActions: 'restart none none reverse'
+          }
+        })
+        .fromTo(
+          project,
+          {
+            scale: 0.8
+          },
+          {
+            scale: 1,
+            duration: 0.6,
+            ease: 'Power4.in'
+          }
+        )
+        .to('.overlay_project span', {
+          xPercent: -100,
+          duration: 0.8,
+          ease: 'power3.out',
+          stagger: 0.2
+        })
+        .to('.overlay_project', {
+          display: 'none'
+        });
+
+      const hoverCard = contextSafe!(() => {
+        const timeline = gsap
           .timeline({
+            paused: true,
             scrollTrigger: {
-              trigger: project,
-              start: '0 bottom',
-              end: '100% center',
-              toggleActions: 'restart none none reset',
-              markers: true
+              trigger: 'hgroup',
+              start: 'top bottom',
+              end: 'top center-=100',
+              toggleActions: 'restart none none reverse'
             }
           })
-          .fromTo(
-            project,
-            {
-              scale: 0.8
-            },
-            {
-              scale: 1,
-              duration: 0.6,
-              ease: 'Power4.in'
-            }
-          )
-          .to(project.querySelectorAll('.overlay_project span'), {
-            xPercent: -100,
-            duration: 0.8,
-            ease: 'power3.out',
-            stagger: 0.2
-          });
-      });
-
-      const hoverCard = (project: HTMLDivElement, cardInfo: Element) => {
-        const hovertl = gsap.timeline({
-          paused: true,
-          scrollTrigger: {
-            trigger: cardInfo,
-            start: 'top bottom',
-            end: 'top center-=100',
-            toggleActions: 'restart none none reset'
-          }
-        });
-        hovertl
-          .to(cardInfo, {
-            background: 'linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%)',
+          .to('hgroup', {
+            background: 'linear-gradient(#00000000 0%, #000000b3 50%, #000000 100%)',
             duration: 0.2
           })
-          .to(
-            cardInfo.querySelector('h3')!.children,
+          .from(
+            'h3 span',
             {
-              y: 0,
-              rotate: 0,
+              yPercent: 100,
+              rotate: 25,
               stagger: 0.025,
               duration: 0.4,
               ease: 'back.out(2)'
             },
             0
           )
-          .fromTo(
-            cardInfo.querySelector('div')!.children,
+          .from(
+            'ul li',
             {
-              scale: 0
-            },
-            {
-              scale: 1,
+              scale: 0,
               stagger: 0.025,
               duration: 0.5,
               ease: 'back.out(2)'
             },
             0
           )
-          .fromTo(
-            project.querySelector('a'),
+          .from(
+            'a',
             {
-              scale: 0
-            },
-            {
-              scale: 1,
+              scale: 0,
               duration: 0.5,
               ease: 'back.out(2)'
             },
             0
           )
-          .to(
-            project.querySelector('a'),
+          .from(
+            'a span',
             {
               rotate: 365,
               duration: 1,
@@ -103,41 +98,38 @@ export const useCardsAnimation = () => {
           );
 
         matchMedia('(max-width: 1024px)').matches
-          ? hovertl.scrollTrigger?.enable()
-          : hovertl.scrollTrigger?.disable();
+          ? timeline.scrollTrigger?.enable()
+          : timeline.scrollTrigger?.disable();
 
-        const circleLink = project.querySelector('a');
-
-        circleLink?.addEventListener('mouseenter', () => {
-          gsap.to(circleLink, {
+        const tween = gsap
+          .to('a', {
             scale: 0.9,
-            duration: 0.4
-          });
-        });
+            duration: 0.2
+          })
+          .pause();
 
-        circleLink?.addEventListener('mouseleave', () => {
-          gsap.to(circleLink, {
-            scale: 1,
-            duration: 0.4
-          });
-        });
-
-        project.addEventListener('mouseenter', () => {
-          hovertl.play();
-        });
-
-        project.addEventListener('mouseleave', () => {
-          hovertl.reverse();
-        });
-      };
-
-      projects.forEach((project: HTMLDivElement) => {
-        const cardInfo = project.querySelector('hgroup');
-        hoverCard(project, cardInfo!);
+        return { timeline, tween };
       });
+
+      const { timeline, tween } = hoverCard();
+      project.addEventListener('mouseenter', () => timeline.play());
+      project.addEventListener('mouseleave', () => timeline.reverse());
+
+      const link = project.querySelector('a');
+      link?.addEventListener('mouseenter', () => tween.play());
+      link?.addEventListener('mouseleave', () => tween.reverse());
+
+      return () => {
+        project.removeEventListener('mouseenter', () => timeline.play());
+        project.removeEventListener('mouseleave', () => timeline.reverse());
+
+        link?.removeEventListener('mouseenter', () => tween.play());
+        link?.removeEventListener('mouseleave', () => tween.reverse());
+      };
     },
-    { scope: projectsRef }
+
+    { scope: ref }
   );
 
-  return projectsRef;
+  return ref;
 };
