@@ -9,6 +9,7 @@
     width: calc(50% + 1rem);
     aspect-ratio: 4 / 3;
     border-radius: 0.4rem;
+    box-shadow: 0 0 1rem $black;
 
     &:nth-child(odd) {
       align-self: flex-end;
@@ -26,53 +27,51 @@
     hgroup {
       @include flexbox(column);
       @include position($inset: auto 0 0);
-      // z-index: 3;
-      overflow: hidden;
       border-radius: 0.3rem;
+      overflow: hidden;
 
       h3 {
         @include flexbox($isInline: true);
         margin: 1rem 0 0 clamp(1.5rem, 2vi, 2rem);
         font-size: clamp(2rem, 8vi, 4rem);
+        text-shadow: 0 0 0.7rem $black;
         overflow: hidden;
-
-        > span {
-          // transform: translateY(100%) rotate(45deg);
-          transform-origin: bottom left;
-        }
       }
 
-      > div {
+      ul {
         @include flexbox($jusCon: space-evenly, $wrap: wrap);
         margin: clamp(0.4rem, 1.3vi, 1rem);
         margin-top: clamp(0.2rem, 0.8vi, 1rem);
         overflow: hidden;
 
-        span {
+        li {
           padding: 0.2rem 0.5rem;
           margin: 0.2rem;
-          @include blurbg(10%, 0.5rem);
           font-size: clamp(0.5rem, 2.5vi, 1rem);
           border-radius: 0.4rem;
+          @include blurbg(10%, 0.5rem);
           overflow: inherit;
-          // transform: scale(0);
         }
       }
     }
 
-    button,
     a {
-      @include position($b: 15%, $r: calc(-1 * clamp(3.5rem, 10vi, 5rem) / 2));
-      @include flexbox($jusCon: center, $alignItem: center);
-      @include blurbg(80%, 0.5rem, $white);
-      width: clamp(3.5rem, 10vi, 5rem);
+      $btnWidth: clamp(3.5rem, 10vi, 5rem);
+      $iconSize: clamp(1.8rem, 5vi, 2.5rem);
+      @include position($b: 15%, $r: calc(-1 * $btnWidth / 2));
+      color: $black;
+      width: $btnWidth;
       aspect-ratio: 1;
       border-radius: 50%;
-      font-size: clamp(1.8rem, 5vi, 2.5rem);
-      line-height: 1.2;
-      color: $black;
-      // transform: scale(0);
-      // z-index: 5;
+      @include blurbg(70%, 0.5rem, $white);
+      @include flexbox($jusCon: center, $alignItem: center);
+      box-shadow: 0 0 0.5rem $black;
+
+      span {
+        display: inline-block;
+        line-height: 0;
+        font-size: $iconSize;
+      }
     }
 
     @include device(tablet) {

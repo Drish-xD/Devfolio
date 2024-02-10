@@ -1,13 +1,16 @@
 @use '@/base' as *;
 
-.NotFound {
-  @include flexbox(column, flex-end, center);
-  height: 90lvh;
+.notFound {
+  @include flexbox(column, center, center);
+  padding-top: $container-margin;
+  text-align: center;
+  min-height: 90lvh;
 
   h1 {
-    font-size: 30vw;
+    font-size: clamp(5rem, 40vi, 35rem);
     font-style: italic;
-    font-family: $SecFont;
+    line-height: 1.2;
+    text-shadow: 0 0 0.7rem $black;
   }
 
   h3 {
@@ -15,14 +18,14 @@
     font-weight: 200;
   }
 
-  button {
+  a {
     font-size: clamp(0.8rem, 2.5vi, 1.5rem);
     font-weight: 400;
     margin-block: 1rem 3rem;
-    text-decoration: underline solid;
+    text-decoration: 1px underline solid;
   }
 
   @include device(laptop) {
-    justify-content: center;
+    padding-top: 0;
   }
 }
