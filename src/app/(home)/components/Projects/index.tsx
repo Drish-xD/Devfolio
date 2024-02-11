@@ -1,5 +1,4 @@
 import SectionTitle from '@/components/SectionTitle';
-import { ProjectCardProps } from '@/types';
 import { getAllProjects } from '@/utils/contentful';
 
 import Card from './Card';
@@ -19,8 +18,8 @@ const ProjectList = async () => {
 
   return (
     <div className={styles.projects}>
-      {projects.map((project) => (
-        <Card key={project.id as string} {...(project as ProjectCardProps)} />
+      {projects!.map((project) => (
+        <Card key={project.name} {...project} />
       ))}
     </div>
   );

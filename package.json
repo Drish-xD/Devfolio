@@ -66,7 +66,6 @@
     "next-mdx-remote": "^4.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-transition-group": "^4.4.5",
     "sass": "^1.70.0",
     "split-type": "^0.3.4",
     "typescript": "5.3.3"
@@ -79,6 +78,7 @@
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "@types/react-transition-group": "^4.4.10",
+    "cf-content-types-generator": "2.14.0",
     "cross-env": "^7.0.3",
     "encoding": "^0.1.13",
     "eslint": "^8.56.0",

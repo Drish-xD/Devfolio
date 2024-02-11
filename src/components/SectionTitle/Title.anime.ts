@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 
-export const useTitleAnimation = (isScrollTrigger: boolean) => {
+export const useTitleAnimation = () => {
   const titleRef = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -12,7 +12,7 @@ export const useTitleAnimation = (isScrollTrigger: boolean) => {
 
       if (!sectionTitle) return;
 
-      const titleTl = gsap
+      gsap
         .timeline({
           scrollTrigger: {
             trigger: sectionTitle,
@@ -26,17 +26,10 @@ export const useTitleAnimation = (isScrollTrigger: boolean) => {
         .from('span', {
           yPercent: 100,
           stagger: 0.1
-        });
-
-      if (isScrollTrigger) {
-        titleTl.from('sub', {
+        })
+        .from('sub', {
           yPercent: 160
         });
-        titleTl.scrollTrigger?.enable();
-      } else {
-        titleTl.scrollTrigger?.disable();
-        titleTl.play();
-      }
     },
     { scope: titleRef }
   );
