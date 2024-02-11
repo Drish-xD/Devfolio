@@ -3,16 +3,8 @@
 import styles from './SectionTitle.module.scss';
 import { useTitleAnimation } from './Title.anime';
 
-export default function SectionHeader({
-  text,
-  num,
-  trigger = true
-}: {
-  text: string;
-  num?: number;
-  trigger?: boolean;
-}) {
-  const ref = useTitleAnimation(trigger);
+export default function SectionHeader({ text, num }: { text: string; num?: number }) {
+  const ref = useTitleAnimation();
 
   return (
     <hgroup className={styles.title} ref={ref}>

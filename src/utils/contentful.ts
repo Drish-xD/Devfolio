@@ -1,48 +1,63 @@
 import { cache } from 'react';
 
-import { createClient } from 'contentful';
+import { Asset, createClient } from 'contentful';
+
+import { ProjectSkeleton, ProjectsSkeleton } from '@/types';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_SPACE_ID!,
-  accessToken: process.env.NEXT_PUBLIC_ACCESS_TOKEN!
+  accessToken: process.env.NEXT_PUBLIC_ACCESS_TOKEN!,
+  environment: process.env.NEXT_PUBLIC_ENVIRONMENT
 });
 
 // Retrieve the list of projects
 const getAllProjects = cache(async () => {
-  const res = await client.getEntries({
-    content_type: 'projects'
-  });
+  try {
+    const { items } = await client.getEntries<ProjectsSkeleton>({
+      content_type: 'projects',
+      order: ['fields.index'],
+      select: ['fields.name', 'fields.slug', 'fields.tags', 'fields.image']
+    });
 
-  const items = res.items.map((i) => i.fields);
+    const projects = items.map(({ fields }) => {
+      const image = fields.image as Asset<undefined, string>;
+      return {
+        name: fields.name,
+        slug: fields.slug,
+        tags: fields.tags,
+        image: {
+          src: `https:${image.fields.file?.url}`,
+          alt: image.fields.description
+        }
+      };
+    });
 
-  return items.map(({ name, slug, tags, image, index }) => ({
-    id: index,
-    name,
-    slug,
-    tags,
-    // @ts-ignore
-    image: `https:${image.fields.file.url}`
-  }));
+    return projects;
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 const getSingleProject = cache(async (slug_: string) => {
-  const response = await client.getEntries({
-    content_type: 'projects',
-    'fields.slug': slug_
-  });
+  try {
+    const { items } = await client.getEntries<ProjectSkeleton>({
+      content_type: 'projects',
+      'fields.slug': slug_
+    });
 
-  const { name, slug, tags, github, live, mdx, image } = response.items[0].fields;
+    const { image, ...rest } = items[0].fields;
+    const img = image as Asset<undefined, string>;
 
-  return {
-    name,
-    slug,
-    tags,
-    github,
-    live,
-    mdx,
-    // @ts-ignore
-    image: `https:${image.fields.file.url}`
-  };
+    return {
+      ...rest,
+      image: {
+        src: `https:${img.fields.file?.url}`,
+        alt: img.fields.description
+      }
+    };
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export { getAllProjects, getSingleProject };

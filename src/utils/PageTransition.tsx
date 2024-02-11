@@ -5,6 +5,7 @@ import { LenisInstance } from '@studio-freight/react-lenis/types';
 import { gsap } from 'gsap';
 
 export const pageEnter = async () => {
+  // Fix these animations
   const transitionElement = document.querySelector('[data-page-transitition]');
   console.log(transitionElement);
   if (!transitionElement) return;
@@ -38,8 +39,7 @@ export const pageExit = async (href: string, router: AppRouterInstance) => {
   );
 };
 
-export const scrollTo = (lenis: LenisInstance, hash: string, from: string) => {
-  console.log('ScrollTo Called : ', hash, ' from : ', from);
+export const scrollTo = (lenis: LenisInstance, hash: string) => {
   const target = hash && hash !== '#' ? hash : 0;
   lenis.scrollTo(target, { duration: 2 });
 };

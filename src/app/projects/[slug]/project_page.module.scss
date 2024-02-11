@@ -1,11 +1,35 @@
-.project {
-  .tags {
+@use '@/base' as *;
+
+.project_page {
+  padding-top: $container-margin;
+  @include container;
+
+  h1 {
+    font-size: clamp(4rem, 15vi, 15rem);
+    text-shadow: 0 0 0.7rem $black;
+    text-align: center;
+  }
+
+  figure {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 1rem $black;
+
+    img {
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+
+  ul.tags {
     @include flexbox($jusCon: space-evenly, $wrap: wrap);
     margin: clamp(0.4rem, 1.3vi, 1rem);
     margin-top: clamp(0.2rem, 0.8vi, 1rem);
     overflow: hidden;
 
-    span {
+    li {
       padding: 0.2rem 0.8rem;
       margin: 0.2rem;
       @include blurbg(10%, 0.5rem, $white);
@@ -15,17 +39,19 @@
     }
   }
 
-  .image_container {
-    margin: calc(-1 * clamp(1.5em, 3.33vi, 2.8em)) auto auto;
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 0.4rem;
+  .links {
+    @include flexbox($jusCon: space-evenly, $gap: 0.5rem);
+    margin-block: clamp(1.2rem, 3.4vi, 2rem);
 
-    img {
-      object-fit: cover;
-      border-radius: inherit;
+    a {
+      font-size: clamp(1rem, 3vi, 1.5rem);
+      text-decoration: underline;
     }
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 7vi, 6rem);
+    letter-spacing: clamp(0.2rem, 1vi, 1rem);
   }
 
   > p {
@@ -34,12 +60,6 @@
     margin-top: 1rem;
     font-size: clamp(1.2rem, 3.4vi, 2rem);
     font-weight: 300;
-  }
-
-  h3 {
-    font-size: clamp(1.5rem, 7vi, 6rem);
-    letter-spacing: clamp(0.2rem, 1vi, 1rem);
-    // font-family: $SecFont;
   }
 
   ol {
@@ -60,16 +80,6 @@
         font-weight: 200;
         font-size: 0.8em;
       }
-    }
-  }
-
-  .project_links {
-    margin-block: clamp(1.2rem, 3.4vi, 2rem);
-
-    @include flexbox($jusCon: space-evenly, $gap: 0.5rem);
-    a {
-      font-size: clamp(1rem, 3vi, 1.5rem);
-      text-decoration: underline;
     }
   }
 }

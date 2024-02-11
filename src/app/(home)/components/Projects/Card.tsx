@@ -4,19 +4,24 @@ import Image from 'next/image';
 
 import Link from '@/components/Link';
 import Overlay from '@/components/Overlay';
-import { ProjectCardProps } from '@/types';
+import { ProjectProperties } from '@/types';
 
 import { useCardsAnimation } from './Card.anime';
 
-const Card = ({ ...project }: ProjectCardProps) => {
+const Card = ({ ...project }: ProjectProperties) => {
   const ref = useCardsAnimation();
-  const { name, tags, image, id, slug } = project;
+  const {
+    name,
+    tags,
+    image: { src, alt },
+    slug
+  } = project;
 
   return (
     <article ref={ref}>
       <Image
-        src={image}
-        alt={`${name} Thumbnail`}
+        src={src}
+        alt={alt || name}
         sizes="(max-width: 425px) 100vw, (max-width: 768px) 70vw, 50vw"
         fill
       />
@@ -42,7 +47,7 @@ const Card = ({ ...project }: ProjectCardProps) => {
 
 export default Card;
 
-const CardInfo = ({ name, tags }: Pick<ProjectCardProps, 'name' | 'tags'>) => {
+const CardInfo = ({ name, tags }: Pick<ProjectProperties, 'name' | 'tags'>) => {
   return (
     <hgroup>
       <h3>
