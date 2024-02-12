@@ -1,11 +1,13 @@
 @use '@/base' as *;
 
 .project_page {
+  $size: clamp(1.2rem, 3.4vi, 2rem);
+
   padding-top: $container-margin;
   @include container;
 
   h1 {
-    font-size: clamp(4rem, 15vi, 15rem);
+    font-size: clamp(4rem, 12.5vi, 15rem);
     text-shadow: 0 0 0.7rem $black;
     text-align: center;
   }
@@ -26,8 +28,6 @@
   ul.tags {
     @include flexbox($jusCon: space-evenly, $wrap: wrap);
     margin: clamp(0.4rem, 1.3vi, 1rem);
-    margin-top: clamp(0.2rem, 0.8vi, 1rem);
-    overflow: hidden;
 
     li {
       padding: 0.2rem 0.8rem;
@@ -35,13 +35,13 @@
       @include blurbg(10%, 0.5rem, $white);
       font-size: clamp(0.8rem, 2.5vi, 1.2rem);
       border-radius: 0.4rem;
-      overflow: inherit;
+      box-shadow: 2px 2px 5px rgba($black, 25%);
     }
   }
 
   .links {
     @include flexbox($jusCon: space-evenly, $gap: 0.5rem);
-    margin-block: clamp(1.2rem, 3.4vi, 2rem);
+    margin-block: $size;
 
     a {
       font-size: clamp(1rem, 3vi, 1.5rem);
@@ -55,30 +55,33 @@
   }
 
   > p {
-    margin-block: clamp(1.2rem, 3.4vi, 2rem);
     line-height: 1.5;
-    margin-top: 1rem;
-    font-size: clamp(1.2rem, 3.4vi, 2rem);
     font-weight: 300;
+    font-size: $size;
+    margin-block: $size;
   }
 
   ol {
     margin-left: clamp(3rem, 7vi, 4rem);
+
     li {
-      margin-block: clamp(1.2rem, 3.4vi, 2rem);
+      margin-block: $size;
       list-style: decimal-leading-zero;
-      font-size: clamp(1.2rem, 3.4vi, 2rem);
+      font-size: $size;
+      line-height: 1.5;
+
       &::marker {
         font-size: 0.9em;
       }
 
-      p:first-of-type {
+      h3 {
         font-weight: 600;
+        font-size: 1em;
       }
 
-      p:last-of-type {
-        font-weight: 200;
-        font-size: 0.8em;
+      p {
+        font-weight: 300;
+        font-size: 0.9em;
       }
     }
   }

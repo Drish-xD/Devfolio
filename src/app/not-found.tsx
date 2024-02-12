@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import Link from '@/components/Link';
 import styles from '@/styles/common/404.module.scss';
 
@@ -11,3 +13,8 @@ export default function NotFound() {
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: 'Page Not Found',
+  alternates: { canonical: '/404' }
+};

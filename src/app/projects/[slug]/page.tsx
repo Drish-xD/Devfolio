@@ -1,4 +1,8 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
+
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import Link from '@/components/Link';
 import { getSingleProject } from '@/utils/contentful';
@@ -8,24 +12,20 @@ import styles from './project_page.module.scss';
 export default async function Project({ params: { slug } }: { params: { slug: string } }) {
   const project = await getSingleProject(slug);
 
-  const {
-    name,
-    image: { src, alt },
-    mdx,
-    github,
-    live,
-    tags
-  } = project!;
+  if (!project) {
+    notFound();
+  }
+
+  const { name, image, tags, mdx, github, live } = project;
 
   return (
     <main className={styles.project_page}>
       <h1>{name}</h1>
       <figure>
-        <Image src={src} alt={alt || name} sizes="80vw" priority fill />
+        <Image src={image.src} alt={image.alt || name} sizes="80vw" priority fill />
       </figure>
-
       <Tags />
-      {/* <MDXRemote source={mdx} lazy /> */}
+      <MDXRemote source={mdx || ''} />
 
       <ProjectLinks />
     </main>
@@ -45,20 +45,24 @@ export default async function Project({ params: { slug } }: { params: { slug: st
   }
 }
 
-// generating meta data dynamically
-// export const generateMetadata = async ({
-//   params: { slug }
-// }: {
-//   params: { slug: string };
-// }): Promise<Metadata> => {
-//   // @ts-ignore
-//   const project: ProjectProperties = await getSingleProject(slug);
+export const generateMetadata = async ({
+  params: { slug }
+}: {
+  params: { slug: string };
+}): Promise<Metadata> => {
+  const project = await getSingleProject(slug);
 
-//   return {
-//     title: project.name,
-//     keywords: project.tags,
-//     openGraph: { title: project.name, images: project.image, url: project.slug },
-//     twitter: { title: project.name, images: project.image },
-//     alternates: { canonical: project.slug }
-//   };
-// };
+  if (!project) {
+    return {
+      title: 'Page Not Found'
+    };
+  }
+
+  return {
+    title: project?.name,
+    keywords: project?.tags,
+    openGraph: { title: project?.name, images: project?.image.src, url: project?.slug },
+    twitter: { title: project?.name, images: project?.image.src },
+    alternates: { canonical: project?.slug }
+  };
+};
