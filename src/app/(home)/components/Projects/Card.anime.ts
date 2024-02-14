@@ -12,7 +12,7 @@ export const useCardsAnimation = () => {
 
       if (!project) return;
 
-      const scrollTl = gsap
+      gsap
         .timeline({
           scrollTrigger: {
             trigger: project,
@@ -32,13 +32,13 @@ export const useCardsAnimation = () => {
             ease: 'Power4.in'
           }
         )
-        .to('.overlay_project span', {
+        .to('#overlay_project span', {
           xPercent: -100,
           duration: 0.8,
           ease: 'power3.out',
           stagger: 0.2
         })
-        .to('.overlay_project', {
+        .to('#overlay_project', {
           display: 'none'
         });
 
@@ -78,10 +78,10 @@ export const useCardsAnimation = () => {
             },
             0
           )
-          .from(
+          .to(
             'a',
             {
-              scale: 0,
+              scale: 1,
               duration: 0.5,
               ease: 'back.out(2)'
             },
@@ -97,6 +97,10 @@ export const useCardsAnimation = () => {
             0
           );
 
+        matchMedia('(max-width: 1024px)').matches
+          ? timeline.scrollTrigger?.enable()
+          : timeline.scrollTrigger?.disable();
+
         const tween = gsap
           .to('a', {
             scale: 0.9,
@@ -108,8 +112,6 @@ export const useCardsAnimation = () => {
       });
 
       const { timeline, tween } = hoverCard();
-
-      matchMedia('(max-width: 768px)').matches && scrollTl.add(timeline);
 
       project.addEventListener('mouseenter', () => timeline.play());
       project.addEventListener('mouseleave', () => timeline.reverse());

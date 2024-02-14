@@ -1,29 +1,14 @@
-import { CSSProperties, FC } from 'react';
-
-import styles from './overlay.module.scss';
+import { FC } from 'react';
 
 interface OverlayProps {
-  name: string;
+  id: string;
   count: number;
-  dir: 'row' | 'col';
-  bg?: {
-    color?: string;
-    blur?: number;
-  };
+  className?: string;
 }
 
-const Overlay: FC<OverlayProps> = ({ name, count, dir, bg }) => {
+const Overlay: FC<OverlayProps> = ({ id, className = '', count }) => {
   return (
-    <div
-      className={`${styles.overlay} ${styles[dir]} overlay_${name}`}
-      style={
-        {
-          '--count': count,
-          '--bgBlur': `${bg?.blur || 25}%`,
-          '--bgColor': bg?.color
-        } as CSSProperties
-      }
-    >
+    <div className={className} id={`overlay_${id}`} aria-hidden="true">
       {Array.from({ length: count }, (_, i) => (
         <span key={i} />
       ))}

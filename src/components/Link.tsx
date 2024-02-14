@@ -7,9 +7,7 @@ import { HTMLAttributeAnchorTarget, MouseEvent, ReactNode } from 'react';
 import { useLenis } from '@studio-freight/react-lenis';
 
 import { useHoverAnimation } from '@/hooks/useHoverAnimation';
-import { scrollTo } from '@/utils/PageTransition';
-
-// import { pageExit } from '@/utils/PageTransition';
+import { pageExit, scrollTo } from '@/utils/PageTransition';
 
 interface NavigationLinkProps {
   children?: ReactNode | string;
@@ -43,9 +41,7 @@ export default function NavigationLink({
 
     if (hrefPath && hrefPath !== pathname) {
       e.preventDefault();
-      router.push(href, { scroll: true });
-      //TODO: add pageExit animation
-      // pageExit(href, router);
+      pageExit(href, router);
     }
 
     if ((!hrefPath || hrefPath === pathname) && href.includes('#')) {

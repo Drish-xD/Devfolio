@@ -66,11 +66,23 @@
       @include blurbg(70%, 0.5rem, $white);
       @include flexbox($jusCon: center, $alignItem: center);
       box-shadow: 0 0 0.5rem $black;
+      transform: scale(0);
 
       span {
         display: inline-block;
         line-height: 0;
         font-size: $iconSize;
+      }
+    }
+
+    > div {
+      @include position($inset: 0);
+      display: grid;
+      border-radius: inherit;
+      overflow: hidden;
+
+      span {
+        @include blurbg(99%, 2vmax, #141414);
       }
     }
 

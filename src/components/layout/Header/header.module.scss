@@ -53,3 +53,30 @@
     }
   }
 }
+
+.overlay {
+  @include position($inset: 0);
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(4, 1fr);
+
+  span {
+    @include blurbg(25%, 2vmax);
+  }
+
+  @include device(tablet) {
+    grid-template-columns: repeat(3, 1fr);
+
+    span:last-of-type {
+      display: none;
+    }
+  }
+
+  @include device(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+
+    span:nth-last-child(2) {
+      display: none;
+    }
+  }
+}
