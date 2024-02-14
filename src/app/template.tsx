@@ -4,13 +4,14 @@ import { ReactNode, useEffect, useLayoutEffect } from 'react';
 
 import { useLenis } from '@studio-freight/react-lenis';
 
-// import Overlay from '@/components/Overlay';
-import { scrollTo } from '@/utils/PageTransition';
+import Overlay from '@/components/Overlay';
+import styles from '@/styles/common/Overlay.module.scss';
+import { pageEnter, scrollTo } from '@/utils/PageTransition';
 
 export default function Template({ children }: { children: ReactNode }) {
   const lenis = useLenis();
   useLayoutEffect(() => {
-    // pageEnter();
+    pageEnter();
   }, []);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function Template({ children }: { children: ReactNode }) {
   return (
     <>
       {children}
-      {/* <Overlay count={4} dir="row" name="page" /> */}
+      <Overlay count={4} id="page" className={styles.overlay} />
     </>
   );
 }

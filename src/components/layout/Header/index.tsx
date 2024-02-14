@@ -18,7 +18,7 @@ export default function Header() {
       <FixedNav label="Menu" onClick={openMenu} />
 
       <section ref={navRef}>
-        <Overlay count={4} dir="col" name="header" />
+        <Overlay count={4} id="header" className={styles.overlay} />
         <FixedNav label="Close" onClick={closeMenu} />
         <NavLinks onClick={closeMenu} />
       </section>

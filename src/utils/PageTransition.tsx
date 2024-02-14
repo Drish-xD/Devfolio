@@ -1,26 +1,27 @@
-// import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 import { LenisInstance } from '@studio-freight/react-lenis/types';
 import { gsap } from 'gsap';
 
 export const pageEnter = async () => {
-  // Fix these animations
-  const transitionElement = document.querySelector('[data-page-transitition]');
-  console.log(transitionElement);
-  if (!transitionElement) return;
+  const transitionElement = document.getElementById('overlay_page');
 
-  gsap
-    .timeline()
-    .fromTo(
-      transitionElement?.querySelectorAll('span'),
-      { xPercent: 100 },
-      { xPercent: 200, duration: 0.8, ease: 'Power4.easeInOut', stagger: -0.1 }
-    );
+  if (!transitionElement) return;
+  gsap.timeline().fromTo(
+    transitionElement?.querySelectorAll('span'),
+    { xPercent: 100 },
+    {
+      xPercent: 200,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: 'Power4.easeInOut'
+    }
+  );
 };
 
 export const pageExit = async (href: string, router: AppRouterInstance) => {
-  const transitionElement = document.querySelector('[data-page-transitition]');
+  const transitionElement = document.getElementById('overlay_page');
+
   if (!transitionElement) return;
 
   gsap.fromTo(
@@ -29,9 +30,8 @@ export const pageExit = async (href: string, router: AppRouterInstance) => {
     {
       xPercent: 100,
       duration: 0.8,
-      ease: 'Power4.easeInOut',
       stagger: 0.1,
-      delay: -0.4,
+      ease: 'Power4.easeInOut',
       onComplete: () => {
         router.push(href);
       }

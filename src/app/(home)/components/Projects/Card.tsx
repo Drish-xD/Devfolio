@@ -32,15 +32,7 @@ const Card = ({ ...project }: ProjectProperties) => {
         <span>↗</span>
       </Link>
 
-      <Overlay
-        count={3}
-        name="project"
-        dir="row"
-        bg={{
-          blur: 99,
-          color: '20, 20, 20'
-        }}
-      />
+      <Overlay count={3} id="project" />
     </article>
   );
 };

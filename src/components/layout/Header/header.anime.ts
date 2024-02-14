@@ -16,7 +16,7 @@ export const useNavAnimation = () => {
         .timeline({ paused: true })
         .to(navbar, { y: 0 }, 0)
         .fromTo(
-          '.overlay_header span',
+          '#overlay_header span',
           { yPercent: -100 },
           { yPercent: 0, ease: 'Expo.easeInOut', duration: 0.8, stagger: 0.2 },
           0
