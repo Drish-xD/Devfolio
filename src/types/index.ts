@@ -1,10 +1,13 @@
-import { EntryFieldTypes } from 'contentful';
-// TODO: Fix Contentful types
-import type { EntrySkeletonType } from 'contentful';
+import type { EntryFieldTypes, EntrySkeletonType } from 'contentful';
 
 export interface MousePosition {
   x?: number;
   y?: number;
+}
+
+export interface TransitionContextProps {
+  pageEnter: () => Promise<void>;
+  pageExit: (href: string) => Promise<void>;
 }
 
 // Contentful types

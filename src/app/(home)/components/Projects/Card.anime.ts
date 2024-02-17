@@ -98,7 +98,7 @@ export const useCardsAnimation = () => {
           );
 
         matchMedia('(max-width: 1024px)').matches
-          ? timeline.scrollTrigger?.enable()
+          ? timeline.delay(1.5).scrollTrigger?.enable()
           : timeline.scrollTrigger?.disable();
 
         const tween = gsap

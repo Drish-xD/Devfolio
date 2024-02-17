@@ -2,7 +2,7 @@ import { cache } from 'react';
 
 import { Asset, createClient } from 'contentful';
 
-import { ProjectSkeleton, ProjectsSkeleton } from '@/types';
+import { ContentSkeleton, LinksSkeleton, ProjectSkeleton, ProjectsSkeleton } from '@/types';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_SPACE_ID!,
@@ -11,7 +11,7 @@ const client = createClient({
 });
 
 // Retrieve the list of projects
-const getAllProjects = cache(async () => {
+export const getAllProjects = cache(async () => {
   try {
     const { items } = await client.getEntries<ProjectsSkeleton>({
       content_type: 'projects',
@@ -38,7 +38,7 @@ const getAllProjects = cache(async () => {
   }
 });
 
-const getSingleProject = cache(async (slug_: string) => {
+export const getSingleProject = cache(async (slug_: string) => {
   try {
     const { items } = await client.getEntries<ProjectSkeleton>({
       content_type: 'projects',
@@ -60,4 +60,32 @@ const getSingleProject = cache(async (slug_: string) => {
   }
 });
 
-export { getAllProjects, getSingleProject };
+export const getContent = cache(async () => {
+  try {
+    const { items } = await client.getEntries<ContentSkeleton>({
+      content_type: 'portfolioContent'
+    });
+
+    return {
+      about: items[0].fields.about || '',
+      skills: items[0].fields.skills || []
+    };
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export const getNavlinks = cache(async () => {
+  try {
+    const { items } = await client.getEntries<LinksSkeleton>({
+      content_type: 'links'
+    });
+
+    return {
+      nav: items[0].fields.navLinks,
+      contact: items[0].fields.contact
+    };
+  } catch (error) {
+    console.log(error);
+  }
+});

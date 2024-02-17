@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
 import { METADATA } from '@/constants';
-import { SmoothScroll } from '@/providers';
+import { SmoothScroll, Transition } from '@/providers';
 import '@/styles/global.scss';
 import { fontMain, fontSec } from '@/utils/fonts';
 
@@ -16,11 +16,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${fontMain.variable} ${fontSec.variable}`}>
       <body suppressHydrationWarning>
         <SmoothScroll>
-          <Header />
-          {children}
-          <Footer />
-          <Blob />
-          <Noise />
+          <Transition>
+            <Header />
+            {children}
+            <Footer />
+            <Blob />
+            <Noise />
+          </Transition>
         </SmoothScroll>
       </body>
     </html>

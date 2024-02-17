@@ -5,21 +5,24 @@ import { ReactNode, useEffect, useLayoutEffect } from 'react';
 import { useLenis } from '@studio-freight/react-lenis';
 
 import Overlay from '@/components/Overlay';
+import { useTransition } from '@/providers';
 import styles from '@/styles/common/Overlay.module.scss';
-import { pageEnter, scrollTo } from '@/utils/PageTransition';
+import { scrollTo } from '@/utils/scrollTo';
 
 export default function Template({ children }: { children: ReactNode }) {
+  const { pageEnter } = useTransition();
   const lenis = useLenis();
-  useLayoutEffect(() => {
-    pageEnter();
-  }, []);
 
   useEffect(() => {
     if (lenis) {
       const hash = window.location.hash || '';
-      scrollTo(lenis, hash!);
+      scrollTo(lenis, hash);
     }
   }, [lenis]);
+
+  useLayoutEffect(() => {
+    pageEnter();
+  }, []);
 
   return (
     <>
