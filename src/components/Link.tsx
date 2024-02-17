@@ -1,21 +1,19 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { HTMLAttributeAnchorTarget, MouseEvent, ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
+import { ComponentProps, MouseEvent } from 'react';
 
 import { useLenis } from '@studio-freight/react-lenis';
+import { UrlObject } from 'url';
 
 import { useHoverAnimation } from '@/hooks/useHoverAnimation';
-import { pageExit, scrollTo } from '@/utils/PageTransition';
+import { useTransition } from '@/providers';
+import { scrollTo } from '@/utils/scrollTo';
 
-interface NavigationLinkProps {
-  children?: ReactNode | string;
-  href: string;
-  target?: HTMLAttributeAnchorTarget;
+interface NavigationLinkProps extends Omit<ComponentProps<typeof Link>, 'href'> {
   animate?: boolean;
-  className?: string;
-  onClick?: () => void;
+  href: string | UrlObject;
 }
 
 export default function NavigationLink({
@@ -26,25 +24,26 @@ export default function NavigationLink({
   animate = true,
   onClick
 }: NavigationLinkProps) {
-  const router = useRouter();
+  const { pageExit } = useTransition();
   const pathname = usePathname();
   const ref = useHoverAnimation<HTMLAnchorElement>();
   const lenis = useLenis();
 
   const dataHoverProps = animate && typeof children === 'string' ? { 'data-hover': children } : {};
 
-  const handleClick = (e: MouseEvent) => {
-    const [hrefPath, hash] = href.split('#');
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    const hrefString = href.toString();
+    const [hrefPath, hash] = hrefString.split('#');
     if (onClick) {
-      onClick();
+      onClick(e);
     }
 
     if (hrefPath && hrefPath !== pathname) {
       e.preventDefault();
-      pageExit(href, router);
+      pageExit(hrefString);
     }
 
-    if ((!hrefPath || hrefPath === pathname) && href.includes('#')) {
+    if ((!hrefPath || hrefPath === pathname) && hrefString.includes('#')) {
       scrollTo(lenis, `#${hash}`);
     }
   };

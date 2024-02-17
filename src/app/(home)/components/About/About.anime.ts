@@ -26,9 +26,9 @@ export const useAboutAnimation = () => {
           paused: true,
           scrollTrigger: {
             trigger: container,
-            scrub: true,
-            start: 'top 80%',
-            end: 'bottom 20%'
+            scrub: 1.5,
+            start: 'top 90%',
+            end: '70% 20%'
           },
           ease: Expo.easeInOut
         })

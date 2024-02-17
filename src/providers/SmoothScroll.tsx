@@ -15,7 +15,7 @@ export default function SmoothScrolling({ children }: { children: ReactNode }) {
   }, [lenis]);
 
   return (
-    <Lenis root options={{ duration: 2 }}>
+    <Lenis root options={{ duration: 2, syncTouch: true }}>
       {children}
     </Lenis>
   );
