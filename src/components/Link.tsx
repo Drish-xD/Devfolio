@@ -2,21 +2,20 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ComponentProps, MouseEvent } from 'react';
+import { ComponentProps, MouseEvent, memo, useMemo } from 'react';
 
 import { useLenis } from '@studio-freight/react-lenis';
 import { UrlObject } from 'url';
 
 import { useHoverAnimation } from '@/hooks/useHoverAnimation';
 import { useTransition } from '@/providers';
-import { scrollTo } from '@/utils/scrollTo';
 
 interface NavigationLinkProps extends Omit<ComponentProps<typeof Link>, 'href'> {
   animate?: boolean;
   href: string | UrlObject;
 }
 
-export default function NavigationLink({
+const NavigationLink = memo(function NavigationLink({
   href,
   children,
   target,
@@ -29,7 +28,10 @@ export default function NavigationLink({
   const ref = useHoverAnimation<HTMLAnchorElement>();
   const lenis = useLenis();
 
-  const dataHoverProps = animate && typeof children === 'string' ? { 'data-hover': children } : {};
+  const dataHoverProps = useMemo(
+    () => (animate && typeof children === 'string' ? { 'data-hover': children } : {}),
+    [animate, children]
+  );
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     const hrefString = href.toString();
@@ -44,7 +46,8 @@ export default function NavigationLink({
     }
 
     if ((!hrefPath || hrefPath === pathname) && hrefString.includes('#')) {
-      scrollTo(lenis, `#${hash}`);
+      const target = hash && hash !== '#' ? `#${hash}` : 0;
+      lenis?.scrollTo(target, { duration: 2, lock: true });
     }
   };
 
@@ -60,4 +63,6 @@ export default function NavigationLink({
       {children}
     </Link>
   );
-}
+});
+
+export default NavigationLink;

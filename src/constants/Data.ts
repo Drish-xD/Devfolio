@@ -115,3 +115,6 @@ export const CONTACT_LINKS = {
     }
   ]
 };
+
+export const SPOTIFY_LINK =
+  'https://open.spotify.com/user/9x451ffpyvo2czqnpr6b8kkyp?si=9dbff05426324240';

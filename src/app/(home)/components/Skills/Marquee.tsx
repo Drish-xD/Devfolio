@@ -1,9 +1,11 @@
 'use client';
 
+import { memo } from 'react';
+
 import { useMarqueeAnimation } from './Marquee.anime';
 import styles from './Skills.module.scss';
 
-export default function Marquee({ skills }: { skills: string[][] }) {
+const Marquee = memo(function Marquee({ skills }: { skills: string[][] }) {
   const ref = useMarqueeAnimation();
 
   return (
@@ -15,8 +17,10 @@ export default function Marquee({ skills }: { skills: string[][] }) {
       ))}
     </div>
   );
-}
+});
 
-const SkillRow = ({ row }: { row: string[] }) => {
+const SkillRow = memo(function SkillRow({ row }: { row: string[] }) {
   return [...row, ...row].map((skill, index) => <span key={index}>{skill}</span>);
-};
+});
+
+export default Marquee;

@@ -1,10 +1,12 @@
+import { memo } from 'react';
+
 import Link from '@/components/Link';
 import SectionTitle from '@/components/SectionTitle';
 import { CONTACT_LINKS } from '@/constants';
 
 import styles from './Contacts.module.scss';
 
-export default function Contacts() {
+const Contacts = memo(function Contacts() {
   return (
     <section id="contacts">
       <SectionTitle text="Contact" num={5} />
@@ -32,4 +34,6 @@ export default function Contacts() {
       </div>
     </section>
   );
-}
+});
+
+export default Contacts;

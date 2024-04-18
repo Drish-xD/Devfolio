@@ -7,7 +7,7 @@ import { gsap } from 'gsap';
 
 import { useMousePosition } from '@/hooks/useMousePosition';
 
-import styles from './blob.module.scss';
+import styles from './Blob.module.scss';
 
 export default function Blob() {
   const { x, y } = useMousePosition();

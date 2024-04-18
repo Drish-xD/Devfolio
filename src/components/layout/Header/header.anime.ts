@@ -42,12 +42,12 @@ export const useNavAnimation = () => {
 
   const closeMenu = contextSafe(() => {
     nav_tl.current!.timeScale(1.5).reverse();
-    lenis.start();
+    lenis?.start();
   });
 
   const openMenu = contextSafe(() => {
     nav_tl.current!.timeScale(1).play();
-    lenis.stop();
+    lenis?.stop();
   });
 
   return { closeMenu, openMenu, navRef };

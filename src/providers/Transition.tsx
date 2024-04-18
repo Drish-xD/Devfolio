@@ -11,13 +11,13 @@ import { TransitionContextProps } from '@/types';
 const TransitionContext = createContext<TransitionContextProps | null>(null);
 
 export const Transition = ({ children }: { children: ReactNode }) => {
+  const [isPending, setIsPending] = useState(false);
   const router = useRouter();
-  const [transitPage, setTransitPage] = useState(false);
   const { contextSafe } = useGSAP();
 
   const pageEnter = contextSafe(async () => {
     const transitionElement = document.getElementById('overlay_page');
-    if (!transitionElement || !transitPage) return;
+    if (!transitionElement || !isPending) return;
 
     gsap.timeline().fromTo(
       transitionElement?.querySelectorAll('span'),
@@ -27,7 +27,7 @@ export const Transition = ({ children }: { children: ReactNode }) => {
         duration: 0.8,
         stagger: 0.1,
         ease: 'Power4.easeInOut',
-        onComplete: () => setTransitPage(false)
+        onComplete: () => setIsPending(false)
       }
     );
   });
@@ -44,8 +44,8 @@ export const Transition = ({ children }: { children: ReactNode }) => {
         duration: 0.8,
         stagger: 0.1,
         ease: 'Power4.easeInOut',
-        onStart: () => setTransitPage(true),
-        onComplete: () => router.push(href)
+        onStart: () => setIsPending(true),
+        onComplete: () => router.push(href, { scroll: false })
       }
     );
   });
@@ -53,6 +53,7 @@ export const Transition = ({ children }: { children: ReactNode }) => {
   return (
     <TransitionContext.Provider
       value={{
+        isPending,
         pageEnter,
         pageExit
       }}

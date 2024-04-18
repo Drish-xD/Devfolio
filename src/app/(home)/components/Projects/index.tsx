@@ -1,19 +1,21 @@
+import { memo } from 'react';
+
 import SectionTitle from '@/components/SectionTitle';
 import { getAllProjects } from '@/utils/contentful';
 
 import Card from './Card';
 import styles from './Projects.module.scss';
 
-export default function Projects() {
+const Projects = memo(function Projects() {
   return (
     <section id="projects">
       <SectionTitle text="Projects" num={2} />
       <ProjectList />
     </section>
   );
-}
+});
 
-const ProjectList = async () => {
+const ProjectList = memo(async function ProjectList() {
   const projects = await getAllProjects();
 
   return (
@@ -23,4 +25,6 @@ const ProjectList = async () => {
       ))}
     </div>
   );
-};
+});
+
+export default Projects;

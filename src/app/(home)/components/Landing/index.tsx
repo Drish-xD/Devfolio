@@ -1,6 +1,8 @@
+import { memo } from 'react';
+
 import styles from './Landing.module.scss';
 
-export default function Home() {
+const Home = memo(function Home() {
   return (
     <section id="home" className={styles.home}>
       <h1>
@@ -17,4 +19,6 @@ export default function Home() {
       </p>
     </section>
   );
-}
+});
+
+export default Home;

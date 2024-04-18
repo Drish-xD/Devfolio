@@ -1,9 +1,11 @@
+@use '@/base' as *;
+
 .toast {
   display: block;
   @include position($inset: auto 2.5% 2.5% auto, $isFixed: true);
   @include blurbg(10%, 5vmax, $white);
   padding: 0.8rem 1.5rem 0.8rem 1.2rem;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem 0 0.5rem 0.5rem;
   z-index: 10;
   font-size: clamp(0.7rem, 3.5vi, 1.2rem);
   opacity: 0;
@@ -11,16 +13,20 @@
   letter-spacing: 0.1rem;
   font-weight: 500;
 
-  p {
-    // font-family: $SecFont;
-    margin-bottom: -0.2em;
-    cursor: copy;
+  > p {
+    cursor: pointer;
   }
 
-  > span {
-    @include position($inset: 0 1% auto auto);
+  > button {
+    box-sizing: border-box;
+    @include position($inset: -0.5em -0.5em auto auto);
+    @include blurbg(20%, 5vmax, $white);
+    @include flexbox($jusCon: center, $alignItem: center);
     font-size: 0.8em;
-    padding: 0.1em;
+    width: 0;
+    line-height: 0;
+    padding: 0.5em;
+    border-radius: 50%;
     cursor: pointer;
   }
 }

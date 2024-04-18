@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { memo } from 'react';
 
 import Link from '@/components/Link';
 import Overlay from '@/components/Overlay';
@@ -8,7 +9,7 @@ import { ProjectProperties } from '@/types';
 
 import { useCardsAnimation } from './Card.anime';
 
-const Card = ({ ...project }: ProjectProperties) => {
+const Card = memo(function Card({ ...project }: ProjectProperties) {
   const ref = useCardsAnimation();
   const {
     name,
@@ -35,11 +36,11 @@ const Card = ({ ...project }: ProjectProperties) => {
       <Overlay count={3} id="project" />
     </article>
   );
-};
+});
 
 export default Card;
 
-const CardInfo = ({ name, tags }: Pick<ProjectProperties, 'name' | 'tags'>) => {
+const CardInfo = memo(function CardInfo({ name, tags }: Pick<ProjectProperties, 'name' | 'tags'>) {
   return (
     <hgroup>
       <h3>
@@ -55,4 +56,4 @@ const CardInfo = ({ name, tags }: Pick<ProjectProperties, 'name' | 'tags'>) => {
       </ul>
     </hgroup>
   );
-};
+});

@@ -1,10 +1,12 @@
+@use '@/base' as *;
+
 .loader {
   @include position($inset: 0, $isFixed: true);
   background: $black;
   z-index: 50;
   padding: 4vh 0;
 
-  .grid {
+  > div {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     height: 100%;

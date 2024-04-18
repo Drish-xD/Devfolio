@@ -6,6 +6,7 @@ export interface MousePosition {
 }
 
 export interface TransitionContextProps {
+  isPending: boolean;
   pageEnter: () => Promise<void>;
   pageExit: (href: string) => Promise<void>;
 }

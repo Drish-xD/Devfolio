@@ -1,9 +1,11 @@
 'use client';
 
+import { memo } from 'react';
+
 import styles from './SectionTitle.module.scss';
 import { useTitleAnimation } from './Title.anime';
 
-export default function SectionHeader({ text, num }: { text: string; num?: number }) {
+const SectionHeader = memo(function SectionHeader({ text, num }: { text: string; num?: number }) {
   const ref = useTitleAnimation();
 
   return (
@@ -16,4 +18,6 @@ export default function SectionHeader({ text, num }: { text: string; num?: numbe
       {num && <sub>({String(num).padStart(2, '0')})</sub>}
     </hgroup>
   );
-}
+});
+
+export default SectionHeader;

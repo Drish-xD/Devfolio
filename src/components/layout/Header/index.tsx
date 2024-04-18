@@ -7,8 +7,8 @@ import Overlay from '@/components/Overlay';
 import { NAV_LINKS } from '@/constants';
 import { useHoverAnimation } from '@/hooks/useHoverAnimation';
 
-import { useNavAnimation } from './header.anime';
-import styles from './header.module.scss';
+import { useNavAnimation } from './Header.anime';
+import styles from './Header.module.scss';
 
 export default function Header() {
   const { navRef, openMenu, closeMenu } = useNavAnimation();

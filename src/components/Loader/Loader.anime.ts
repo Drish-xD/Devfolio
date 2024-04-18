@@ -1,63 +1,57 @@
-import { RefObject, useLayoutEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
+import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 
-export const useLoaderAnime = (): [RefObject<HTMLElement>, boolean] => {
-  const loader_tl = gsap.timeline();
+export const useLoaderAnime = () => {
   const loaderRef = useRef<HTMLElement>(null);
-  const [shouldAnimate, setShouldAnimate] = useState<boolean>(true);
-  console.log('Loader anime');
+  const [hideLoader, setHideLoader] = useState<boolean>(false);
 
-  useLayoutEffect(() => {
-    const item = sessionStorage.getItem('shouldAnimateLoader');
+  useGSAP(
+    () => {
+      const loader = sessionStorage.getItem('hideLoader');
+      if (loader) {
+        setHideLoader(true);
+        return;
+      }
 
-    if (item === 'false') {
-      setShouldAnimate(false);
-      return;
-    }
-
-    let ctx = gsap.context(() => {
-      // Wave Letter Animation
-      loader_tl
-        .to('.grid', {
+      gsap
+        .timeline()
+        .to('div', {
           autoAlpha: 1
         })
-        .from(
-          '.grid span',
+        .from('span', {
+          opacity: 1,
+          duration: 0.75,
+          scale: 0.001,
+          rotate: 10,
+          yPercent: matchMedia('(max-width: 1024px)').matches ? 50 : 100,
+          ease: 'power1.inOut',
+          stagger: {
+            amount: 2,
+            from: 'end',
+            grid: [7, 7],
+            yoyo: true,
+            repeat: 3
+          }
+        })
+        // Loader FadeOut Animation
+        .to(
+          loaderRef.current,
           {
-            opacity: 1,
-            duration: 0.75,
-            scale: 0.001,
-            rotate: 10,
-            yPercent: matchMedia('(max-width: 1024px)').matches ? 50 : 100,
-            ease: 'power1.inOut',
-            stagger: {
-              amount: 2,
-              from: 'end',
-              grid: [7, 7],
-              yoyo: true,
-              repeat: 3
+            autoAlpha: 0,
+            ease: 'none',
+            duration: 0.5,
+            onComplete: () => {
+              sessionStorage.setItem('hideLoader', 'true');
+              setHideLoader(true);
             }
           },
-          0
-        )
-        // Loader FadeOut Animation
-        .to(loaderRef.current, {
-          autoAlpha: 0,
-          ease: 'none',
-          delay: -1,
-          duration: 0.5,
-          onComplete: () => {
-            setTimeout(() => {
-              sessionStorage.setItem('shouldAnimateLoader', 'false');
-              setShouldAnimate(false);
-            }, 500);
-          }
-        });
-    }, loaderRef);
+          '-=1'
+        );
+    },
+    { scope: loaderRef, dependencies: [] }
+  );
 
-    return () => ctx.revert();
-  }, []);
-
-  return [loaderRef, shouldAnimate];
+  return { ref: loaderRef, hideLoader };
 };

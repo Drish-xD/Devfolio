@@ -1,16 +1,18 @@
 'use client';
 
-import { Fragment } from 'react';
+import { Fragment, memo } from 'react';
 
-// import { useLoaderAnime } from '@/hooks';
+import { useLoaderAnime } from './Loader.anime';
+import styles from './Loader.module.scss';
 
-export default function Loader() {
-  // const [loaderRef, shouldAnimate] = useLoaderAnime();
-  console.log('Loader component');
+const Loader = memo(function Loader() {
+  const { ref, hideLoader } = useLoaderAnime();
+
+  if (hideLoader) return;
 
   return (
-    <section className="loader">
-      <div className="grid">
+    <section ref={ref} className={styles.loader}>
+      <div>
         {[...Array(7)].map((_, i) => (
           <Fragment key={i}>
             <span>B</span>
@@ -25,4 +27,6 @@ export default function Loader() {
       </div>
     </section>
   );
-}
+});
+
+export default Loader;

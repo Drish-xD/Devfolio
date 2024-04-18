@@ -1,13 +1,15 @@
 'use client';
 
+import { memo } from 'react';
+
 import Link from '@/components/Link';
 import SectionTitle from '@/components/SectionTitle';
-import { ABOUT_TEXT } from '@/constants';
+import { ABOUT_TEXT, SPOTIFY_LINK } from '@/constants';
 
 import { useAboutAnimation } from './About.anime';
 import styles from './About.module.scss';
 
-export default function About() {
+const About = memo(function About() {
   const aboutRef = useAboutAnimation();
 
   return (
@@ -20,10 +22,7 @@ export default function About() {
         ))}
         <p>
           Here are some
-          <Link
-            href="https://open.spotify.com/user/9x451ffpyvo2czqnpr6b8kkyp?si=9dbff05426324240"
-            target="_blank"
-          >
+          <Link href={SPOTIFY_LINK} target="_blank">
             playlists
           </Link>
           to get you going.
@@ -31,4 +30,6 @@ export default function About() {
       </div>
     </section>
   );
-}
+});
+
+export default About;

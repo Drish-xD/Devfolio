@@ -1,50 +1,52 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { memo, useCallback, useEffect } from 'react';
 
-import { gsap } from 'gsap';
+import { useToastAnimation } from './Toast.anime';
+import styles from './Toast.module.scss';
 
-export default function Toast({ text = 'Available for Freelance Work' }: { text?: string }) {
-  const [isCopied, setCopied] = useState<boolean>(false);
-  const toastRef = useRef<HTMLDivElement>(null);
+const START_TIMER = 5000;
+const HIDE_TIMER = 25000;
 
-  const showToast = () => {
-    gsap.to(toastRef.current!, {
-      opacity: 1,
-      duration: 0.5
-    });
-  };
-
-  const hideToast = () => {
-    gsap.to(toastRef.current!, {
-      opacity: 0,
-      duration: 0.3,
-      onComplete: () => {
-        toastRef.current!.remove();
-      }
-    });
-  };
-
-  const copyToClipBoard = () => {
-    navigator.clipboard.writeText('hey@drishxd.dev');
-    setCopied(true);
-    setTimeout(hideToast, 5000);
-  };
+const Toast = memo(function Toast({ text = 'Available for Freelance Work' }: { text?: string }) {
+  const router = useRouter();
+  const { ref, tween, showToast, hideToast } = useToastAnimation();
 
   useEffect(() => {
-    const showTimer = setTimeout(showToast, 4500);
-    const hideTimer = setTimeout(hideToast, 25000);
+    const loader = sessionStorage.getItem('hideLoader');
+    let startTimer: NodeJS.Timeout;
+    let hideTimer: NodeJS.Timeout;
+    if (tween && ref) {
+      if (loader) {
+        showToast();
+      } else {
+        startTimer = setTimeout(showToast, START_TIMER);
+      }
+      hideTimer = setTimeout(hideToast, HIDE_TIMER);
+    }
 
     return () => {
-      clearTimeout(showTimer);
       clearTimeout(hideTimer);
+      clearTimeout(startTimer);
     };
+  }, [tween, ref]);
+
+  const handleToastClick = useCallback(() => {
+    const emailId = 'hey@drishxd.dev';
+    const subject = 'Freelance Inquiry - [Your Name]';
+    const mailtoLink = `mailto:${emailId}?subject=${encodeURIComponent(subject)}}`;
+    window?.navigator?.clipboard?.writeText(emailId).then(() => {
+      router.push(mailtoLink);
+    });
   }, []);
 
   return (
-    <div className="toast" ref={toastRef}>
-      <p onClick={copyToClipBoard}>{isCopied ? 'Email Copied' : text}</p>
-      <span onClick={hideToast}>×</span>
+    <div className={styles.toast} ref={ref}>
+      <p onClick={handleToastClick}>{text}</p>
+      <button onClick={hideToast}>×</button>
     </div>
   );
-}
+});
+
+export default Toast;

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { memo } from 'react';
 
 interface OverlayProps {
   id: string;
@@ -6,7 +6,7 @@ interface OverlayProps {
   className?: string;
 }
 
-const Overlay: FC<OverlayProps> = ({ id, className = '', count }) => {
+const Overlay = memo(function Overlay({ id, className = '', count }: OverlayProps) {
   return (
     <div className={className} id={`overlay_${id}`} aria-hidden="true">
       {Array.from({ length: count }, (_, i) => (
@@ -14,6 +14,6 @@ const Overlay: FC<OverlayProps> = ({ id, className = '', count }) => {
       ))}
     </div>
   );
-};
+});
 
 export default Overlay;

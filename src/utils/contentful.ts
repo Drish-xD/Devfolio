@@ -10,7 +10,6 @@ const client = createClient({
   environment: process.env.NEXT_PUBLIC_ENVIRONMENT
 });
 
-// Retrieve the list of projects
 export const getAllProjects = cache(async () => {
   try {
     const { items } = await client.getEntries<ProjectsSkeleton>({
