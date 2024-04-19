@@ -7,7 +7,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from '@/components/Link';
 import { getSingleProject } from '@/utils/contentful';
 
-import styles from './project_page.module.scss';
+import styles from './ProjectPage.module.scss';
 
 export default async function Project({ params: { slug } }: { params: { slug: string } }) {
   const project = await getSingleProject(slug);
