@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 
 import { GoogleTagManager } from '@next/third-parties/google';
 
+import WebVitals from '@/components/WebVitals';
 import { METADATA } from '@/constants';
 import { SmoothScroll, Transition } from '@/providers';
 import '@/styles/global.scss';
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Noise />
           </Transition>
         </SmoothScroll>
+        <WebVitals />
       </body>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
     </html>

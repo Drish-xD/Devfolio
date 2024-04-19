@@ -20,9 +20,7 @@ const ProjectList = memo(async function ProjectList() {
 
   return (
     <div className={styles.projects}>
-      {projects!.map((project) => (
-        <Card key={project.name} {...project} />
-      ))}
+      {projects?.map((project) => <Card key={project.name} {...project} />)}
     </div>
   );
 });

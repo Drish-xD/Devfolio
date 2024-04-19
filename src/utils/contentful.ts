@@ -19,14 +19,14 @@ export const getAllProjects = cache(async () => {
     });
 
     const projects = items.map(({ fields }) => {
-      const image = fields.image as Asset<undefined, string>;
+      const image = fields?.image as Asset<undefined, string>;
       return {
         name: fields.name,
         slug: fields.slug,
         tags: fields.tags,
         image: {
-          src: `https:${image.fields.file?.url}`,
-          alt: image.fields.description
+          src: image ? `https:${image?.fields?.file?.url}` : '',
+          alt: image ? image.fields?.description : fields.name
         }
       };
     });
@@ -50,8 +50,8 @@ export const getSingleProject = cache(async (slug_: string) => {
     return {
       ...rest,
       image: {
-        src: `https:${img.fields.file?.url}`,
-        alt: img.fields.description
+        src: img ? `https:${img.fields?.file?.url}` : '',
+        alt: img ? img.fields.description : rest.name
       }
     };
   } catch (error) {
