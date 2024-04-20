@@ -55,6 +55,7 @@ export interface ProjectProperties {
   image: {
     src: string;
     alt?: string;
+    base64?: string;
   };
   mdx?: string;
   github?: string;

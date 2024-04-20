@@ -5,9 +5,17 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import Link from '@/components/Link';
-import { getSingleProject } from '@/utils/contentful';
+import { getAllProjects, getSingleProject } from '@/utils/contentful';
 
 import styles from './ProjectPage.module.scss';
+
+export async function generateStaticParams() {
+  const projects = await getAllProjects();
+  if (!projects) {
+    throw new Error('Unable to fetch Projects, Please Check.');
+  }
+  return projects.map((project) => ({ slug: project.slug }));
+}
 
 export default async function Project({ params: { slug } }: { params: { slug: string } }) {
   const project = await getSingleProject(slug);
@@ -22,7 +30,16 @@ export default async function Project({ params: { slug } }: { params: { slug: st
     <main className={styles.project_page}>
       <h1>{name}</h1>
       <figure>
-        <Image src={image.src} alt={image.alt || name} sizes="80vw" priority fill />
+        <Image
+          src={image.src}
+          alt={image.alt || name}
+          quality={100}
+          sizes="80vw"
+          priority
+          fill
+          placeholder="blur"
+          blurDataURL={image.base64}
+        />
       </figure>
       <Tags />
       <MDXRemote source={mdx || ''} />

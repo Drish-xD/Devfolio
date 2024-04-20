@@ -11,20 +11,18 @@ import { useCardsAnimation } from './Card.anime';
 
 const Card = memo(function Card({ ...project }: ProjectProperties) {
   const ref = useCardsAnimation();
-  const {
-    name,
-    tags,
-    image: { src, alt },
-    slug
-  } = project;
+  const { name, tags, image, slug } = project;
 
   return (
     <article ref={ref}>
       <Image
-        src={src}
-        alt={alt || name}
+        src={image?.src}
+        alt={image?.alt || name}
+        quality={100}
         sizes="(max-width: 425px) 100vw, (max-width: 768px) 70vw, 50vw"
         fill
+        placeholder="blur"
+        blurDataURL={image?.base64}
       />
 
       <CardInfo name={name} tags={tags} />

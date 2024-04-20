@@ -4,6 +4,8 @@ import { Asset, createClient } from 'contentful';
 
 import { ContentSkeleton, LinksSkeleton, ProjectSkeleton, ProjectsSkeleton } from '@/types';
 
+import { getBase64 } from './getBase64';
+
 const client = createClient({
   space: process.env.NEXT_PUBLIC_SPACE_ID!,
   accessToken: process.env.NEXT_PUBLIC_ACCESS_TOKEN!,
@@ -18,22 +20,28 @@ export const getAllProjects = cache(async () => {
       select: ['fields.name', 'fields.slug', 'fields.tags', 'fields.image']
     });
 
-    const projects = items.map(({ fields }) => {
-      const image = fields?.image as Asset<undefined, string>;
-      return {
-        name: fields.name,
-        slug: fields.slug,
-        tags: fields.tags,
-        image: {
-          src: image ? `https:${image?.fields?.file?.url}` : '',
-          alt: image ? image.fields?.description : fields.name
-        }
-      };
-    });
+    const projects = await Promise.all(
+      items.map(async ({ fields }) => {
+        const image = fields?.image as Asset<undefined, string>;
+        const imgSrc = image ? `https:${image?.fields?.file?.url}` : '';
+        const imgBase64 = await getBase64(imgSrc);
+
+        return {
+          name: fields.name,
+          slug: fields.slug,
+          tags: fields.tags,
+          image: {
+            src: imgSrc,
+            alt: image ? image.fields?.description : fields.name,
+            base64: imgBase64
+          }
+        };
+      })
+    );
 
     return projects;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -46,16 +54,19 @@ export const getSingleProject = cache(async (slug_: string) => {
 
     const { image, ...rest } = items[0].fields;
     const img = image as Asset<undefined, string>;
+    const imgSrc = img ? `https:${img.fields?.file?.url}` : '';
+    const imgBase64 = await getBase64(imgSrc);
 
     return {
       ...rest,
       image: {
         src: img ? `https:${img.fields?.file?.url}` : '',
-        alt: img ? img.fields.description : rest.name
+        alt: img ? img.fields.description : rest.name,
+        base64: imgBase64
       }
     };
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -70,7 +81,7 @@ export const getContent = cache(async () => {
       skills: items[0].fields.skills || []
     };
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -85,6 +96,6 @@ export const getNavlinks = cache(async () => {
       contact: items[0].fields.contact
     };
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
