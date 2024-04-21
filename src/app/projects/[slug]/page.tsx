@@ -9,14 +9,6 @@ import { getAllProjects, getSingleProject } from '@/utils/contentful';
 
 import styles from './ProjectPage.module.scss';
 
-export async function generateStaticParams() {
-  const projects = await getAllProjects();
-  if (!projects) {
-    throw new Error('Unable to fetch Projects, Please Check.');
-  }
-  return projects.map((project) => ({ slug: project.slug }));
-}
-
 export default async function Project({ params: { slug } }: { params: { slug: string } }) {
   const project = await getSingleProject(slug);
 
@@ -62,6 +54,14 @@ export default async function Project({ params: { slug } }: { params: { slug: st
   }
 }
 
+export async function generateStaticParams() {
+  const projects = await getAllProjects();
+  if (!projects) {
+    throw new Error('Unable to fetch Projects, Please Check.');
+  }
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
 export const generateMetadata = async ({
   params: { slug }
 }: {
@@ -83,3 +83,5 @@ export const generateMetadata = async ({
     alternates: { canonical: project?.slug }
   };
 };
+
+export const dynamic = 'force-static';

@@ -5,6 +5,8 @@ import { getAllProjects } from '@/utils/contentful';
 const URL = 'https://drishxd.dev';
 const STATIC_ROUTES = [''];
 
+export const dynamic = 'force-static';
+
 /**
  * Generate sitemap for static and dynamic routes.
  */

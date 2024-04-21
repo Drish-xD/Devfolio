@@ -20,3 +20,5 @@ export default function Portfolio() {
     </main>
   );
 }
+
+export const dynamic = 'force-static';

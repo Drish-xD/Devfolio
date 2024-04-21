@@ -10,11 +10,11 @@ import path from 'path';
 
 const nextConfig = {
   output: 'export',
+  reactStrictMode: false,
   webpack: (config) => {
     config.resolve.alias['@/base'] = path.resolve(process.cwd(), 'src/styles/base');
     return config;
   },
-  reactStrictMode: false,
   images: {
     loader: 'custom',
     loaderFile: './src/utils/imageLoader.ts',
