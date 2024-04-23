@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 
-import { useGSAP } from '@gsap/react';
-import { Expo, gsap } from 'gsap';
 import SplitType from 'split-type';
+
+import { Expo, gsap, useGSAP } from '@/utils/gsap';
 
 export const useAboutAnimation = () => {
   const aboutRef = useRef<HTMLDivElement>(null);

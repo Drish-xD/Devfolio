@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
+import { gsap, useGSAP } from '@/utils/gsap';
 
 export const useToastAnimation = () => {
   const ref = useRef<HTMLDivElement>(null);

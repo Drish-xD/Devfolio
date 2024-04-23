@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
+import { gsap, useGSAP } from '@/utils/gsap';
 
 export const useLoaderAnime = () => {
   const loaderRef = useRef<HTMLElement>(null);

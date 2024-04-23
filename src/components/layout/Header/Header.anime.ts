@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 
-import { useGSAP } from '@gsap/react';
 import { useLenis } from '@studio-freight/react-lenis';
-import { gsap } from 'gsap';
+
+import { gsap, useGSAP } from '@/utils/gsap';
 
 export const useNavAnimation = () => {
   const navRef = useRef<HTMLElement>(null);

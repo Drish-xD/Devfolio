@@ -3,10 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { ReactNode, createContext, useContext, useState } from 'react';
 
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
-
 import { TransitionContextProps } from '@/types';
+import { gsap, useGSAP } from '@/utils/gsap';
 
 const TransitionContext = createContext<TransitionContextProps | null>(null);
 

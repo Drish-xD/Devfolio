@@ -2,10 +2,8 @@
 
 import { memo, useRef } from 'react';
 
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
-
 import { useMousePosition } from '@/hooks/useMousePosition';
+import { gsap, useGSAP } from '@/utils/gsap';
 
 import styles from './Blob.module.scss';
 

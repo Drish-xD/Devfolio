@@ -2,10 +2,9 @@
 
 import { ReactNode, useLayoutEffect } from 'react';
 
-import { useGSAP } from '@gsap/react';
 import { Lenis, useLenis } from '@studio-freight/react-lenis';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import { ScrollTrigger, gsap, useGSAP } from '@/utils/gsap';
 
 export default function SmoothScrolling({ children }: { children: ReactNode }) {
   const lenis = useLenis(ScrollTrigger.update);
