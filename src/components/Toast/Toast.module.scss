@@ -33,7 +33,9 @@
 
 @include device(tablet) {
   .toast {
+    width: 85%;
     inset: auto 50% 2.5% auto;
     transform: translateX(50%);
+    text-align: center;
   }
 }

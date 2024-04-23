@@ -2,7 +2,7 @@ import { cache } from 'react';
 
 import { Asset, createClient } from 'contentful';
 
-import { ContentSkeleton, LinksSkeleton, ProjectSkeleton, ProjectsSkeleton } from '@/types';
+import { ProjectSkeleton, ProjectsSkeleton } from '@/types';
 
 import { getBase64 } from './getBase64';
 
@@ -70,32 +70,32 @@ export const getSingleProject = cache(async (slug_: string) => {
   }
 });
 
-export const getContent = cache(async () => {
-  try {
-    const { items } = await client.getEntries<ContentSkeleton>({
-      content_type: 'portfolioContent'
-    });
+// export const getContent = cache(async () => {
+//   try {
+//     const { items } = await client.getEntries<ContentSkeleton>({
+//       content_type: 'portfolioContent'
+//     });
 
-    return {
-      about: items[0].fields.about || '',
-      skills: items[0].fields.skills || []
-    };
-  } catch (error) {
-    console.error(error);
-  }
-});
+//     return {
+//       about: items[0].fields.about || '',
+//       skills: items[0].fields.skills || []
+//     };
+//   } catch (error) {
+//     console.error(error);
+//   }
+// });
 
-export const getNavlinks = cache(async () => {
-  try {
-    const { items } = await client.getEntries<LinksSkeleton>({
-      content_type: 'links'
-    });
+// export const getNavlinks = cache(async () => {
+//   try {
+//     const { items } = await client.getEntries<LinksSkeleton>({
+//       content_type: 'links'
+//     });
 
-    return {
-      nav: items[0].fields.navLinks,
-      contact: items[0].fields.contact
-    };
-  } catch (error) {
-    console.error(error);
-  }
-});
+//     return {
+//       nav: items[0].fields.navLinks,
+//       contact: items[0].fields.contact
+//     };
+//   } catch (error) {
+//     console.error(error);
+//   }
+// });

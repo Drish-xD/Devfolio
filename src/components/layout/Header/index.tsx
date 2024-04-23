@@ -1,6 +1,7 @@
 'use client';
 
 import NextLink from 'next/link';
+import { memo } from 'react';
 
 import Link from '@/components/Link';
 import Overlay from '@/components/Overlay';
@@ -10,7 +11,7 @@ import { useHoverAnimation } from '@/hooks/useHoverAnimation';
 import { useNavAnimation } from './Header.anime';
 import styles from './Header.module.scss';
 
-export default function Header() {
+const Header = memo(function Header() {
   const { navRef, openMenu, closeMenu } = useNavAnimation();
 
   return (
@@ -24,9 +25,15 @@ export default function Header() {
       </section>
     </header>
   );
-}
+});
 
-const FixedNav = ({ label, onClick }: { label: string; onClick: () => void }) => {
+const FixedNav = memo(function FixedNav({
+  label,
+  onClick
+}: {
+  label: string;
+  onClick: () => void;
+}) {
   const ref = useHoverAnimation<HTMLDivElement>();
   return (
     <div className={styles.fixed_nav} id="fixed_nav" ref={ref}>
@@ -38,9 +45,9 @@ const FixedNav = ({ label, onClick }: { label: string; onClick: () => void }) =>
       </div>
     </div>
   );
-};
+});
 
-const NavLinks = ({ onClick }: { onClick: () => void }) => {
+const NavLinks = memo(function NavLinks({ onClick }: { onClick: () => void }) {
   return (
     <nav>
       <ul>
@@ -55,4 +62,6 @@ const NavLinks = ({ onClick }: { onClick: () => void }) => {
       </ul>
     </nav>
   );
-};
+});
+
+export default Header;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { memo, useRef } from 'react';
 
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
@@ -9,7 +9,7 @@ import { useMousePosition } from '@/hooks/useMousePosition';
 
 import styles from './Blob.module.scss';
 
-export default function Blob() {
+const Blob = memo(function Blob() {
   const { x, y } = useMousePosition();
   const blobRef = useRef<HTMLElement>(null);
 
@@ -37,4 +37,10 @@ export default function Blob() {
   );
 
   return <span className={styles.blob} aria-hidden="true" ref={blobRef} />;
-}
+});
+
+const Noise = memo(function Noise() {
+  return <span className={styles.noise} aria-hidden="true" />;
+});
+
+export { Blob, Noise };

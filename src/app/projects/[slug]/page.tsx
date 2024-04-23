@@ -26,7 +26,7 @@ export default async function Project({ params: { slug } }: { params: { slug: st
           src={image.src}
           alt={image.alt || name}
           quality={100}
-          sizes="80vw"
+          sizes="(min-width: 780px) 75vw, calc(81.74vw + 25px)"
           priority
           fill
           placeholder="blur"
