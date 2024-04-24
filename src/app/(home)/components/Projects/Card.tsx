@@ -19,7 +19,7 @@ const Card = memo(function Card({ ...project }: ProjectProperties) {
         src={image?.src}
         alt={image?.alt || name}
         quality={100}
-        sizes="(max-width: 768px) 70vw, 50vw"
+        sizes="(max-width: 320px) 67.5vw, (max-width: 768px) 63.75vw, 37.52vw"
         fill
         placeholder="blur"
         blurDataURL={image?.base64}

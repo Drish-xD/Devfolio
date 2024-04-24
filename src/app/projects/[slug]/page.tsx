@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import Link from '@/components/Link';
+import { METADATA } from '@/constants';
 import { getAllProjects, getSingleProject } from '@/utils/contentful';
 
 import styles from './ProjectPage.module.scss';
@@ -26,7 +27,7 @@ export default async function Project({ params: { slug } }: { params: { slug: st
           src={image.src}
           alt={image.alt || name}
           quality={100}
-          sizes="80vw"
+          sizes="(max-width: 320px) 90vw, (max-width: 768px) 85vw, 75vw"
           priority
           fill
           placeholder="blur"
@@ -77,10 +78,10 @@ export const generateMetadata = async ({
 
   return {
     title: project?.name,
-    keywords: project?.tags,
+    keywords: [...((METADATA?.keywords as string[]) || []), ...(project?.tags || [])],
     openGraph: { title: project?.name, images: project?.image.src, url: project?.slug },
     twitter: { title: project?.name, images: project?.image.src },
-    alternates: { canonical: project?.slug }
+    alternates: { canonical: `projects/${project?.slug}` }
   };
 };
 

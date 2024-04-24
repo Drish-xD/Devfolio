@@ -22,7 +22,7 @@ export default function Template({ children }: { children: ReactNode }) {
     if (lenis && !isPending) {
       const hash = window.location.hash || '';
       const target = hash && hash !== '#' ? hash : 0;
-      lenis?.scrollTo(target, { duration: 2, lock: true });
+      lenis?.scrollTo(target, { duration: 2 });
     }
   }, [lenis, pathname, isPending]);
 

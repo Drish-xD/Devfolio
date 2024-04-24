@@ -2,6 +2,8 @@ import dynamic from 'next/dynamic';
 import { JetBrains_Mono } from 'next/font/google';
 import { ReactNode } from 'react';
 
+import { GoogleTagManager } from '@next/third-parties/google';
+
 import { METADATA } from '@/constants';
 import { SmoothScroll, Transition } from '@/providers';
 import '@/styles/global.scss';
@@ -18,7 +20,7 @@ const Header = dynamic(() => import('@/components/layout/Header'));
 const Footer = dynamic(() => import('@/components/layout/Footer'));
 const Blob = dynamic(() => import('@/components/layout/Blob').then((mod) => mod.Blob));
 const Noise = dynamic(() => import('@/components/layout/Blob').then((mod) => mod.Noise));
-// const WebVitals = dynamic(() => import('@/components/WebVitals'));
+const WebVitals = dynamic(() => import('@/components/WebVitals'));
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -33,9 +35,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Noise />
           </Transition>
         </SmoothScroll>
-        {/* <WebVitals /> */}
+        <WebVitals />
       </body>
-      {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} /> */}
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
     </html>
   );
 }

@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 
+import { APP_URL } from './Data';
+
 const title = {
   default: 'Drish | Portfolio',
   template: ' %s - Drish | Portfolio'
@@ -8,44 +10,36 @@ const title = {
 const description =
   "Hi, I 'm Drish, a front-end developer. I specialize in creating responsive, efficient web solutions. My work emphasizes clean design, usability, and modern web technologies, aiming to deliver optimal user experiences. Explore how strategic design and development converge in my projects.";
 
-const images = '/images/screenshot.webp';
-
-const url = 'https://drishxd.dev';
+const images = '/images/thumbnail.webp';
 
 /**
  * Default Metadata for the website
  */
 export const METADATA: Metadata = {
+  metadataBase: new URL(APP_URL),
   title,
   description,
-  category: 'Portfolio',
-  metadataBase: new URL(url),
-  creator: 'Drish',
-  authors: { name: 'Drish', url },
-  icons: '/images/icon.png',
+  icons: [{ rel: 'icon', url: '/images/favicon.ico', type: 'image/x-icon' }],
   alternates: { canonical: '/' },
-  generator: 'Next.js',
   keywords: [
-    'Front-End Development',
-    'Responsive Web Design',
-    'Next.js Development',
-    'GSAP Animation',
-    'Web Performance',
-    'User Experience Design',
-    'Professional Web Developer',
-    'Software Engineering',
-    'Creative Coding',
+    'Front-End',
     'Portfolio',
     'Drish',
     'DrishxD',
     'Drish-xD',
-    'Drish',
+    'Web Design',
+    'Development',
+    'Next.js',
+    'GSAP Animation',
+    'Web Performance',
+    'Web Developer',
+    'Software Engineering',
+    'Creative Coding',
     'Freelancer'
   ],
   openGraph: {
     type: 'website',
     countryName: 'India',
-    emails: 'hey@drishxd.dev',
     title,
     description,
     images
@@ -53,11 +47,15 @@ export const METADATA: Metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@Drish-xD',
-    site: url,
+    site: APP_URL,
     title,
     description,
     images
   },
+  category: 'Portfolio',
+  creator: 'Drish',
+  authors: { name: 'Drish', url: APP_URL },
   robots: 'index, follow',
-  referrer: 'origin-when-cross-origin'
+  referrer: 'origin-when-cross-origin',
+  generator: 'Next.js'
 };
