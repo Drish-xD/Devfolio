@@ -13,21 +13,21 @@ export interface TransitionContextProps {
 
 // Contentful types
 
-// Links Types (Navbar | Contacts)
-interface Links {
-  navLinks: EntryFieldTypes.Object;
-  contact?: EntryFieldTypes.Object;
-}
-
-export type LinksSkeleton = EntrySkeletonType<Links, 'links'>;
-
-// Content Types (About | Skills)
-interface Content {
+// Content Types (About | Skills | Links)
+export type LinkObject = {
+  label: string;
+  value: string;
+};
+export interface Content {
+  name?: EntryFieldTypes.Symbol;
   about?: EntryFieldTypes.Text;
   skills?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+  navLinks: EntryFieldTypes.Object<{ data: string[] }>;
+  contacts: EntryFieldTypes.Object<{ [key: string]: LinkObject[] }>;
+  otherLinks: EntryFieldTypes.Object<{ spotify: string }>;
 }
 
-export type ContentSkeleton = EntrySkeletonType<Content, 'portfolioContent'>;
+export type ContentSkeleton = EntrySkeletonType<Content, 'content'>;
 
 // Projects Types
 export interface ProjectCards {

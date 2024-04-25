@@ -1,3 +1,5 @@
+import { APP_URL } from '@/constants';
+
 export default function imageLoader({
   src,
   width,
@@ -7,7 +9,7 @@ export default function imageLoader({
   width: number;
   quality: number;
 }) {
-  const url = new URL(`${process.env.NEXT_PUBLIC_APP_URL}/_next/image/`);
+  const url = new URL(`${APP_URL}/_next/image/`);
   url.searchParams.set('url', src);
   url.searchParams.set('fm', 'webp');
   url.searchParams.set('w', width.toString());

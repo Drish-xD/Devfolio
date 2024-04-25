@@ -2,11 +2,15 @@ import { memo } from 'react';
 
 import Link from '@/components/Link';
 import SectionTitle from '@/components/SectionTitle';
-import { CONTACT_LINKS } from '@/constants';
+import { LinkObject } from '@/types';
 
 import styles from './Contacts.module.scss';
 
-const Contacts = memo(function Contacts() {
+const Contacts = memo(function Contacts({
+  contacts
+}: {
+  contacts: { [key: string]: LinkObject[] };
+}) {
   return (
     <section id="contacts">
       <SectionTitle text="Contact" num={5} />
@@ -16,11 +20,11 @@ const Contacts = memo(function Contacts() {
         </h3>
 
         <ul>
-          {Object.keys(CONTACT_LINKS).map((category: string, i: number) => (
+          {Object.keys(contacts).map((category: string, i: number) => (
             <li key={i}>
               <h4>{category}</h4>
               <ul>
-                {CONTACT_LINKS[category as keyof typeof CONTACT_LINKS].map(({ label, value }) => (
+                {contacts[category as keyof typeof contacts].map(({ label, value }) => (
                   <li key={label}>
                     <Link href={value} target="_blank">
                       {label}

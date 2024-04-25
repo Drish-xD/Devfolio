@@ -2,7 +2,7 @@ import { cache } from 'react';
 
 import { Asset, createClient } from 'contentful';
 
-import { ProjectSkeleton, ProjectsSkeleton } from '@/types';
+import { ContentSkeleton, ProjectSkeleton, ProjectsSkeleton } from '@/types';
 
 import { getBase64 } from './getBase64';
 
@@ -70,32 +70,20 @@ export const getSingleProject = cache(async (slug_: string) => {
   }
 });
 
-// export const getContent = cache(async () => {
-//   try {
-//     const { items } = await client.getEntries<ContentSkeleton>({
-//       content_type: 'portfolioContent'
-//     });
+export const getContent = cache(async () => {
+  try {
+    const { items: content } = await client.getEntries<ContentSkeleton>({
+      content_type: 'content'
+    });
 
-//     return {
-//       about: items[0].fields.about || '',
-//       skills: items[0].fields.skills || []
-//     };
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
-
-// export const getNavlinks = cache(async () => {
-//   try {
-//     const { items } = await client.getEntries<LinksSkeleton>({
-//       content_type: 'links'
-//     });
-
-//     return {
-//       nav: items[0].fields.navLinks,
-//       contact: items[0].fields.contact
-//     };
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
+    return {
+      about: content[0].fields.about?.split(/\r?\n/).filter((line) => line.trim() !== '') || [],
+      skills: content[0].fields.skills || [],
+      navLinks: content[0].fields.navLinks?.data || {},
+      contactLinks: content[0].fields.contacts || {},
+      otherLinks: content[0].fields.otherLinks || {}
+    };
+  } catch (error) {
+    console.error(error);
+  }
+});

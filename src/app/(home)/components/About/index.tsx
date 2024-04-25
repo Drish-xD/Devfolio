@@ -4,12 +4,11 @@ import { memo } from 'react';
 
 import Link from '@/components/Link';
 import SectionTitle from '@/components/SectionTitle';
-import { ABOUT_TEXT, SPOTIFY_LINK } from '@/constants';
 
 import { useAboutAnimation } from './About.anime';
 import styles from './About.module.scss';
 
-const About = memo(function About() {
+const About = memo(function About({ about, spotify }: { about: string[]; spotify: string }) {
   const aboutRef = useAboutAnimation();
 
   return (
@@ -17,12 +16,12 @@ const About = memo(function About() {
       <SectionTitle text="About" num={4} />
       <div ref={aboutRef} className={styles.about}>
         <h3>Hi, I&rsquo;m Drish.</h3>
-        {ABOUT_TEXT.map((text: string, i: number) => (
+        {about.map((text: string, i: number) => (
           <p key={i}>{text}</p>
         ))}
         <p>
           Here are some
-          <Link href={SPOTIFY_LINK} target="_blank">
+          <Link href={spotify} target="_blank">
             playlists
           </Link>
           to get you going.
