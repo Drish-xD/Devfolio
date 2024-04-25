@@ -15,7 +15,7 @@ export const useToastAnimation = () => {
         ref.current!,
         {
           opacity: 0,
-          yPercent: 100
+          yPercent: 200
         },
         {
           opacity: 1,
