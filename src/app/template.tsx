@@ -1,13 +1,15 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { ReactNode, useEffect, useLayoutEffect } from 'react';
 
 import { useLenis } from '@studio-freight/react-lenis';
 
-import Overlay from '@/components/Overlay';
 import { useTransition } from '@/providers';
 import styles from '@/styles/common/Overlay.module.scss';
+
+const Overlay = dynamic(() => import('@/components/Overlay'), { ssr: false });
 
 export default function Template({ children }: { children: ReactNode }) {
   const { isPending, pageEnter } = useTransition();
