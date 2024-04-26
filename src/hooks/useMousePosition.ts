@@ -27,7 +27,7 @@ export const useMousePosition = (): MousePosition => {
       }
 
       setMousePosition({ x, y });
-    }, 200);
+    }, 150);
 
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('touchmove', updateMousePosition);
