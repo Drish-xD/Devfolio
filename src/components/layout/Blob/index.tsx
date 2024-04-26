@@ -7,35 +7,38 @@ import { gsap, useGSAP } from '@/utils/gsap';
 
 import styles from './Blob.module.scss';
 
-const Blob = memo(function Blob() {
+const Blob = () => {
   const { x, y } = useMousePosition();
   const blobRef = useRef<HTMLElement>(null);
 
-  useGSAP(() => {
-    gsap.to(blobRef.current, {
-      rotation: 360,
-      scaleX: 1.5,
-      scaleY: 1,
-      duration: 20,
-      repeat: -1,
-      yoyo: true
-    });
-  });
+  useGSAP(
+    () => {
+      gsap.to(blobRef.current, {
+        rotation: 360,
+        scaleX: 1.5,
+        scaleY: 1,
+        duration: 20,
+        repeat: -1,
+        yoyo: true
+      });
+    },
+    { scope: blobRef }
+  );
 
   useGSAP(
     () => {
       gsap.to(blobRef.current, {
         x,
         y,
-        duration: 1,
-        ease: 'power1.out'
+        duration: 0.8,
+        ease: 'power1'
       });
     },
-    { dependencies: [x, y] }
+    { dependencies: [x, y], scope: blobRef }
   );
 
   return <span className={styles.blob} aria-hidden="true" ref={blobRef} />;
-});
+};
 
 const Noise = memo(function Noise() {
   return <span className={styles.noise} aria-hidden="true" />;

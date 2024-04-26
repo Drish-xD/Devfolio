@@ -1,17 +1,23 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { memo, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useToastAnimation } from './Toast.anime';
 import styles from './Toast.module.scss';
 
 const START_TIMER = 5000;
-const HIDE_TIMER = 25000;
+const HIDE_TIMER = 20000;
 
-const Toast = memo(function Toast({ text = 'Available for Freelance Work' }: { text?: string }) {
+const Toast = ({ text = 'Available for Freelance Work' }: { text?: string }) => {
   const router = useRouter();
+  const [copied, setCopied] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout>();
   const { ref, tween, showToast, hideToast } = useToastAnimation();
+
+  useEffect(() => {
+    return clearTimeout(timerRef.current);
+  }, []);
 
   useEffect(() => {
     const loader = sessionStorage.getItem('hideLoader');
@@ -37,16 +43,18 @@ const Toast = memo(function Toast({ text = 'Available for Freelance Work' }: { t
     const subject = 'Freelance Inquiry - [Your Name]';
     const mailtoLink = `mailto:${emailId}?subject=${encodeURIComponent(subject)}}`;
     window?.navigator?.clipboard?.writeText(emailId).then(() => {
+      setCopied(true);
       router.push(mailtoLink);
     });
+    timerRef.current = setTimeout(() => setCopied(false), 500);
   }, []);
 
   return (
     <div className={styles.toast} ref={ref}>
-      <p onClick={handleToastClick}>{text}</p>
+      <p onClick={handleToastClick}>{copied ? 'Email Copied' : text}</p>
       <button onClick={hideToast}>×</button>
     </div>
   );
-});
+};
 
 export default Toast;

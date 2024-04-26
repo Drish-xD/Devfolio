@@ -1,38 +1,36 @@
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 
 import { gsap, useGSAP } from '@/utils/gsap';
 
 export const useToastAnimation = () => {
   const ref = useRef<HTMLDivElement>(null);
-
   const { contextSafe } = useGSAP({ scope: ref, dependencies: [ref] });
 
-  if (!ref.current) return { ref };
-
-  const toastAnime = contextSafe(() => {
-    const toastTween = gsap
-      .fromTo(
-        ref.current!,
-        {
-          opacity: 0,
-          yPercent: 200
-        },
-        {
-          opacity: 1,
-          yPercent: 0,
-          duration: 0.5,
-          delay: 1
-        }
-      )
-      .pause();
+  const tween = useMemo(() => {
+    if (!ref.current) {
+      return null;
+    }
+    const toastTween = contextSafe(() =>
+      gsap
+        .fromTo(
+          ref.current,
+          { autoAlpha: 0, yPercent: 200 },
+          { autoAlpha: 1, yPercent: 0, duration: 0.5, delay: 1 }
+        )
+        .pause()
+    )();
 
     return toastTween;
-  });
+  }, [ref.current]);
 
-  const tween = toastAnime();
-
-  const hideToast = () => tween.reverse();
-  const showToast = () => tween.play();
-
-  return { ref, tween, hideToast, showToast };
+  if (tween) {
+    return {
+      tween,
+      ref,
+      hideToast: () => tween?.reverse(),
+      showToast: () => tween?.play()
+    };
+  } else {
+    return { ref };
+  }
 };
