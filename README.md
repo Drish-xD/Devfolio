@@ -31,8 +31,6 @@ The personal Portfolio website showcases projects, skills, and blogs to share ex
 
    The website boasts an appealing user interface, crafted using custom design, making it visually pleasing and user-friendly.
 
----
-
 ## Folder Structure
 
 ```
@@ -59,5 +57,3 @@ src
 │
 └───utils
 ```
-
----
