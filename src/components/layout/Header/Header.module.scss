@@ -9,6 +9,7 @@
     @include position($inset: 0 0 auto);
     @include flexbox($jusCon: space-between, $alignItem: center);
     padding-block: 1rem;
+    color: $white;
 
     & > a {
       font-size: clamp(1.8rem, 7vi, 3rem);

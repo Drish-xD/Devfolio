@@ -24,7 +24,7 @@ export const Transition = ({ children }: { children: ReactNode }) => {
         xPercent: 200,
         duration: 0.8,
         stagger: 0.1,
-        ease: 'Power4.easeInOut',
+        ease: 'power4.inOut',
         onComplete: () => setIsPending(false)
       }
     );
@@ -41,7 +41,7 @@ export const Transition = ({ children }: { children: ReactNode }) => {
         xPercent: 100,
         duration: 0.8,
         stagger: 0.1,
-        ease: 'Power4.easeInOut',
+        ease: 'power4.inOut',
         onStart: () => setIsPending(true),
         onComplete: () => router.push(href, { scroll: false })
       }

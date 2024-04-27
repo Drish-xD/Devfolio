@@ -18,7 +18,7 @@ export const useNavAnimation = () => {
         .fromTo(
           '#overlay_header span',
           { yPercent: -100 },
-          { yPercent: 0, ease: 'Expo.easeInOut', duration: 0.8, stagger: 0.2 },
+          { yPercent: 0, ease: 'expo.inOut', duration: 0.8, stagger: 0.2 },
           0
         )
         .fromTo('#fixed_nav', { opacity: 0 }, { opacity: 1 }, 1)

@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 
 import { GoogleTagManager } from '@next/third-parties/google';
 
+import { Blob, Noise } from '@/components/layout/Blob';
 import { METADATA } from '@/constants';
 import { SmoothScroll, Transition } from '@/providers';
 import '@/styles/global.scss';
@@ -18,8 +19,6 @@ const fontMain = JetBrains_Mono({
 
 const Header = dynamic(() => import('@/components/layout/Header'));
 const Footer = dynamic(() => import('@/components/layout/Footer'));
-const Blob = dynamic(() => import('@/components/layout/Blob').then((mod) => mod.Blob));
-const Noise = dynamic(() => import('@/components/layout/Blob').then((mod) => mod.Noise));
 const WebVitals = dynamic(() => import('@/components/WebVitals'));
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -28,7 +28,7 @@ export const useCardsAnimation = () => {
           {
             scale: 1,
             duration: 0.6,
-            ease: 'Power4.in'
+            ease: 'power4.in'
           }
         )
         .to('#overlay_project span', {
