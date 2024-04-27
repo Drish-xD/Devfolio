@@ -1,16 +1,15 @@
-import { useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { gsap, useGSAP } from '@/utils/gsap';
 
 export const useToastAnimation = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const { contextSafe } = useGSAP({ scope: ref, dependencies: [ref] });
+  const toastTween = useRef<gsap.core.Tween>();
 
-  const tween = useMemo(() => {
-    if (!ref.current) {
-      return null;
-    }
-    const toastTween = contextSafe(() =>
+  const { contextSafe } = useGSAP({ scope: ref });
+
+  useEffect(() => {
+    toastTween.current = contextSafe(() =>
       gsap
         .fromTo(
           ref.current,
@@ -19,18 +18,11 @@ export const useToastAnimation = () => {
         )
         .pause()
     )();
+  }, []);
 
-    return toastTween;
-  }, [ref.current]);
-
-  if (tween) {
-    return {
-      tween,
-      ref,
-      hideToast: () => tween?.reverse(),
-      showToast: () => tween?.play()
-    };
-  } else {
-    return { ref };
-  }
+  return {
+    ref,
+    hideToast: () => toastTween.current?.reverse(),
+    showToast: () => toastTween.current?.play()
+  };
 };

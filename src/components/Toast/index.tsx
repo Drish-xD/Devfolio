@@ -13,7 +13,7 @@ const Toast = ({ text = 'Available for Freelance Work' }: { text?: string }) => 
   const router = useRouter();
   const [copied, setCopied] = useState(false);
   const timerRef = useRef<NodeJS.Timeout>();
-  const { ref, tween, showToast, hideToast } = useToastAnimation();
+  const { ref, showToast, hideToast } = useToastAnimation();
 
   useEffect(() => {
     return clearTimeout(timerRef.current);
@@ -23,20 +23,19 @@ const Toast = ({ text = 'Available for Freelance Work' }: { text?: string }) => 
     const loader = sessionStorage.getItem('hideLoader');
     let startTimer: NodeJS.Timeout;
     let hideTimer: NodeJS.Timeout;
-    if (tween && ref) {
-      if (loader) {
-        showToast();
-      } else {
-        startTimer = setTimeout(showToast, START_TIMER);
-      }
-      hideTimer = setTimeout(hideToast, HIDE_TIMER);
+
+    if (loader) {
+      showToast();
+    } else {
+      startTimer = setTimeout(showToast, START_TIMER);
     }
+    hideTimer = setTimeout(hideToast, HIDE_TIMER);
 
     return () => {
       clearTimeout(hideTimer);
       clearTimeout(startTimer);
     };
-  }, [tween, ref]);
+  }, []);
 
   const handleToastClick = useCallback(() => {
     const emailId = 'hey@drishxd.dev';

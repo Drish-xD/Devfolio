@@ -11,7 +11,6 @@ export function WebVitals() {
       value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value)
     };
     sendGTMEvent({ event: 'web_vitals', web_vitals: webVitals });
-    console.info('WebVitals : ', webVitals);
   });
 
   return <></>;

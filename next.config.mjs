@@ -11,6 +11,7 @@ import path from 'path';
 const nextConfig = {
   output: 'export',
   reactStrictMode: false,
+  cleanDistDir: true,
   webpack: (config) => {
     config.resolve.alias['@/base'] = path.resolve(process.cwd(), 'src/styles/base');
     return config;
@@ -18,7 +19,7 @@ const nextConfig = {
   images: {
     loader: 'custom',
     loaderFile: './src/utils/imageLoader.ts',
-    path: process.env.NODE_ENV_,
+    minimumCacheTTL: 60,
     remotePatterns: [
       { protocol: 'https', hostname: 'www.drishxd.dev' },
       { protocol: 'https', hostname: 'images.ctfassets.net' }
