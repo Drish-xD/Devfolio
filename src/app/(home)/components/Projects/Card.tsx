@@ -19,9 +19,9 @@ const Card = memo(function Card({ ...project }: ProjectProperties) {
         src={image?.src}
         alt={image?.alt || name}
         quality={100}
-        sizes="(max-width: 320px) 67.5vw, (max-width: 768px) 63.75vw, 37.52vw"
+        sizes='(max-width: 320px) 67.5vw, (max-width: 768px) 63.75vw, 37.52vw'
         fill
-        placeholder="blur"
+        placeholder='blur'
         blurDataURL={image?.base64}
         priority={false}
       />
@@ -32,7 +32,7 @@ const Card = memo(function Card({ ...project }: ProjectProperties) {
         <span>↗</span>
       </Link>
 
-      <Overlay count={3} id="project" />
+      <Overlay count={3} id='project' />
     </article>
   );
 });

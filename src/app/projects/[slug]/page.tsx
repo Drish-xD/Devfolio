@@ -27,10 +27,10 @@ export default async function Project({ params: { slug } }: { params: { slug: st
           src={image.src}
           alt={image.alt || name}
           quality={100}
-          sizes="(max-width: 320px) 90vw, (max-width: 768px) 85vw, 75vw"
+          sizes='(max-width: 320px) 90vw, (max-width: 768px) 85vw, 75vw'
           priority
           fill
-          placeholder="blur"
+          placeholder='blur'
           blurDataURL={image.base64}
         />
       </figure>

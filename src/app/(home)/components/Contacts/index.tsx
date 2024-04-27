@@ -12,8 +12,8 @@ const Contacts = memo(function Contacts({
   contacts: { [key: string]: LinkObject[] };
 }) {
   return (
-    <section id="contacts">
-      <SectionTitle text="Contact" num={5} />
+    <section id='contacts'>
+      <SectionTitle text='Contact' num={5} />
       <div className={styles.contacts}>
         <h3>
           Want to discuss a new project? <br /> Get in touch.
@@ -26,7 +26,7 @@ const Contacts = memo(function Contacts({
               <ul>
                 {contacts[category as keyof typeof contacts].map(({ label, value }) => (
                   <li key={label}>
-                    <Link href={value} target="_blank">
+                    <Link href={value} target='_blank'>
                       {label}
                     </Link>
                   </li>

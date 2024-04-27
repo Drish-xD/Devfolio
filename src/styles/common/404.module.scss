@@ -2,6 +2,7 @@
 
 .notFound {
   @include flexbox(column, center, center);
+
   padding-top: $container-margin;
   text-align: center;
   min-height: 90lvh;

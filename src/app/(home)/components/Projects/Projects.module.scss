@@ -27,11 +27,13 @@
     hgroup {
       @include flexbox(column);
       @include position($inset: auto 0 0);
+
       border-radius: 0.3rem;
       overflow: hidden;
 
       h3 {
         @include flexbox($isInline: true);
+
         margin: 1rem 0 0 clamp(1.5rem, 2vi, 2rem);
         font-size: clamp(2rem, 8vi, 4rem);
         text-shadow: 0 0 0.7rem $black;
@@ -40,6 +42,7 @@
 
       ul {
         @include flexbox($jusCon: space-evenly, $wrap: wrap);
+
         margin: clamp(0.4rem, 1.3vi, 1rem);
         margin-top: clamp(0.2rem, 0.8vi, 1rem);
         overflow: hidden;
@@ -50,33 +53,37 @@
           font-size: clamp(0.5rem, 2.5vi, 1rem);
           border-radius: 0.4rem;
           @include blurbg(10%, 0.5rem);
+
           overflow: inherit;
         }
       }
     }
 
     a {
-      $btnWidth: clamp(3.5rem, 10vi, 5rem);
-      $iconSize: clamp(1.8rem, 5vi, 2.5rem);
-      @include position($b: 15%, $r: calc(-1 * $btnWidth / 2));
+      $btn-width: clamp(3.5rem, 10vi, 5rem);
+      $icon-size: clamp(1.8rem, 5vi, 2.5rem);
+      @include position($b: 15%, $r: calc(-1 * $btn-width / 2));
+
       color: $black;
-      width: $btnWidth;
+      width: $btn-width;
       aspect-ratio: 1;
       border-radius: 50%;
       @include blurbg(70%, 0.5rem, $white);
       @include flexbox($jusCon: center, $alignItem: center);
+
       box-shadow: 0 0 0.5rem $black;
       transform: scale(0);
 
       span {
         display: inline-block;
         line-height: 0;
-        font-size: $iconSize;
+        font-size: $icon-size;
       }
     }
 
     > div {
       @include position($inset: 0);
+
       display: grid;
       border-radius: inherit;
       overflow: hidden;

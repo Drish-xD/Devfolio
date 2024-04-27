@@ -12,16 +12,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint:next": "next lint",
+    "lint:eslint": "eslint --fix",
+    "lint:style": "stylelint --allow-empty-input --fix './src/**/*.{css,scss}'",
+    "lint": "pnpm lint:next && pnpm lint:style",
     "format": "prettier --write .",
     "prepare": "husky"
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
-      "eslint --fix",
+      "pnpm lint:eslint",
       "pnpm format"
     ],
     "./src/**/*.{css,scss,json}": [
+      "pnpm lint:style",
       "pnpm format"
     ]
   },
@@ -37,6 +41,15 @@
       "no-unused-vars": "off"
     }
   },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard-scss",
+      "stylelint-config-prettier-scss"
+    ],
+    "rules": {
+      "selector-class-pattern": null
+    }
+  },
   "prettier": {
     "plugins": [
       "@trivago/prettier-plugin-sort-imports"
@@ -44,6 +57,7 @@
     "bracketSpacing": true,
     "semi": true,
     "singleQuote": true,
+    "jsxSingleQuote": true,
     "useTabs": false,
     "tabWidth": 2,
     "trailingComma": "none",
@@ -91,6 +105,9 @@
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "stylelint": "^16.4.0",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^13.1.0"
   }
 }

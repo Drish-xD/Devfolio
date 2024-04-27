@@ -10,22 +10,22 @@
   }
 
   // position
-  @if $inset != null {
+  @if $inset {
     inset: $inset;
   } @else {
-    @if $t != null {
+    @if $t {
       top: $t;
     }
 
-    @if $l != null {
+    @if $l {
       left: $l;
     }
 
-    @if $b != null {
+    @if $b {
       bottom: $b;
     }
 
-    @if $r != null {
+    @if $r {
       right: $r;
     }
   }
@@ -47,23 +47,23 @@
     display: flex;
   }
 
-  @if $jusCon != null {
+  @if $jusCon {
     justify-content: $jusCon;
   }
 
-  @if $alignItem != null {
+  @if $alignItem {
     align-items: $alignItem;
   }
 
-  @if $dir !=null {
+  @if $dir {
     flex-direction: $dir;
   }
 
-  @if $wrap != null {
+  @if $wrap {
     flex-wrap: $wrap;
   }
 
-  @if $gap != null {
+  @if $gap {
     gap: $gap;
   }
 }
@@ -78,23 +78,23 @@
 
 @mixin device($breakpoint) {
   @if $breakpoint == desktop {
-    @media screen and (max-width: 1280px) {
+    @media screen and (width <= 1280px) {
       @content;
     }
   } @else if $breakpoint == laptop {
-    @media screen and (max-width: 1024px) {
+    @media screen and (width <= 1024px) {
       @content;
     }
   } @else if $breakpoint == tablet {
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
       @content;
     }
   } @else if $breakpoint == mobile {
-    @media only screen and (max-width: 425px) {
+    @media only screen and (width <= 425px) {
       @content;
     }
   } @else if $breakpoint == small-mobile {
-    @media only screen and (max-width: 320px) {
+    @media only screen and (width <= 320px) {
       @content;
     }
   } @else {

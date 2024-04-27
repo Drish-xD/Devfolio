@@ -11,7 +11,7 @@ const Marquee = memo(function Marquee({ skills }: { skills: string[][] }) {
   return (
     <div className={styles.marquee} ref={ref}>
       {skills.map((skillsRow, i) => (
-        <h3 key={i} aria-hidden="true">
+        <h3 key={i} aria-hidden='true'>
           <SkillRow row={skillsRow} />
         </h3>
       ))}

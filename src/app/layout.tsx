@@ -23,7 +23,7 @@ const WebVitals = dynamic(() => import('@/components/WebVitals'));
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={fontMain.className}>
+    <html lang='en' className={fontMain.className}>
       <body suppressHydrationWarning>
         <SmoothScroll>
           <Transition>

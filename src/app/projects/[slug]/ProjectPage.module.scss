@@ -12,6 +12,18 @@
     text-align: center;
   }
 
+  h2 {
+    font-size: clamp(1.5rem, 7vi, 6rem);
+    letter-spacing: clamp(0.2rem, 1vi, 1rem);
+  }
+
+  > p {
+    line-height: 1.5;
+    font-weight: 300;
+    font-size: $size;
+    margin-block: $size;
+  }
+
   figure {
     position: relative;
     width: 100%;
@@ -23,42 +35,6 @@
       object-fit: cover;
       border-radius: inherit;
     }
-  }
-
-  ul.tags {
-    @include flexbox($jusCon: space-evenly, $wrap: wrap);
-    margin: clamp(0.4rem, 1.3vi, 1rem);
-
-    li {
-      padding: 0.2rem 0.8rem;
-      margin: 0.2rem;
-      @include blurbg(10%, 0.5rem, $white);
-      font-size: clamp(0.8rem, 2.5vi, 1.2rem);
-      border-radius: 0.4rem;
-      box-shadow: 2px 2px 5px rgba($black, 25%);
-    }
-  }
-
-  .links {
-    @include flexbox($jusCon: space-evenly, $gap: 0.5rem);
-    margin-block: $size;
-
-    a {
-      font-size: clamp(1rem, 3vi, 1.5rem);
-      text-decoration: underline;
-    }
-  }
-
-  h2 {
-    font-size: clamp(1.5rem, 7vi, 6rem);
-    letter-spacing: clamp(0.2rem, 1vi, 1rem);
-  }
-
-  > p {
-    line-height: 1.5;
-    font-weight: 300;
-    font-size: $size;
-    margin-block: $size;
   }
 
   ol {
@@ -83,6 +59,33 @@
         font-weight: 300;
         font-size: 0.9em;
       }
+    }
+  }
+
+  ul.tags {
+    @include flexbox($jusCon: space-evenly, $wrap: wrap);
+
+    margin: clamp(0.4rem, 1.3vi, 1rem);
+
+    li {
+      padding: 0.2rem 0.8rem;
+      margin: 0.2rem;
+      @include blurbg(10%, 0.5rem, $white);
+
+      font-size: clamp(0.8rem, 2.5vi, 1.2rem);
+      border-radius: 0.4rem;
+      box-shadow: 2px 2px 5px rgba($black, 25%);
+    }
+  }
+
+  .links {
+    @include flexbox($jusCon: space-evenly, $gap: 0.5rem);
+
+    margin-block: $size;
+
+    a {
+      font-size: clamp(1rem, 3vi, 1.5rem);
+      text-decoration: underline;
     }
   }
 }

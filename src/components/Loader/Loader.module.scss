@@ -2,6 +2,7 @@
 
 .loader {
   @include position($inset: 0, $isFixed: true);
+
   background: $black;
   z-index: 50;
   padding: 4vh 0;
@@ -18,6 +19,7 @@
 
     span {
       @include flexbox($jusCon: center);
+
       width: 2rem;
       position: relative;
       transform: rotate(-3deg);

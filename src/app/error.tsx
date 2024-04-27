@@ -20,7 +20,7 @@ export default function Error({
     <main className={styles.notFound}>
       <h3>Something went wrong!</h3>
       <Link
-        href="/"
+        href='/'
         onClick={(e) => {
           e.preventDefault();
           reset();

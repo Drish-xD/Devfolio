@@ -12,8 +12,8 @@ const About = memo(function About({ about, spotify }: { about: string[]; spotify
   const aboutRef = useAboutAnimation();
 
   return (
-    <section id="about">
-      <SectionTitle text="About" num={4} />
+    <section id='about'>
+      <SectionTitle text='About' num={4} />
       <div ref={aboutRef} className={styles.about}>
         <h3>Hi, I&rsquo;m Drish.</h3>
         {about.map((text: string, i: number) => (
@@ -21,7 +21,7 @@ const About = memo(function About({ about, spotify }: { about: string[]; spotify
         ))}
         <p>
           Here are some
-          <Link href={spotify} target="_blank">
+          <Link href={spotify} target='_blank'>
             playlists
           </Link>
           to get you going.

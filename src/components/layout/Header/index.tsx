@@ -16,11 +16,11 @@ const Header = memo(function Header() {
 
   return (
     <header className={styles.header}>
-      <FixedNav label="Menu" onClick={openMenu} />
+      <FixedNav label='Menu' onClick={openMenu} />
 
       <section ref={navRef}>
-        <Overlay count={4} id="header" className={styles.overlay} />
-        <FixedNav label="Close" onClick={closeMenu} />
+        <Overlay count={4} id='header' className={styles.overlay} />
+        <FixedNav label='Close' onClick={closeMenu} />
         <NavLinks onClick={closeMenu} />
       </section>
     </header>
@@ -36,8 +36,8 @@ const FixedNav = memo(function FixedNav({
 }) {
   const ref = useHoverAnimation<HTMLDivElement>();
   return (
-    <div className={styles.fixed_nav} id="fixed_nav" ref={ref}>
-      <NextLink href="/" onClick={label === 'Close' ? onClick : () => {}}>
+    <div className={styles.fixed_nav} id='fixed_nav' ref={ref}>
+      <NextLink href='/' onClick={label === 'Close' ? onClick : () => {}}>
         ♠
       </NextLink>
       <div data-hover={label} onClick={onClick}>

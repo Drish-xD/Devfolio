@@ -3,6 +3,7 @@
 .blob {
   display: block;
   @include position($l: 50%, $t: 50%, $isFixed: true);
+
   width: 0;
   height: 0;
   z-index: -9;
@@ -22,12 +23,14 @@
 
 .noise {
   @include position($inset: 0, $isFixed: true);
+
   backdrop-filter: blur(10vmax);
   z-index: -9;
 
   &::before {
     content: '';
     @include position($inset: 0);
+
     background-image: url('/images/noise.webp');
   }
 }

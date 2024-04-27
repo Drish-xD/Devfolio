@@ -8,7 +8,7 @@ interface OverlayProps {
 
 const Overlay = memo(function Overlay({ id, className = '', count }: OverlayProps) {
   return (
-    <div className={className} id={`overlay_${id}`} aria-hidden="true">
+    <div className={className} id={`overlay_${id}`} aria-hidden='true'>
       {Array.from({ length: count }, (_, i) => (
         <span key={i} />
       ))}

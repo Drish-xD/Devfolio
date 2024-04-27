@@ -10,7 +10,7 @@ const Footer = memo(function Footer() {
   return (
     <footer className={styles.footer}>
       <p>Copyright &copy; {YEAR}. All rights reserved.</p>
-      <Link href="#">Back to Top ↑</Link>
+      <Link href='#'>Back to Top ↑</Link>
     </footer>
   );
 });

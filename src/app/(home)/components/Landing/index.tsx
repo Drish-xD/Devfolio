@@ -4,7 +4,7 @@ import styles from './Landing.module.scss';
 
 const Home = memo(function Home() {
   return (
-    <section id="home" className={styles.home}>
+    <section id='home' className={styles.home}>
       <h1>
         I Create
         <span>Experiences</span>

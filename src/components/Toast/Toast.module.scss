@@ -4,6 +4,7 @@
   display: block;
   @include position($inset: auto 2.5% 2.5% auto, $isFixed: true);
   @include blurbg(10%, 5vmax, $white);
+
   padding: 0.8rem 1.5rem 0.8rem 1.2rem;
   border-radius: 0.5rem 0 0.5rem 0.5rem;
   z-index: 10;
@@ -23,6 +24,7 @@
     @include position($inset: -0.5em -0.5em auto auto);
     @include blurbg(20%, 5vmax, $white);
     @include flexbox($jusCon: center, $alignItem: center);
+
     font-size: 0.8em;
     width: 0;
     line-height: 0;

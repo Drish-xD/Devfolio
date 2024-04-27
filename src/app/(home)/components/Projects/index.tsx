@@ -8,8 +8,8 @@ import styles from './Projects.module.scss';
 
 const Projects = memo(function Projects() {
   return (
-    <section id="projects">
-      <SectionTitle text="Projects" num={2} />
+    <section id='projects'>
+      <SectionTitle text='Projects' num={2} />
       <ProjectList />
     </section>
   );

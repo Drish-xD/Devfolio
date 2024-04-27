@@ -31,7 +31,7 @@ export default function Template({ children }: { children: ReactNode }) {
   return (
     <>
       {children}
-      <Overlay count={4} id="page" className={styles.overlay} />
+      <Overlay count={4} id='page' className={styles.overlay} />
     </>
   );
 }
