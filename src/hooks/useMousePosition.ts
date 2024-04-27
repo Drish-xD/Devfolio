@@ -10,7 +10,6 @@ export const useMousePosition = (): MousePosition => {
     x: undefined,
     y: undefined
   });
-  console.log('Blob mouse position active', mousePosition);
 
   useEffect(() => {
     const { innerHeight, innerWidth } = window;

@@ -14,11 +14,14 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "postinstall": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
       "eslint --fix",
+      "pnpm format"
+    ],
+    "./src/**/*.{css,scss,json}": [
       "pnpm format"
     ]
   },

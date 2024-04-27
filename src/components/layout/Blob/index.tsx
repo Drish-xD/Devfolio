@@ -36,14 +36,11 @@ const Blob = () => {
     },
     { dependencies: [x, y], scope: blobRef }
   );
-  console.log('Render Blob : ', { x, y });
 
   return <span className={styles.blob} aria-hidden="true" ref={blobRef} />;
 };
 
 const Noise = memo(function Noise() {
-  console.log('Noise active');
-
   return <span className={styles.noise} aria-hidden="true" />;
 });
 
