@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { ReactNode, createContext, useContext, useState } from 'react';
 
+import { useLenis } from '@studio-freight/react-lenis';
+
 import { TransitionContextProps } from '@/types';
 import { gsap, useGSAP } from '@/utils/gsap';
 
@@ -11,6 +13,7 @@ const TransitionContext = createContext<TransitionContextProps | null>(null);
 export const Transition = ({ children }: { children: ReactNode }) => {
   const [isPending, setIsPending] = useState(false);
   const router = useRouter();
+  const lenis = useLenis();
   const { contextSafe } = useGSAP();
 
   const pageEnter = contextSafe(async () => {
@@ -25,7 +28,10 @@ export const Transition = ({ children }: { children: ReactNode }) => {
         duration: 0.8,
         stagger: 0.1,
         ease: 'power4.inOut',
-        onComplete: () => setIsPending(false)
+        onComplete: () => {
+          setIsPending(false);
+          lenis?.start();
+        }
       }
     );
   });
@@ -42,7 +48,10 @@ export const Transition = ({ children }: { children: ReactNode }) => {
         duration: 0.8,
         stagger: 0.1,
         ease: 'power4.inOut',
-        onStart: () => setIsPending(true),
+        onStart: () => {
+          setIsPending(true);
+          lenis?.stop();
+        },
         onComplete: () => router.push(href, { scroll: false })
       }
     );

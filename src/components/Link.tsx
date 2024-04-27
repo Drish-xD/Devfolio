@@ -11,7 +11,8 @@ import { useHoverAnimation } from '@/hooks/useHoverAnimation';
 import { useTransition } from '@/providers';
 
 interface NavigationLinkProps extends Omit<ComponentProps<typeof Link>, 'href'> {
-  animate?: boolean;
+  disableHover?: boolean;
+  disableExitAnimation?: boolean;
   href: string | UrlObject;
 }
 
@@ -20,7 +21,8 @@ const NavigationLink = memo(function NavigationLink({
   children,
   target,
   className,
-  animate = true,
+  disableHover = false,
+  disableExitAnimation = false,
   onClick
 }: NavigationLinkProps) {
   const { pageExit } = useTransition();
@@ -29,8 +31,8 @@ const NavigationLink = memo(function NavigationLink({
   const lenis = useLenis();
 
   const dataHoverProps = useMemo(
-    () => (animate && typeof children === 'string' ? { 'data-hover': children } : {}),
-    [animate, children]
+    () => (!disableHover && typeof children === 'string' ? { 'data-hover': children } : {}),
+    [disableHover, children]
   );
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
@@ -40,7 +42,7 @@ const NavigationLink = memo(function NavigationLink({
       onClick(e);
     }
 
-    if (hrefPath && hrefPath !== pathname) {
+    if (!disableExitAnimation && hrefPath && hrefPath !== pathname) {
       e.preventDefault();
       pageExit(hrefString);
     }

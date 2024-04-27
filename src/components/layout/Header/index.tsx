@@ -1,6 +1,5 @@
 'use client';
 
-import NextLink from 'next/link';
 import { memo } from 'react';
 
 import Link from '@/components/Link';
@@ -37,9 +36,9 @@ const FixedNav = memo(function FixedNav({
   const ref = useHoverAnimation<HTMLDivElement>();
   return (
     <div className={styles.fixed_nav} id='fixed_nav' ref={ref}>
-      <NextLink href='/' onClick={label === 'Close' ? onClick : () => {}}>
+      <Link disableHover href='/' onClick={label === 'Close' ? onClick : () => {}}>
         ♠
-      </NextLink>
+      </Link>
       <div data-hover={label} onClick={onClick}>
         {label}
       </div>

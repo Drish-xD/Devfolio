@@ -28,7 +28,7 @@ const Card = memo(function Card({ ...project }: ProjectProperties) {
 
       <CardInfo name={name} tags={tags} />
 
-      <Link href={`/projects/${slug}`} animate={false}>
+      <Link href={`/projects/${slug}`} disableHover>
         <span>↗</span>
       </Link>
 

@@ -44,8 +44,16 @@ export default async function Project({ params: { slug } }: { params: { slug: st
   function ProjectLinks() {
     return (
       <div className={styles.links}>
-        {github && <Link href={github}>Github</Link>}
-        {live && <Link href={live}>Live</Link>}
+        {github && (
+          <Link href={github} disableExitAnimation>
+            Github
+          </Link>
+        )}
+        {live && (
+          <Link href={live} disableExitAnimation>
+            Live
+          </Link>
+        )}
       </div>
     );
   }
