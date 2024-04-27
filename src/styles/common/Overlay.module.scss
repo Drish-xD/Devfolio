@@ -1,0 +1,33 @@
+@use '@/base' as *;
+
+.overlay {
+  @include position($inset: 0, $isFixed: true);
+
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+  z-index: 500;
+  transform: translateX(-100%);
+
+  span {
+    display: block;
+    width: 100dvw;
+    height: 100%;
+
+    &:nth-last-of-type(1) {
+      @include blurbg(90%, 2vmax, #080808);
+    }
+
+    &:nth-last-of-type(2) {
+      @include blurbg(90%, 2vmax, #101010);
+    }
+
+    &:nth-last-of-type(3) {
+      @include blurbg(90%, 2vmax, #181818);
+    }
+
+    &:nth-last-of-type(4) {
+      @include blurbg(90%, 2vmax, #202020);
+    }
+  }
+}

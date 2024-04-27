@@ -1,0 +1,32 @@
+@use '@/base' as *;
+
+.notFound {
+  @include flexbox(column, center, center);
+
+  padding-top: $container-margin;
+  text-align: center;
+  min-height: 90lvh;
+
+  h1 {
+    font-size: clamp(5rem, 40vi, 35rem);
+    font-style: italic;
+    line-height: 1.2;
+    text-shadow: 0 0 0.7rem $black;
+  }
+
+  h3 {
+    font-size: clamp(1rem, 4vi, 3rem);
+    font-weight: 200;
+  }
+
+  a {
+    font-size: clamp(0.8rem, 2.5vi, 1.5rem);
+    font-weight: 400;
+    margin-block: 1rem 3rem;
+    text-decoration: 1px underline solid;
+  }
+
+  @include device(laptop) {
+    padding-top: 0;
+  }
+}

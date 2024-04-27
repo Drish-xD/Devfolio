@@ -1,55 +1,113 @@
 {
-  "name": "drish_portfolio",
+  "name": "devfolio",
   "description": "Hi! my name is Drish, a Front-End Developer.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": {
-    "name": "Drish-xD",
-    "url": "https://github.com/Drish-xD"
+    "name": "Drish",
+    "email": "hey@drishxd.dev",
+    "url": "https://drishxd.dev"
   },
   "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "format": "npx prettier --write .",
-    "prepare": "husky install"
+    "lint:next": "next lint",
+    "lint:eslint": "eslint --fix",
+    "lint:style": "stylelint --allow-empty-input --fix './src/**/*.{css,scss}'",
+    "lint": "pnpm lint:next && pnpm lint:style",
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "lint-staged": {
-    "**/*": "prettier --write . --ignore-unknown"
+    "./src/**/*.{ts,js,jsx,tsx}": [
+      "pnpm lint:eslint",
+      "pnpm format"
+    ],
+    "./src/**/*.{css,scss,json}": [
+      "pnpm lint:style",
+      "pnpm format"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "prettier",
+      "next/core-web-vitals"
+    ],
+    "rules": {
+      "no-undef": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "no-unused-vars": "off"
+    }
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard-scss",
+      "stylelint-config-prettier-scss"
+    ],
+    "rules": {
+      "selector-class-pattern": null
+    }
+  },
+  "prettier": {
+    "plugins": [
+      "@trivago/prettier-plugin-sort-imports"
+    ],
+    "bracketSpacing": true,
+    "semi": true,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "useTabs": false,
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "printWidth": 100,
+    "importOrder": [
+      "^(react/(.*)$)|^(react$)|^(next/(.*)$)|^(next$)",
+      "<THIRD_PARTY_MODULES>",
+      "^@/(.*)$",
+      "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
   },
   "dependencies": {
-    "@builder.io/partytown": "^0.8.0",
-    "@mdx-js/loader": "^2.3.0",
-    "@mdx-js/react": "^2.3.0",
-    "@next/mdx": "^13.4.10",
-    "@studio-freight/react-lenis": "^0.0.36",
-    "contentful": "^10.3.6",
-    "gsap": "^3.12.2",
-    "next": "^13.4.10",
+    "@gsap/react": "^2.1.0",
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.2.2",
+    "@next/third-parties": "^14.2.2",
+    "@plaiceholder/next": "^3.0.0",
+    "@studio-freight/react-lenis": "^0.0.47",
+    "contentful": "^10.8.8",
+    "gsap": "^3.12.5",
+    "next": "^14.2.2",
     "next-mdx-remote": "^4.4.1",
+    "plaiceholder": "^3.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-transition-group": "^4.4.5",
-    "split-type": "^0.3.3"
+    "sass": "^1.75.0",
+    "sharp": "^0.33.3",
+    "split-type": "^0.3.4",
+    "typescript": "5.4.5"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^13.4.10",
-    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
-    "@types/mdx": "^2.0.5",
-    "@types/node": "20.8.2",
-    "@types/react": "18.2.25",
-    "@types/react-dom": "18.2.10",
-    "@types/react-transition-group": "^4.4.6",
+    "@next/bundle-analyzer": "^14.2.2",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "20.12.7",
+    "@types/react": "18.2.79",
+    "@types/react-dom": "18.2.25",
     "cross-env": "^7.0.3",
     "encoding": "^0.1.13",
-    "eslint": "^8.45.0",
-    "eslint-config-next": "13.5.4",
-    "eslint-config-prettier": "^8.8.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "prettier": "^2.8.8",
-    "sass": "^1.63.6",
-    "typescript": "5.2.2"
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.2",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.4.0",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^13.1.0"
   }
 }

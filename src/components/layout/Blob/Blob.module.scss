@@ -1,0 +1,36 @@
+@use '@/base' as *;
+
+.blob {
+  display: block;
+  @include position($l: 50%, $t: 50%, $isFixed: true);
+
+  width: 0;
+  height: 0;
+  z-index: -9;
+  will-change: transform;
+
+  &::before {
+    content: '';
+    display: block;
+    pointer-events: none;
+    height: 25vmax;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: linear-gradient(to right, #80ffd4cc, #9370d8cc);
+  }
+}
+
+.noise {
+  @include position($inset: 0, $isFixed: true);
+
+  backdrop-filter: blur(10vmax);
+  z-index: -9;
+
+  &::before {
+    content: '';
+    @include position($inset: 0);
+
+    background-image: url('/images/noise.webp');
+  }
+}

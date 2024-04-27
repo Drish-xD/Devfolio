@@ -1,0 +1,24 @@
+@use '@/base' as *;
+
+.title {
+  @include container;
+  @include flexbox($alignItem: baseline, $wrap: nowrap, $dir: row);
+
+  margin-block: calc($container-margin * 2) $container-margin;
+  font-size: clamp(2.5rem, 9vi, 10rem);
+  text-shadow: 0 0 0.7rem $black;
+  line-height: 1.2;
+  overflow: hidden;
+
+  span {
+    display: inline-block;
+  }
+
+  > sub {
+    font-size: 0.35em;
+  }
+
+  @include device(tablet) {
+    justify-content: center;
+  }
+}

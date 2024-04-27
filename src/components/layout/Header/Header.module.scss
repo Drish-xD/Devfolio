@@ -1,0 +1,87 @@
+@use '@/base' as *;
+
+.overlay {
+  @include position($inset: 0);
+
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(4, 1fr);
+
+  span {
+    @include blurbg(25%, 2vmax);
+  }
+
+  @include device(tablet) {
+    grid-template-columns: repeat(3, 1fr);
+
+    span:last-of-type {
+      display: none;
+    }
+  }
+
+  @include device(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+
+    span:nth-last-child(2) {
+      display: none;
+    }
+  }
+}
+
+.header {
+  position: relative;
+  z-index: 50;
+
+  .fixed_nav {
+    @include container;
+    @include position($inset: 0 0 auto);
+    @include flexbox($jusCon: space-between, $alignItem: center);
+
+    padding-block: 1rem;
+    color: $white;
+
+    & > a {
+      font-size: clamp(1.8rem, 7vi, 3rem);
+    }
+
+    & > div {
+      font-size: clamp(0.7rem, 4vi, 1rem);
+      cursor: pointer;
+    }
+  }
+
+  section {
+    @include flexbox($dir: column);
+    @include position($inset: 0, $isFixed: true);
+
+    transform: translateY(-100%);
+    overflow: hidden;
+
+    nav {
+      flex-grow: 1;
+
+      ul {
+        height: 100%;
+        @include flexbox($dir: column, $alignItem: center, $jusCon: center, $gap: 1rem);
+
+        li {
+          @include flexbox($alignItem: baseline);
+
+          font-size: clamp(2em, 9vi, 5em);
+          overflow: hidden;
+          text-transform: uppercase;
+
+          span {
+            overflow: inherit;
+            font-weight: 400;
+            font-size: 0.4em;
+          }
+        }
+
+        @include device(tablet) {
+          gap: 2rem;
+        }
+      }
+    }
+  }
+}

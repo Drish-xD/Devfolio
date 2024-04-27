@@ -1,0 +1,118 @@
+@use './variable' as *;
+
+// Position absolute mixin
+@mixin position($t: null, $l: null, $b: null, $r: null, $inset: null, $isFixed: false) {
+  // fixed or absolute
+  @if $isFixed {
+    position: fixed;
+  } @else {
+    position: absolute;
+  }
+
+  // position
+  @if $inset {
+    inset: $inset;
+  } @else {
+    @if $t {
+      top: $t;
+    }
+
+    @if $l {
+      left: $l;
+    }
+
+    @if $b {
+      bottom: $b;
+    }
+
+    @if $r {
+      right: $r;
+    }
+  }
+}
+
+// FlexBox Mixin
+
+@mixin flexbox(
+  $dir: null,
+  $jusCon: null,
+  $alignItem: null,
+  $wrap: null,
+  $gap: null,
+  $isInline: false
+) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  @if $jusCon {
+    justify-content: $jusCon;
+  }
+
+  @if $alignItem {
+    align-items: $alignItem;
+  }
+
+  @if $dir {
+    flex-direction: $dir;
+  }
+
+  @if $wrap {
+    flex-wrap: $wrap;
+  }
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+// Blured background mixin
+@mixin blurbg($o, $b, $c: $black) {
+  background: rgba($c, $o);
+  backdrop-filter: blur($b);
+}
+
+// responsive media mixin
+
+@mixin device($breakpoint) {
+  @if $breakpoint == desktop {
+    @media screen and (width <= 1280px) {
+      @content;
+    }
+  } @else if $breakpoint == laptop {
+    @media screen and (width <= 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media screen and (width <= 768px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media only screen and (width <= 425px) {
+      @content;
+    }
+  } @else if $breakpoint == small-mobile {
+    @media only screen and (width <= 320px) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin container() {
+  width: 75%;
+  margin-inline: auto;
+
+  @include device(tablet) {
+    width: 85%;
+  }
+
+  @include device(mobile) {
+    width: 90%;
+  }
+}

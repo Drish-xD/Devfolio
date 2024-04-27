@@ -1,0 +1,91 @@
+@use '@/base' as *;
+
+.project_page {
+  $size: clamp(1.2rem, 3.4vi, 2rem);
+
+  padding-top: $container-margin;
+  @include container;
+
+  h1 {
+    font-size: clamp(4rem, 12.5vi, 15rem);
+    text-shadow: 0 0 0.7rem $black;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 7vi, 6rem);
+    letter-spacing: clamp(0.2rem, 1vi, 1rem);
+  }
+
+  > p {
+    line-height: 1.5;
+    font-weight: 300;
+    font-size: $size;
+    margin-block: $size;
+  }
+
+  figure {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 1rem $black;
+
+    img {
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+
+  ol {
+    margin-left: clamp(3rem, 7vi, 4rem);
+
+    li {
+      margin-block: $size;
+      list-style: decimal-leading-zero;
+      font-size: $size;
+      line-height: 1.5;
+
+      &::marker {
+        font-size: 0.9em;
+      }
+
+      h3 {
+        font-weight: 600;
+        font-size: 1em;
+      }
+
+      p {
+        font-weight: 300;
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  ul.tags {
+    @include flexbox($jusCon: space-evenly, $wrap: wrap);
+
+    margin: clamp(0.4rem, 1.3vi, 1rem);
+
+    li {
+      padding: 0.2rem 0.8rem;
+      margin: 0.2rem;
+      @include blurbg(10%, 0.5rem, $white);
+
+      font-size: clamp(0.8rem, 2.5vi, 1.2rem);
+      border-radius: 0.4rem;
+      box-shadow: 2px 2px 5px rgba($black, 25%);
+    }
+  }
+
+  .links {
+    @include flexbox($jusCon: space-evenly, $gap: 0.5rem);
+
+    margin-block: $size;
+
+    a {
+      font-size: clamp(1rem, 3vi, 1.5rem);
+      text-decoration: underline;
+    }
+  }
+}
