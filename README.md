@@ -1,5 +1,7 @@
 # Portfolio
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a804f07901ff47dc9c56d47d1fcbc68b)](https://app.codacy.com/gh/Drish-xD/Devfolio?utm_source=github.com&utm_medium=referral&utm_content=Drish-xD/Devfolio&utm_campaign=Badge_Grade)
+
 The personal Portfolio website showcases projects, skills, and blogs to share experiences. The website is built using Next.js as a Static Site Generator, GSAP for animations, and Lenis Scroll for smooth scrolling. Notion SDK is integrated to use it as a CMS for managing Projects.
 
 ### Key Features
