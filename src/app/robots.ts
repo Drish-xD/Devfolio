@@ -3,12 +3,14 @@ import { MetadataRoute } from 'next';
 import { APP_URL } from '@/constants';
 
 export default function robots(): MetadataRoute.Robots {
+  const isProd = process.env.NEXT_PUBLIC_ENVIRONMENT === 'prod';
+
   return {
     rules: {
       userAgent: '*',
-      allow: '/',
-      disallow: ['/_next/', '/images/']
+      ...(isProd && { allow: '/' }),
+      disallow: isProd ? ['/_next/', '/images/'] : '/'
     },
-    sitemap: `${APP_URL}/sitemap.xml`
+    sitemap: isProd ? `${APP_URL}/sitemap.xml` : undefined
   };
 }
