@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 import { GoogleTagManager } from '@next/third-parties/google';
 
 import { Blob, Noise } from '@/components/layout/Blob';
-import { METADATA } from '@/constants';
+import { METADATA, VIEW_PORT } from '@/constants';
 import { SmoothScroll, Transition } from '@/providers';
 import '@/styles/global.scss';
 
@@ -42,3 +42,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 }
 
 export const metadata = METADATA;
+export const viewport = VIEW_PORT;

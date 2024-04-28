@@ -16,5 +16,6 @@ export default function NotFound() {
 
 export const metadata: Metadata = {
   title: 'Page Not Found',
-  alternates: { canonical: '/404' }
+  alternates: { canonical: '/404' },
+  robots: { index: false, follow: false }
 };

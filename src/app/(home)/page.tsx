@@ -1,5 +1,8 @@
+import Script from 'next/script';
+
 import Loader from '@/components/Loader';
 import Toast from '@/components/Toast';
+import { HOME_SCHEMA } from '@/constants';
 import { getContent } from '@/utils/contentful';
 
 import About from './components/About';
@@ -20,6 +23,12 @@ export default async function Portfolio() {
       <About about={content?.about || []} spotify={content?.otherLinks.spotify || ''} />
       <Contacts contacts={content?.contactLinks || {}} />
       <Toast />
+      <Script
+        id='structured-schema'
+        type='application/ld+json'
+        strategy='beforeInteractive'
+        dangerouslySetInnerHTML={{ __html: HOME_SCHEMA }}
+      />
     </main>
   );
 }

@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 import Link from '@/components/Link';
-import { METADATA } from '@/constants';
+import { METADATA, getProjectSchema } from '@/constants';
 import { getAllProjects, getSingleProject } from '@/utils/contentful';
 
 import styles from './ProjectPage.module.scss';
@@ -16,8 +17,8 @@ export default async function Project({ params: { slug } }: { params: { slug: st
   if (!project) {
     notFound();
   }
-
   const { name, image, tags, mdx, github, live } = project;
+  const projectSchema = getProjectSchema(project);
 
   return (
     <main className={styles.project_page}>
@@ -38,6 +39,12 @@ export default async function Project({ params: { slug } }: { params: { slug: st
       <MDXRemote source={mdx || ''} />
 
       <ProjectLinks />
+      <Script
+        id='structured-schema'
+        strategy='beforeInteractive'
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: projectSchema }}
+      />
     </main>
   );
 
@@ -45,7 +52,7 @@ export default async function Project({ params: { slug } }: { params: { slug: st
     return (
       <div className={styles.links}>
         {github && (
-          <Link href={github} disableExitAnimation>
+          <Link href={github} disableExitAnimation rel='noopener noreferrer'>
             Github
           </Link>
         )}
@@ -80,12 +87,14 @@ export const generateMetadata = async ({
 
   if (!project) {
     return {
-      title: 'Page Not Found'
+      title: 'Page Not Found',
+      alternates: { canonical: '/404' }
     };
   }
 
   return {
     title: project?.name,
+    description: project.mdx?.split('## Key Features')[0]?.trim(),
     keywords: [...((METADATA?.keywords as string[]) || []), ...(project?.tags || [])],
     openGraph: { title: project?.name, images: project?.image.src, url: project?.slug },
     twitter: { title: project?.name, images: project?.image.src },
