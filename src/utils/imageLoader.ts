@@ -1,5 +1,3 @@
-import { APP_URL } from '@/constants';
-
 export default function imageLoader({
   src,
   width,
@@ -9,8 +7,7 @@ export default function imageLoader({
   width: number;
   quality: number;
 }) {
-  const url = new URL(`${APP_URL}/_next/image/`);
-  url.searchParams.set('url', src);
+  const url = new URL(src);
   url.searchParams.set('fm', 'webp');
   url.searchParams.set('w', width.toString());
   url.searchParams.set('q', (quality || 75).toString());
