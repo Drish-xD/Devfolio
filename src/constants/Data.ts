@@ -26,3 +26,4 @@ export const NAV_LINKS = [
 ];
 
 export const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://drishxd.dev';
+export const isProd = process.env.NEXT_PUBLIC_ENVIRONMENT === 'prod';

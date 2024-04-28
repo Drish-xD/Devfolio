@@ -1,16 +1,16 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 
-import { APP_URL } from './Data';
+import { APP_URL, isProd } from './Data';
 
-const title = {
+export const title = {
   default: 'Drish | Portfolio',
   template: ' %s - Drish | Portfolio'
 };
 
-const description =
+export const description =
   "Hi, I 'm Drish, a front-end developer. I specialize in creating responsive, efficient web solutions. My work emphasizes clean design, usability, and modern web technologies, aiming to deliver optimal user experiences. Explore how strategic design and development converge in my projects.";
 
-const images = '/images/thumbnail.webp';
+export const images = '/images/thumbnail.webp';
 
 /**
  * Default Metadata for the website
@@ -55,7 +55,14 @@ export const METADATA: Metadata = {
   category: 'Portfolio',
   creator: 'Drish',
   authors: { name: 'Drish', url: APP_URL },
-  robots: 'index, follow',
+  robots: { index: isProd, follow: isProd },
   referrer: 'origin-when-cross-origin',
   generator: 'Next.js'
+};
+
+export const VIEW_PORT: Viewport = {
+  initialScale: 1,
+  themeColor: 'black',
+  colorScheme: 'dark',
+  width: 'device-width'
 };

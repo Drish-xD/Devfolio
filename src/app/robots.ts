@@ -1,10 +1,8 @@
 import { MetadataRoute } from 'next';
 
-import { APP_URL } from '@/constants';
+import { APP_URL, isProd } from '@/constants';
 
 export default function robots(): MetadataRoute.Robots {
-  const isProd = process.env.NEXT_PUBLIC_ENVIRONMENT === 'prod';
-
   return {
     rules: {
       userAgent: '*',
