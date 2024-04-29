@@ -4,7 +4,7 @@ import { APP_URL, isProd } from './Data';
 
 export const title = {
   default: 'Drish | Portfolio',
-  template: ' %s - Drish | Portfolio'
+  template: '%s - Drish | Portfolio'
 };
 
 export const description =
@@ -19,29 +19,6 @@ export const METADATA: Metadata = {
   metadataBase: new URL(APP_URL),
   title,
   description,
-  icons: [
-    {
-      rel: 'apple-touch-icon',
-      url: '/favicon/favicon-16x16.png',
-      sizes: '180x180 '
-    },
-    {
-      rel: 'icon',
-      url: '/favicon/favicon-32x32.png',
-      type: 'image/png',
-      sizes: '32x32'
-    },
-    {
-      rel: 'icon',
-      url: '/favicon/favicon-16x16.png',
-      type: 'image/png',
-      sizes: '16x16'
-    },
-    {
-      rel: 'icon',
-      url: '/favicon/favicon.ico'
-    }
-  ],
   alternates: { canonical: '/' },
   keywords: [
     'Front-End',
