@@ -19,6 +19,42 @@ export const METADATA: Metadata = {
   metadataBase: new URL(APP_URL),
   title,
   description,
+  icons: [
+    {
+      rel: 'apple-touch-icon',
+      url: '/favicons/apple-touch-icon.png',
+      sizes: '180x180 '
+    },
+    {
+      rel: 'shortcut icon',
+      url: '/favicon.ico',
+      type: 'image/x-icon'
+    },
+    {
+      rel: 'icon',
+      url: '/favicons/favicon-32x32.png',
+      type: 'image/png',
+      sizes: '32x32'
+    },
+    {
+      rel: 'icon',
+      url: '/favicons/favicon-16x16.png',
+      type: 'image/png',
+      sizes: '16x16'
+    },
+    {
+      rel: 'icon',
+      url: '/favicons/favicon-96x96.png',
+      type: 'image/png',
+      sizes: '48x48'
+    },
+    {
+      rel: 'icon',
+      url: '/favicons/favicon-96x96.png',
+      type: 'image/png',
+      sizes: '96x96'
+    }
+  ],
   alternates: { canonical: '/' },
   keywords: [
     'Front-End',
